@@ -1,0 +1,687 @@
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+  line-height: 1;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0,0,0,.5);
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@media screen and (min-width: 601px) {
+  div {
+    font-size: 2vh;
+  }
+}
+
+/* General */
+
+/* Image */
+.circle {
+  border-radius: 50%;
+}
+
+.square {
+  border-radius: 5px;
+}
+
+.shadow-image {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.bordered-image {
+  border: 1px solid black;
+}
+
+/* Icon Sizes */
+
+.sm-icon {
+  height: 25;
+  width: 25;
+}
+
+.md-icon {
+  height: 50;
+  width: 50;
+}
+
+.lg-icon {
+  height: 100;
+  width: 100;
+}
+
+.xl-icon {
+  height: 200;
+  width: 200;
+}
+
+
+/* Grid */
+
+.container-grid {
+  display: grid;
+}
+
+.portfolio-grid-template {
+  /* justify-content: center;  */
+  grid-template-columns: [col1] 15% [col2] 15% [col3] auto [col5] 15% [col6] 15% [end];
+  grid-template-rows: [top] 1fr [nav-end] auto [footer-start] 1fr [bottom]
+}
+
+.portfolio-navigation {
+  grid-area: 1 / 1 / nav-end / end;
+}
+
+.portfolio-content {
+  grid-area: nav-end / col2 / footer-start / col6;
+}
+
+.portfolio-footer {
+  grid-area: footer-start / 1 / bottom / end;
+}
+
+.aligner {
+  align-items: center;
+}
+
+
+/* Line Height */
+.line-height-normal {
+  line-height: normal;
+}
+
+.bordered {
+  border: 1px solid black;
+}
+
+/* ------------------------------------------------------------------------------------------------------------ */
+/* Navigation */
+.nav-container {
+  text-decoration: none;
+  border-radius: 2px;
+}
+
+.nav-item {
+  text-decoration: none;
+  padding: 1vw;
+  border-radius: 2px;
+  color: black;
+}
+.nav-item:hover {
+  transition: .7s;
+  background-color: black;
+  color: white;
+}
+
+/* Card */
+
+.shadowed {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.standard-border-radius {
+  border-radius: 20px;
+}
+
+.card-ln {
+  box-sizing:border-box;
+  border-right: 0.5vw solid black;
+  border-left: 0.5vw solid black;
+}
+
+.card-smooth {
+  border-radius: 5px;
+}
+
+/* ------------------------------------------------------------------------------------------------------------ */
+/* Responsive centered width */
+
+.w-10 {
+  width: 100%;
+}
+
+.w-9 {
+  width: 90%;
+  left: 5%;
+}
+
+.w-8 {
+  width: 80%;
+  left: 10%;
+}
+
+.w-7 {
+  width: 70%;
+  left: 15%;
+}
+
+.w-6 {
+  width: 60%;
+  left: 20%;
+}
+
+.w-5 {
+  width: 50%;
+  left: 25%;
+}
+
+.w-4 {
+  width: 40%;
+  left: 30%;
+}
+
+.w-3 {
+  width: 30%;
+  left:35%;
+}
+
+.w-2 {
+  width: 20%;
+  left: 40%;
+}
+
+.w-1 {
+  width: 10%;
+  left: 45%;
+}
+
+/* Margins */
+.m0 {
+  margin: 0;
+}
+.m1 {
+  margin: 1vw;
+}
+
+.m2 {
+  margin: 2vw;
+}
+
+.m3 {
+  margin: 3vw;
+}
+
+.m4 {
+  margin: 4vw;
+}
+
+/* Margin Top */
+.mt-1 {
+  margin-top: 1vh;
+}
+
+.mt-2 {
+  margin-top: 2vh;
+}
+
+.mt-3 {
+  margin-top: 3vh;
+}
+
+.mt-4 {
+  margin-top: 4vh;
+}
+
+.mt-5 {
+  margin-top: 5vh;
+}
+
+/* Margin Bottom */
+.mb-1 {
+  margin-bottom: 1vh;
+}
+
+.mb-2 {
+  margin-bottom: 2vh;
+}
+
+.mb-3 {
+  margin-bottom: 3vh;
+}
+
+.mb-4 {
+  margin-bottom: 4vh;
+}
+
+.mb-5 {
+  margin-bottom: 5vw;
+}
+
+/* Padding Bottom */
+.pb-1 {
+  padding-bottom: 2vh;
+}
+
+.pb-2 {
+  padding-bottom: 4vh;
+}
+
+
+
+/* Paddings */
+.p0 {
+  padding: 0;
+}
+
+.p1 {
+  padding: 1vw;
+}
+
+.p2 {
+  padding: 2vw;
+}
+
+.p3 {
+  padding: 3vw;
+}
+
+.p4 {
+  padding: 4vw;
+}
+
+.p5 {
+  padding: 15vw;
+}
+
+.ps-1 {
+  padding-left: 1vw;
+  padding-right: 1vw;
+}
+
+.ps-2 {
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+
+.ms-1 {
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
+.ms-2 {
+  margin-left: 2vw;
+  margin-right: 2vw;
+}
+
+.mt-half {
+  margin-top: 50%;
+}
+
+/* Top */
+.pt-1 {
+  padding-top: 2%;
+}
+
+.pt-2 {
+  padding-top: 4%;
+}
+
+
+/* Padding Bottom */
+.pb-1 {
+  padding-bottom: 2%;
+}
+
+.pb-2 {
+  padding-bottom: 4%;
+}
+
+/* Padding Left */
+.pl-1 {
+  padding-left: 2%;
+}
+
+.pl-2 {
+  padding-left: 4%;
+}
+
+/* Padding Right */
+.pl-1 {
+  padding-right: 2%;
+}
+
+.pl-2 {
+  padding-right: 4%;
+}
+
+
+/* ------------------------------------------------------------------------------------------------------------ */
+
+/* Font Size */
+.f1 {
+  font-size: 10vw !important;
+}
+
+.f2 {
+  font-size: 9.5vw !important;
+}
+
+.f3 {
+  font-size: 9vw !important;
+}
+
+.f4 {
+  font-size: 8.5vw !important;
+}
+
+.f5 {
+  font-size: 8vw !important;
+}
+
+.f6 {
+  font-size: 7.5vw !important;
+}
+
+.f7 {
+  font-size: 7vw !important;
+}
+
+.f8 {
+  font-size: 6.5vw !important;
+}
+
+.f9 {
+  font-size: 6vw !important;
+}
+
+.f10 {
+  font-size: 5.5vw !important;
+}
+
+.f11 {
+  font-size: 5vw !important;
+}
+
+.f12 {
+  font-size: 4.5vw !important;
+}
+
+.f13 {
+  font-size: 4vw !important;
+}
+
+.f14 {
+  font-size: 3.5vw !important;
+}
+
+.f15 {
+  font-size: 3vw !important;
+}
+
+.f16 {
+  font-size: 2.5vw !important;
+}
+
+.f17 {
+  font-size: 2vw !important;
+}
+
+.f18 {
+  font-size: 1.5vw !important;
+}
+
+.f19 {
+  font-size: 1vw !important;
+}
+
+.f20 {
+  font-size: .5vw !important;
+}
+
+/* Font Characteristics */
+
+.bold-text {
+  font-weight: bold;
+}
+
+.underline-text {
+  text-decoration: underline;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+
+/* ------------------------------------------------------------------------------------------------------------ */
+
+
+/* Flexbox */
+.container-flex {
+  display: flex;
+}
+
+.horizontal-flex {
+  flex-direction: row;
+}
+
+.vertical-flex {
+  flex-direction: column;
+}
+
+.center-alignment-flex {
+  align-items: center;
+}
+
+.wrap-flex {
+  flex-wrap: wrap;
+}
+
+.align-self-center {
+  align-self: center;
+}
+
+.v-top-item-flex {
+  align-self: flex-start;
+}
+
+.v-bottom-item-flex {
+  align-self: flex-end;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.align-items-flex-start {
+  align-items: flex-start;
+}
+
+.align-items-baseline {
+  align-items: baseline;
+}
+
+.vertical-align-middle {
+  vertical-align: middle;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.top-and-bottom-margin-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.top-and-bottom-padding-auto {
+  padding-top: auto;
+  padding-bottom: auto;
+}
+
+
+/* ------------------------------------------------------------------------------------------------------------ */
+
+
+
+/* Blocks */
+
+.inline-block {
+  display: inline-block;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+
+/* ------------------------------------------------------------------------------------------------------------ */
+
+
+/* Modal */
+.modal {
+  position: fixed; /* Stay in Place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Allow scroll when needed */
+  background-color: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  
+}
+.modal-img {
+  overflow: auto;
+  background-color: black;
+}
+
+.modal-img:hover {
+  opacity: 0.4;
+}
+
+.modal-content {
+  position: absolute;
+  width: 30%;
+  top: 0;  
+  bottom: 0;  
+  left: 0;  
+  right: 0;  
+  margin: auto;
+}
+
+/* ------------------------------------------------------------------------------------------------------------ */
+
+/* Cards */
+
+.items-5 {
+  column-count: 5;
+}
+
+.gallery-card {
+  margin: 3px;
+  width: 11vw;
+  height: 11vw;
+  overflow: hidden;
+  padding: 0;
+  border-radius: 10px !important;
+  box-shadow: 0px 0px 3px 1px #ccc;
+  object-fit: fill;
+  justify-content: space-around;
+}
+
+div.gallery-card > img {
+  background-position: center;
+  width: 100%;
+  height: 20vw;
+  object-fit:cover;
+  object-position:50% 50%;
+}
+
+.card > img {
+  width: 90%;
+  margin: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)
+}
+
+.card-container {
+  background: purple;
+  padding: 2px 16px;
+}
+
+#title {
+  margin-bottom: 10px;
+}
+
+#subtitle {
+  margin-bottom: 20px;
+}
+
+#content {
+  white-space: pre-line;
+}
+
+.card p {
+  font-size: 1.5vw;
+  white-space: pre-line;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  margin-top: .5vw;
+  text-align: left !important;
+}
+
+
+/* ------------------------------------------------------------------------------------------------------------ */
+.margin-center div {
+  margin: 0 auto;
+}
+
