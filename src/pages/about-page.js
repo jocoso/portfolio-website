@@ -43,20 +43,19 @@ class AboutPage extends React.Component {
         <InfoSnipped
           src={dosomething}
           title="DoSomething.org"
-          subtitle="Computer Engineer Intern --------------------> June 2019, August 2019."
-          content="●	Helped implement component schemas using GraphQL and Contentful
-          ●	Created a template focused on displaying company-related information using React and SASS
-          ●	Wrote React code to facilitate communication between GraphQL and the main page, Phoenix-next
-          "
+          subtitle="Computer Engineer Intern"
+          className="text-align-left p1"
+          content="● Helped implement component schemas using GraphQL and Contentful&#10;● Created a template focused on displaying company-related information using React and SASS&#10;● Wrote React code to facilitate communication between GraphQL and the main page, Phoenix-next"
           size={this.state.infoSnipped.size}
-          width="100%"
+          width="70%"
         />
         <hr width="100%" color="black" />
         <InfoSnipped
           src={departmentofeducation}
           title="NYC Department of Education"
-          subtitle="Technology Support Intern => January 2018, June 2018."
-          content=" "
+          subtitle="Technology Support Intern"
+          className="text-align-left p1"
+          content="●	Worked with a variety of students solving computer programming problems&#10;●	Assigned students custom-made challenges they could work on their own&#10;●	Provided specialized support for students with disabilities"
           size={this.state.infoSnipped.size}
         />
         <hr width="100%" color="black" />
@@ -64,7 +63,8 @@ class AboutPage extends React.Component {
           src={mathlab}
           title="Computer Center Math Lab"
           subtitle="College Assistant => November 2018, March 2020."
-          content=""
+          className="text-align-left p1"
+          content="● Aided a cohort of 32 college students to understand basic concepts of computer science, networking and database systems&#10;●	Assisted students by debugging and trouble solving student’s homework and their personal projects."
           size={this.state.infoSnipped.size}
         />
         <hr width="100%" color="black" />
@@ -72,7 +72,8 @@ class AboutPage extends React.Component {
           src={ttp}
           title="Tech Talent Pipeline"
           subtitle="Teacher Assistant => June 2018, July 2018."
-          content=""
+          className="text-align-left p1"
+          content="●	Organized and kept inventory of all school equipment and maintained electronic devices&#10;●	Assisted teachers regarding their laptops, computers, and &#10;	Communicated with DOE IT main desk consistently"
           size={this.state.infoSnipped.size}
         />
         <hr width="100%" color="black" />

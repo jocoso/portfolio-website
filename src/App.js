@@ -12,7 +12,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      navbar: { items: [{ href: "#about", name: "About" }] }
+      navbar: { items: [{ href: "#about", name: "About" }, { title: "Projects", href: ["#art", "#code"], name: ["Art", "Code"]}] }
     };
   }
   render() {

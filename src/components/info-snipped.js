@@ -16,17 +16,18 @@ const classNames = require("classnames");
  * Usage: <InfoSnipped src=’link’ title=’string’ content=’string’ v_align=’top/center/bottom’ h_align=’left/right’  />
  * */
 
-function returnInProperOrder(img, text, width, orientation) {
+function returnInProperOrder(img, text, orientation) {
+  const cn = "container-flex horizontal-flex m1"
   if (orientation === "left") {
     return (
-      <Section style={{width}} className="container-flex horizontal-flex m1">
+      <Section className={cn}>
         {img}
         {text}
       </Section>
     );
   } else {
     return (
-      <Section style={{width}} className="container-flex horizontal-flex m1">
+      <Section className={cn}>
         {text}
         {img}
       </Section>
@@ -48,7 +49,7 @@ function InfoSnipped(props) {
     />
   );
   const text = (
-    <div style={{width:"100%"}}>
+    <div style={{width: props.width}}>
       <Header
         title={props.title}
         size={props.size}
@@ -56,11 +57,11 @@ function InfoSnipped(props) {
         subtitle={props.subtitle}
         className="text-align-left pl-2"
       />
-      <div className="f18 pl-1" style={{width: "70%"}} id="content">{props.content}</div>
+      <div className={`f18 pl-2 ${props.className}`} id="content">{props.content}</div>
     </div>
   );
 
-  return returnInProperOrder(img, text, props.width, props.h_align);
+  return returnInProperOrder(img, text, props.h_align);
 }
 
 InfoSnipped.propTypes = {
