@@ -6,21 +6,19 @@
 
 **Web Hosting Service:** Render
 
-**Tools:**
+**Languages:** HTML, JavaScript, CSS
 
-    **Languages:** HTML, JavaScript, CSS
+**Coding Tools:** VSCode
 
-    **Coding Tools:** VSCode
+**Frameworks:** React, Tailwind CSS, Lighthouse, Express, Mongoose
 
-    **Frameworks:** React, Tailwind CSS, Lighthouse, Express, Mongoose
+**Version Control:** Github
 
-    **Version Control:** Github
+**Design Tools:** Google Slides
 
-    **Design Tools:** Google Slides
+## Site Structure
 
-### Site Structure
-
-#### Map
+### Map
 
 **Homepage:** A brief introduction, a showcase of previous projects, and a quick navigation to other sections.
 
@@ -32,7 +30,7 @@
 
 **Contact Page:** A contact form with backend handling.
 
-#### **Colors**
+### **Colors**
 
 **UI:** 375171
 
@@ -44,13 +42,17 @@
 
 **Dark Text:** 020C3D
 
-#### Fonts
+### Fonts
 
 **General Text:** Cinzel size 10-18px
 
 **H1 Header:** Playfair Display 30-40px
 
 **H2 Header:** Playfair Display Normal 20-30px
+
+---
+
+
 
 ## Homepage Development
 
@@ -60,8 +62,8 @@
 
 | Section                        | Last Modified Date |
 | ------------------------------ | ------------------ |
-| Homepage Development           | YYYY-MM-DD         |
-| Set Up Project Environment     | YYYY-MM-DD         |
+| Homepage Development           | 2024-22-08         |
+| Set Up Project Environment     | 2024-22-08         |
 | Build HTML Structure           | YYYY-MM-DD         |
 | Style the Homepage             | YYYY-MM-DD         |
 | Implement Interactive Elements | YYYY-MM-DD         |
