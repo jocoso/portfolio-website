@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <section
             id="footer-section"
-            className="bg-[var(--ui-color)] text-[var(--text-light)] min-h-[5vh] items-center justify-center flex text-center"
+            className="bg-[var(--secondary-color)] text-[var(--background-color)] min-h-[5vh] flex items-center justify-center text-sm md:text-base lg:text-lg"
         >
             © 2024 Jocoso
         </section>

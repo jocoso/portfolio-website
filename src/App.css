@@ -3,10 +3,11 @@
 @tailwind utilities;
 
 * {
-    font-family: 'Cinzel', 'Montserrat', sans-serif;
+    font-family: "Cinzel", "Montserrat", sans-serif;
 }
 
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -15,13 +16,11 @@ html, body {
 
 :root {
     /* COLORS */
-    --ui-color: #375171;
-    --bg-color: #B4C3BA;
-    --text-light: #EFF8F9;
-    --text-medium: #375171;
-    --text-dark: #020C3D;
-    --highlight: #3b82f6;
-    --secondary-highlight: #9b111e;
+    --primary-color: #3b82f6;
+    --secondary-color: #1e3aba;
+    --highlight-color: #ef4444;
+    --background-color: #f3f4f6;
+
 
     /* FONT SIZES */
     --general-text-size-font: 18px;
