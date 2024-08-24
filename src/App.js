@@ -15,6 +15,7 @@ function App() {
                 <main className="flex-grow">
                     <Routes>
                         <Route exact path="/" element={<Homepage />} />
+                        <Route exact path="/about" element={<Homepage />} /> 
                     </Routes>
                 </main>
                 <Footer />

@@ -21,6 +21,7 @@ html, body {
     --text-medium: #375171;
     --text-dark: #020C3D;
     --highlight: #3b82f6;
+    --secondary-highlight: #9b111e;
 
     /* FONT SIZES */
     --general-text-size-font: 18px;
