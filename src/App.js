@@ -4,7 +4,7 @@ import "normalize.css";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import { Header, Footer } from "./components";
+import { Header } from "./components";
 import { Homepage } from "./pages";
 
 function App() {
@@ -18,7 +18,6 @@ function App() {
                         <Route exact path="/about" element={<Homepage />} /> 
                     </Routes>
                 </main>
-                <Footer />
             </div>
         </Router>
     );
