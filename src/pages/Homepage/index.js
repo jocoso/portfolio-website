@@ -49,7 +49,11 @@ const Homepage = () => {
                         computers what to do. If you want to know more about me
                         click this button.
                     </p>
-                    <CTAButton id="aboutme-button" value="About Me" />
+                    <CTAButton id="aboutme-button" value="About Me" 
+                    className="hover:bg-[var(--secondary-highlight)] 
+                    hover:text-[var(--text-light)]
+                    transition-colors duration-500 ease-in-out
+                    " />
                 </div>
             </div>
 

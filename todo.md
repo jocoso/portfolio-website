@@ -89,11 +89,11 @@
   - [X] Code the basic HTML layout based on the wireframe.
   - [X] Create header, navigation bar, and footer.
   - [X] Add title, subtitle, and general text sections.
-- [ ] **Style the Homepage**
+- [X] **Style the Homepage**
 
-  - [ ] Apply Tailwind CSS (or custom CSS) to style the page.
-  - [ ] Ensure font sizes, colors, and spacing match the wireframe.
-  - [ ] Style the navigation bar with an active link indicator.
+  - [X] Apply Tailwind CSS (or custom CSS) to style the page.
+  - [X] Ensure font sizes, colors, and spacing match the wireframe.
+  - [X] Style the navigation bar with an active link indicator.
 - [ ] **Implement Interactive Elements**
 
   - [ ] Code the "About Me" button with a link to the About section/page.
