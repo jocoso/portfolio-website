@@ -73,24 +73,21 @@ const Homepage = () => {
                     " 
                     onClick={handleClick}
                     />
-                </div>
-
-
             </div>
 
             <div
                 id="animation-div"
                 className="flex-grow p-6 md:p-8 md:w-1/2 flex justify-center items-center"
                 style={{
-                    width: `${imageSize}px`,
-                    height: `${imageSize}px`,
-                }}
-            >
-                <img
-                    src={`${process.env.PUBLIC_URL}/portfolio-img.png`}
-                    alt="A drawing"
-                    className="object-contain max-w-full max-h-full rounded-lg shadow-lg"
-                />
+                        width: `${imageSize}px`,
+                        height: `${imageSize}px`,
+                    }}
+                >
+                    <img
+                        src={`${process.env.PUBLIC_URL}/portfolio-img.png`}
+                        alt="A drawing"
+                        className="object-contain max-w-full max-h-full rounded-lg shadow-lg"
+                    />
             </div>
         </section>
     );
