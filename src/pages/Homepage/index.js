@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import {useNavigate} from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
 
 import Title from "../../components/Title";
 import CTAButton from "../../components/CTAButton";
 
 const Homepage = () => {
+
     const [imageSize, setImageSize] = useState(window.innerWidth);
     const navigate = useNavigate();
 
@@ -33,8 +35,9 @@ const Homepage = () => {
     }, []);
 
     const handleClick = () => {
-        navigate("/about");
-    };
+        navigate("/about")
+    }
+
 
     return (
         <section
@@ -58,17 +61,21 @@ const Homepage = () => {
                     Computer Programmer
                 </Title>
 
-                <p className="font-[var(--general-text-size-form)] text-[var(--primary-color)] mt-4 md:mt-6 max-w-[600px]">
-                    Welcome to my page! My name is Joshua and I tell computers
-                    what to do. If you want to know more about me click this
-                    button.
-                </p>
-                <CTAButton
-                    id="aboutme-button"
-                    value="About Me"
-                    className="mt-6 py-3 px-8 font-[var(--general-text-size-font)] md:text-lg bg-[var(--highlight-color)] text-white shadow-lg rounded-full transition-transform hover:scale-105 hover:bg-[var(--secondary-color)]"
+                    <p className="font-medium">
+                        Welcome to my page! My name is Joshua and I tell
+                        computers what to do. If you want to know more about me
+                        click this button.
+                    </p>
+                    <CTAButton id="aboutme-button" value="About Me" 
+                    className="hover:bg-[var(--secondary-highlight)] 
+                    hover:text-[var(--text-light)]
+                    transition-colors duration-500 ease-in-out
+                    " 
                     onClick={handleClick}
-                />
+                    />
+                </div>
+
+
             </div>
 
             <div

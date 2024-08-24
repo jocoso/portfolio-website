@@ -5,7 +5,8 @@ const Header = () => {
     return (
         <header
             id="header-section"
-            className="bg-[var(--ui-color)] text-[var(--text-light)] min-h-fit  flex items-center justify-between"
+            className="min-w-full flex justify-center"
+
         >
             <Navbar />
         </header>

@@ -3,27 +3,8 @@
 @tailwind utilities;
 
 * {
-    font-family: "Cinzel", "Montserrat", sans-serif;
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-style: normal;
 }
 
-html,
-body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    /* COLORS */
-    --primary-color: #3b82f6;
-    --secondary-color: #1e3aba;
-    --highlight-color: #ef4444;
-    --background-color: #f3f4f6;
-
-
-    /* FONT SIZES */
-    --general-text-size-font: 18px;
-    --title-text-size-font: 40px;
-    --subtitle-text-size-font: 30px;
-}

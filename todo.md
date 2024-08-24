@@ -64,7 +64,7 @@
 | Set Up Project Environment     | 2024-22-08         |
 | Build HTML Structure           | 2024-23-08         |
 | Style the Homepage             | 2024-23-08         |
-| Implement Interactive Elements | YYYY-MM-DD         |
+| Implement Interactive Elements | 2024-23-08         |
 | Add Small Animation            | YYYY-MM-DD         |
 | Test the Homepage              | YYYY-MM-DD         |
 | Review and Refine              | YYYY-MM-DD         |
@@ -94,14 +94,10 @@
   - [X] Apply Tailwind CSS (or custom CSS) to style the page.
   - [X] Ensure font sizes, colors, and spacing match the wireframe.
   - [X] Style the navigation bar with an active link indicator.
-- [ ] **Implement Interactive Elements**
+- [x] **Implement Interactive Elements**
 
-  - [ ] Code the "About Me" button with a link to the About section/page.
-  - [ ] Add hover effects to the navigation links and button.
-- [ ] **Add Small Animation**
-
-  - [ ] Implement the planned animation using JavaScript (GSAP).
-  - [ ] Test the animation for smoothness and performance.
+  - [x] Code the "About Me" button with a link to the About section/page.
+  - [x] Add hover effects to the navigation links and button.
 - [ ] **Test the Homepage**
 
   - [ ] Test across different browsers (Chrome, Firefox, Safari).
@@ -118,6 +114,11 @@
   - [ ] Share with peers or mentors for feedback.
   - [ ] Make necessary refinements based on feedback.
 
+- [ ] **Add Small Animation**
+
+  - [ ] Implement the planned animation using JavaScript (GSAP).
+  - [ ] Test the animation for smoothness and performance.
+  
 ## Next Steps
 
 - [ ] Develop the Projects page.

@@ -7,12 +7,7 @@ const Navbar = () => {
         { name: "About Me", route: "/about" },
     ];
     return (
-        <nav className="h-auto w-full px-4 py-3 flex justify-between items-center bg-[var(--secondary-color)] shadow-lg">
-            <div className="text-white font-bold text-2xl">
-                <NavLink to="/" className="hover:text-[var(--primary-color)] transition-colors duration-500">
-                    JOCOSO
-                </NavLink>
-            </div>
+        <nav className="bg-secondary text-primary w-2/3 h-12 flex justify-center rounded-full p-4 m-3">
             <ul className={"flex space-x-6"}>
                 {navLinkArray.map((link) => {
                     return (
@@ -21,9 +16,9 @@ const Navbar = () => {
                             <NavLink
                                 to={link.route}
                                 className={({ isActive }) =>
-                                    `text-lg font-semibold transition duration-300 ease-in-out ${isActive
-                                        ? "text-[var(--primary-color)] border-b-2 border-[var(--highlight-color)]"
-                                        : "text-white hover:text-[var(--primary-color)]"
+                                    `${isActive
+                                        ? ""
+                                        : ""
                                     }`
                                 }
                             >
