@@ -6,6 +6,7 @@ const Header = () => {
         <header
             id="header-section"
             className="min-w-full flex justify-center"
+
         >
             <Navbar />
         </header>
