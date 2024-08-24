@@ -11,7 +11,6 @@
     "gsap": "^3.12.5",
     "jest": "^29.7.0",
     "lighthouse": "^12.2.0",
-    "normalize.css": "^8.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-gsap": "^3.2.1",
@@ -45,7 +44,11 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
+    "css-loader": "^7.1.2",
+    "normalize.css": "^8.0.1",
     "postcss": "^8.4.41",
+    "postcss-loader": "^8.1.1",
+    "source-map-loader": "^5.0.0",
     "tailwindcss": "^3.4.10"
   }
 }
