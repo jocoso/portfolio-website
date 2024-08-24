@@ -52,8 +52,6 @@
 
 ---
 
-
-
 ## Homepage Development
 
 ![1724382491623](image/todo/1724382491623.png)
@@ -64,13 +62,15 @@
 | ------------------------------ | ------------------ |
 | Homepage Development           | 2024-22-08         |
 | Set Up Project Environment     | 2024-22-08         |
-| Build HTML Structure           | YYYY-MM-DD         |
-| Style the Homepage             | YYYY-MM-DD         |
+| Build HTML Structure           | 2024-23-08         |
+| Style the Homepage             | 2024-23-08         |
 | Implement Interactive Elements | YYYY-MM-DD         |
 | Add Small Animation            | YYYY-MM-DD         |
 | Test the Homepage              | YYYY-MM-DD         |
 | Review and Refine              | YYYY-MM-DD         |
 | Next Steps                     | YYYY-MM-DD         |
+
+---
 
 ---
 
@@ -82,13 +82,13 @@
   - [X] Initialize a Git repository (`git init`).
   - [X] Set up `.gitignore` to exclude unnecessary files.
   - [X] Open the project in VSCode.
-  - [X] Initialize the project with `npx create-react-app my-portfolio` .
+  - [X] Initialize the project with `npx create-react-app my-portfolio`.
   - [X] Install dependencies (React, Tailwind CSS, etc.).
-- [ ] **Build HTML Structure**
+- [X] **Build HTML Structure**
 
-  - [ ] Code the basic HTML layout based on the wireframe.
-  - [ ] Create header, navigation bar, and footer.
-  - [ ] Add title, subtitle, and general text sections.
+  - [X] Code the basic HTML layout based on the wireframe.
+  - [X] Create header, navigation bar, and footer.
+  - [X] Add title, subtitle, and general text sections.
 - [ ] **Style the Homepage**
 
   - [ ] Apply Tailwind CSS (or custom CSS) to style the page.
@@ -107,13 +107,16 @@
   - [ ] Test across different browsers (Chrome, Firefox, Safari).
   - [ ] Ensure responsive design on various screen sizes (desktop, tablet, mobile).
   - [ ] Check accessibility (semantic HTML, screen reader compatibility).
+- [ ] **Deploy the Website**
+
+  - [ ] Set up deployment on Render or another hosting service.
+  - [ ] Configure build settings for deployment.
+  - [ ] Deploy the site and verify that it works as expected.
 - [ ] **Review and Refine**
 
   - [ ] Perform a code review for best practices and clean code.
   - [ ] Share with peers or mentors for feedback.
   - [ ] Make necessary refinements based on feedback.
-
----
 
 ## Next Steps
 

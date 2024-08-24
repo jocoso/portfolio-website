@@ -1,12 +1,15 @@
-import React from 'react';
-import Navbar from './Navbar';
+import React from "react";
+import Navbar from "./Navbar";
 
 const Header = () => {
-    return(
-        <section id="header-section">
+    return (
+        <header
+            id="header-section"
+            className="bg-[var(--ui-color)] text-[var(--text-light)] min-h-fit"
+        >
             <Navbar />
-        </section>
+        </header>
     );
-}
+};
 
 export default Header;
