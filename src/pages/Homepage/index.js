@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Title from "../../components/Title";
 import CTAButton from "../../components/CTAButton";
 
 const Homepage = () => {
     const [imageSize, setImageSize] = useState(900);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const handleResize = () => {
@@ -28,6 +30,10 @@ const Homepage = () => {
             window.removeEventListener("resize", handleResize);
         };
     }, []);
+
+    const handleClick = () => {
+        navigate("/about")
+    }
 
     return (
         <section
@@ -53,7 +59,9 @@ const Homepage = () => {
                     className="hover:bg-[var(--secondary-highlight)] 
                     hover:text-[var(--text-light)]
                     transition-colors duration-500 ease-in-out
-                    " />
+                    " 
+                    onClick={handleClick}
+                    />
                 </div>
             </div>
 
