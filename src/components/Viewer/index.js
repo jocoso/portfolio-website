@@ -2,11 +2,11 @@ import React from "react";
 
 // Create consistency in the page.
 // takes a reel component as child
-export default function Viewer({ className='', reel }) {
+export default function Viewer({ slides=[] }) {
     return(
         <>
-            <section className={className}>
-                {reel}    {/* content */}
+            <section>
+                {slides[0]}    {/* content */}
             </section>
         </>
     );
