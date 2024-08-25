@@ -13,7 +13,7 @@ function App() {
             
             <Header />
             <Navbar />
-            <Viewer reel={Homepage} />
+            <Viewer slides={[<Homepage />]} />
     
         </div>
     );
