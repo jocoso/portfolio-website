@@ -4,25 +4,26 @@ import React from "react";
 // takes a reel component as child
 export default function Viewer({ slides=[] }) {
     
-    const links = ["About Me", "Projects", "Art", "Resume", "Say hello! Back"]
+    const links = ["About Me", "Projects", "Art", "Resume", "Say Hello"]
     
     return(
-        <>
-            <div className="bg-white min-w-[70%] flex flex-col flex-grow rounded-xl">
-                {/* NAVIGATION BAR */}
-                <div id="navigation-bar" className="flex min-w-full w-full justify-center bg-gray-500 rounded-t-xl">
-                    <ul className="list-none flex flex-row sm:text-left w-full h-10 items-center">
-                        {
-                            links.map((link) => {
-                                return(<li key={link} className="hover:bg-highlightOne h-full w-full transition-colors delay-50">
-                                    <a href="/about" className="min-width-10 sm:text-sm lg:text-lg text-base m-10">{link}</a>
-                                </li>)
-                            })
-                        }
-                    </ul>
-                </div>
-                {slides[0]}    {/* content */}
+        
+        <div id="viewer-container" className="w-11/12 min-w-8/12 rounded-t-2xl flex flex-col flex-grow bg-white">
+            {/* NAVIGATION BAR */}
+            <div id="navigation-bar" className="min-w-full w-full min-h-20 sm:h-24 md:h-19 lg:h-20 flex rounded-t-lg bg-gray-300 shadow-lg">
+                <ul className="w-full flex flex-col sm:flex-row items-center text-center justify-center sm:space-x-7 lg:space-x-10 list-none">
+                    {
+                        links.map((link) => {
+                            return(<li key={link} className="sm:w-30 w-full h-full text-center flex justify-center items-center relative group">
+                                <a href="/about" className="p-3 text-base md:text-lg lg:text-xl font-semibold relative z-10 transition-all duration-300 group-hover:text-shadow-xl group-hover:text-highlightTwo">{link}</a>
+                                <span className="w-0 h-full group-hover:w-full absolute inset-0 transition-all duration-300 group-hover:shadow-lg shadow-highlightOne bg-highlightOne"></span>
+                            </li>)
+                        })
+                    }
+                </ul>
             </div>
-        </>
+            {slides[0]}    {/* content */}
+        </div>
+    
     );
 }
