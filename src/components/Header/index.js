@@ -12,7 +12,7 @@ export default function Header() {
                 <div id="logo-container" className="h-1/4 w-2/12 overflow-hidden rounded-full border-2 border-white">
                     <img 
                         id="logo"
-                        src={`${process.env.PUBLIC_URL}/portfolio-img.png`} 
+                        src={`${process.env.PUBLIC_URL}/portfolio-img.webp`} 
                         alt="Logo"
                         className="min-h-full min-w-full h-full w-full"
                     />
