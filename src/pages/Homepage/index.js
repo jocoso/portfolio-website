@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Slide } from "../../components";
+import { Slide, Title } from "../../components";
 
 export default function Homepage() {
 
@@ -8,7 +8,7 @@ export default function Homepage() {
 
         //  HOMEPAGE SECTION
         <Slide>
-            <p>This is content.</p>
+            
         </Slide>
 
     );
