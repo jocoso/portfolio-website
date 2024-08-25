@@ -7,8 +7,15 @@ module.exports = {
             colors: {
                 primary: "#333A73",
                 secondary: "rgba(80, 196, 237, 0.3)",
-                highlight: "#FBA834",
-                background: "#387ADF",
+                highlightOne: "#fe7f2d",
+                highlightTwo: "#fcca46",
+                background: "#233d4d",
+            },
+            minHeight: {
+                section: ".2vh",
+            },
+            minWidth: {
+                section: "full",
             },
         },
     },
