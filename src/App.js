@@ -4,7 +4,7 @@ import "normalize.css";
 import React from "react";
 // import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import { Header, Navbar, Viewer } from "./components";
+import { Header, Viewer } from "./components";
 import { Homepage } from "./pages";
 
 function App() {
@@ -12,7 +12,6 @@ function App() {
         <div className="min-h-screen min-w-screen bg-background flex flex-col justify-content items-center">
             
             <Header />
-            <Navbar />
             <Viewer slides={[<Homepage />]} />
     
         </div>

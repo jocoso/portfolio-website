@@ -11,12 +11,6 @@ module.exports = {
                 highlightTwo: "#fcca46",
                 background: "#233d4d",
             },
-            minHeight: {
-                section: ".2vh",
-            },
-            minWidth: {
-                section: "full",
-            },
         },
     },
 };
