@@ -23,7 +23,7 @@ export default function Header() {
                 <div id="information-container" className="w-65">
                     <Title level={2} className="mt-5 text-highlightOne">Joshua Collado</Title>
                     <Title level={3} className="text-white">Computer Programmer</Title>
-                    <p className="text-white lato-semibold mt-5 mb-5">Hello! Welcome to my page.</p>
+                    <p className="text-white lato-semibold mt-5 mb-5">Welcome to my website!</p>
                 </div>
                 {/* == */}
 

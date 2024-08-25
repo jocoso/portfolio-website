@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 /*TODO: Integrate in tailwindcss later*/
 .lato-thin {
   font-family: "Lato", sans-serif;

@@ -1,18 +1,18 @@
-import "./App.css";
 import "normalize.css";
+import "./App.css";
 
 import React from "react";
 // import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { Header, Viewer } from "./components";
-import { Homepage } from "./pages";
+import { About } from "./pages";
 
 function App() {
     return (
         <div className="min-h-screen min-w-screen bg-background flex flex-col justify-content items-center">
             
             <Header />
-            <Viewer slides={[<Homepage />]} />
+            <Viewer slides={[<About />]} />
     
         </div>
     );
