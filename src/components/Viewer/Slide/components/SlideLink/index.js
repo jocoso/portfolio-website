@@ -1,5 +1,6 @@
 import React from 'react';
 
+// We use _blank in this house.
 export default function SlideLink({ href, children, className }) {
     return(
         <>

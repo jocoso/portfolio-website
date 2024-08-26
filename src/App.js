@@ -5,9 +5,11 @@ import React from "react";
 // import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { Header, Viewer } from "./components";
-import { About } from "./pages";
+import { About } from "./slides";
 
-const slides = [{name: "About", path:"/", element: <About />}];
+const slides = [
+    {name: "About", path:"/", element: <About />},
+];
 
 function App() {
     return (
