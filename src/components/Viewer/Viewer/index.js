@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 import { Error } from "../../../slides/";
 
@@ -9,12 +10,17 @@ class Reel {
         this.error = <Error />;
         this.path = window.location.pathname; // String
         this.currentSlide = null;
+        this.currentPath = '';
         this.search(this.path); 
     }
 
     // private:
     has_path_changed() {
         return this.path !== window.location.pathname;
+    }
+
+    getCurrentPath() {
+        return this.currentPath;
     }
 
     search(path) {
@@ -28,6 +34,7 @@ class Reel {
         
         // A pseudo return
         this.element = currentSlide.element; // Component
+        this.currentPath = naked_path;
 
     }
     
@@ -86,7 +93,7 @@ export default function Viewer({ slides=[{}] }) {
                     {
                         slides.map((slide) => {
                             return(<li key={slide.path} className="sm:w-30 w-full h-full text-center flex justify-center items-center relative group">
-                                <a href={slide.path} className="p-3 text-base md:text-lg lg:text-xl font-semibold relative z-10 transition-all duration-300 group-hover:text-shadow-xl group-hover:text-highlightTwo">{slide.name}</a>
+                                <a href={slide.path}  className="p-3 text-base md:text-lg lg:text-xl font-semibold relative z-10 transition-all duration-300 group-hover:text-shadow-xl group-hover:text-highlightTwo" >{slide.name}</a>
                                 <span className="w-0 h-full group-hover:w-full absolute inset-0 transition-all duration-300 group-hover:shadow-lg shadow-highlightOne bg-highlightOne"></span>
                             </li>)
                         })
