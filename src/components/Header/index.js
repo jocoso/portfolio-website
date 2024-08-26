@@ -5,7 +5,6 @@ import Title from "../Title";
 export default function Header() {
     return(
         <>
-            {/* HEADER SECTION*/}
             <div id="header" className="min-h-[10%] h-[10%] text-center flex flex-col justify-content items-center p-2">
                 
                 {/* LOGO */}

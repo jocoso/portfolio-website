@@ -50,6 +50,7 @@ export default function About() {
                 Feel free to get in touch. I'd love to get feedback, 
                 and if you are a company, I'd also be glad to get in touch!
             </p>
+            
         </Slide>
 
     );
