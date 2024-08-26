@@ -21,7 +21,7 @@ module.exports = {
 
             addComponents({
                 '.slide-link': {
-                    color: "#fe7f2d",
+                    color: "#fcca46",
                     fontWeight: '700',
                 },
             });

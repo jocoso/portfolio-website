@@ -49,14 +49,14 @@ class Reel {
                 this.currentSlide = this.search(this.path) || this.error;
             } catch(err) {
                 // set this.currentElement to Error slide
-                this.currentSlide = this.error || <div></div>;
+                this.currentSlide = this.error;
             }
 
         }
     }
 
-    set_error(component) {
-        this.error = component;
+    set_error(errorComponent) {
+        this.error = errorComponent;
     }
 
     // public:
@@ -74,6 +74,7 @@ class Reel {
     view() {
         return this.element || this.error;
     }
+    
 }
 
 // Create consistency in the page.
