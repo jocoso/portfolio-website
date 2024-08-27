@@ -66,7 +66,7 @@ export default function Projects() {
                 levels of completion.
             </p>
             
-            <ul className="w-full h-full flex justify-center py-5 items-center rounded-t-lg bg-gray-300 shadow-lg">
+            <ul className="w-full h-fit flex justify-center py-0 items-center rounded-t-lg bg-gray-300 shadow-lg">
                 <li className={itemClassName}>
                     <button className={buttonClassName} onClick={() => handleButtonClick([1, 2, 3])}>All</button>
                     <span className="w-0 h-full group-hover:w-full absolute inset transition-all duration-300 group-hover:shadow-lg shadow-highlightOne bg-highlightOne"></span>
