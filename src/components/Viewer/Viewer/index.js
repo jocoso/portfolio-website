@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from "react";
-import { LiaLinkedin } from 'react-icons/lia';
+import { LiaLinkedin, LiaTwitter, LiaInstagram } from 'react-icons/lia';
 
 import { Error } from "../../../slides/";
 
@@ -114,11 +114,14 @@ export default function Viewer({ slides=[{}] }) {
 
             {/* FOOTER */}
             <d id="footer" className="w-full h-20 sm:h-19 md:h-19 lg:h-20 rounded-b-lg bg-gray-300 shadow-lg flex justify-center items-center relative bottom-0">
-                    <a href="https://www.linkedin.com/in/jocoso5273/" target="_blank" ref={myInputRef}>
-                        <LiaLinkedin className="color-yellow w-8 h-auto"/>
+                    <a href="https://www.linkedin.com/in/jocoso5273/" target="_blank" ref={myInputRef} className="px-2 ">
+                        <LiaLinkedin className="w-9 h-auto hover:text-highlightTwo hover:bg-highlightOne rounded-md transition-all ease-in-out delay-150"/>
                     </a>
-                    <a href="https://www.linkedin.com/in/jocoso5273/" target="_blank" ref={myInputRef}>
-                        <LiaLinkedin className="w-8 h-auto"/>
+                    <a href="https://x.com/Jocoso_Code" target="_blank" ref={myInputRef} className="px-2">
+                        <LiaTwitter className="w-9 h-auto hover:text-highlightTwo hover:bg-highlightOne rounded-md transition-all ease-in-out delay-150"/>
+                    </a>
+                    <a href="https://www.instagram.com/jocoso_code/" target="_blank" ref={myInputRef} className="px-2">
+                        <LiaInstagram className="w-9 h-auto hover:text-highlightTwo hover:bg-highlightOne rounded-md transition-all ease-in-out delay-150"/>
                     </a>
             </d>
 
