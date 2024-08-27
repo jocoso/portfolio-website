@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
+import { LiaLinkedin } from 'react-icons/lia';
 
 import { Error } from "../../../slides/";
 
@@ -79,6 +80,13 @@ class Reel {
 // Create consistency in the page.
 // it will take a reel component as child
 export default function Viewer({ slides=[{}] }) {
+    const myInputRef = useRef(null);
+
+    useEffect(() => {
+        if(myInputRef.current) {
+            myInputRef.current.focus();
+        }
+    })
 
     // Put the slides in the Reel and then view
     const reel = new Reel(slides);
@@ -86,7 +94,7 @@ export default function Viewer({ slides=[{}] }) {
 
     return(
         
-        <div id="viewer-container" className="w-11/12 min-w-8/12 lg:w-8/12 rounded-t-2xl flex flex-col flex-grow bg-white">
+        <div id="viewer-container" className="w-11/12 min-w-8/12 lg:w-8/12 rounded-t-2xl flex flex-col flex-grow bg-white my-5 rounded-xl">
             {/* NAVBAR */}
             <div id="navigation-bar" className="min-w-full w-full min-h-20 sm:h-19 md:h-19 lg:h-20 flex rounded-t-lg bg-gray-300 shadow-lg">
                 <ul className="w-full flex flex-col sm:flex-row items-center text-center justify-center sm:space-x-7 lg:space-x-10 list-none">
@@ -103,6 +111,16 @@ export default function Viewer({ slides=[{}] }) {
             {/* == */}
 
             {reel.view()} {/* The Reel component manages this one */}
+
+            {/* FOOTER */}
+            <d id="footer" className="w-full h-20 sm:h-19 md:h-19 lg:h-20 rounded-b-lg bg-gray-300 shadow-lg flex justify-center items-center relative bottom-0">
+                    <a href="https://www.linkedin.com/in/jocoso5273/" target="_blank" ref={myInputRef}>
+                        <LiaLinkedin className="color-yellow w-8 h-auto"/>
+                    </a>
+                    <a href="https://www.linkedin.com/in/jocoso5273/" target="_blank" ref={myInputRef}>
+                        <LiaLinkedin className="w-8 h-auto"/>
+                    </a>
+            </d>
 
         </div>
     
