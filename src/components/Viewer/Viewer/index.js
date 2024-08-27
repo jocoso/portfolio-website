@@ -1,5 +1,4 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 
 import { Error } from "../../../slides/";
 
@@ -95,7 +94,7 @@ export default function Viewer({ slides=[{}] }) {
                         slides.map((slide) => {
                             return(<li key={slide.path} className="sm:w-30 w-full h-full text-center flex justify-center items-center relative group">
                                 <a href={slide.path}  className="p-3 text-base md:text-lg lg:text-xl font-semibold relative z-10 transition-all duration-300 group-hover:text-shadow-xl group-hover:text-highlightTwo" >{slide.name}</a>
-                                <span className="w-0 h-full group-hover:w-full absolute inset-0 transition-all duration-300 group-hover:shadow-lg shadow-highlightOne bg-highlightOne"></span>
+                                <span className="w-0 h-full group-hover:w-full absolute inset transition-all duration-300 group-hover:shadow-lg shadow-highlightOne bg-highlightOne"></span>
                             </li>)
                         })
                     }

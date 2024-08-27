@@ -4,7 +4,6 @@ import { Slide } from "../../components";
 import { SlideLink } from "../../components/Viewer/Slide/components";
 
 export default function Projects() {
-    const itemClassName="h-10 mx-5 flex items-center hover:text-highlightOne";
     
     // Data retrieved from fetch
     const projectData = [
@@ -53,45 +52,60 @@ export default function Projects() {
         const filteredProjects = projectData.filter(project => types.includes(project.type));
         setProjectsDisplayed(filteredProjects)
     }
-
+            
+    // Classname of every item in the navigation bar.
+    const itemClassName="flex relative px-5 min-w-32 sm:h-19 md:h-19 lg:h-20 items-center justify-center text-center group";
+    const buttonClassName="h-full text-base md:text-lg lg:text-xl font-semibold relative z-10 transition-all duration-300 group-hover:text-shadow-xl group-hover:text-highlightTwo";
+            
     return(
-    
+                
         <Slide title="Projects">
             <p>
                 The sections below display my experience in computer science.
                 I have included all relevant projects which may be in different 
                 levels of completion.
             </p>
-            <ul className="flex flex-row justify-center bg-gray-300 rounded-md">
+            
+            <ul className="w-full h-full flex justify-center py-5 items-center rounded-t-lg bg-gray-300 shadow-lg">
                 <li className={itemClassName}>
-                    <button onClick={() => handleButtonClick([1, 2, 3])}>All</button>
+                    <button className={buttonClassName} onClick={() => handleButtonClick([1, 2, 3])}>All</button>
+                    <span className="w-0 h-full group-hover:w-full absolute inset transition-all duration-300 group-hover:shadow-lg shadow-highlightOne bg-highlightOne"></span>
                 </li>
                 <li className={itemClassName}>
-                    <button onClick={() => handleButtonClick([1])}>Websites</button>
+                    <button className={buttonClassName} onClick={() => handleButtonClick([1])}>Websites</button>
+                    <span className="w-0 h-full group-hover:w-full absolute inset transition-all duration-300 group-hover:shadow-lg shadow-highlightOne bg-highlightOne"></span>
                 </li>
                 <li className={itemClassName}>
-                    <button onClick={() => handleButtonClick([2])}>CLI</button>
+                    <button className={buttonClassName} onClick={() => handleButtonClick([2])}>CLI</button>
+                    <span className="w-0 h-full group-hover:w-full absolute inset transition-all duration-300 group-hover:shadow-lg shadow-highlightOne bg-highlightOne"></span>
                 </li>
                 <li className={itemClassName}>
-                    <button onClick={() => handleButtonClick([3])}>Machine Learning</button>
+                    <button className={buttonClassName} onClick={() => handleButtonClick([3])}>Machine Learning</button>
+                    <span className="w-0 h-full group-hover:w-full absolute inset transition-all duration-300 group-hover:shadow-lg shadow-highlightOne bg-highlightOne"></span>
                 </li>
             </ul>
         
-            <div id="displayed-projects" className="w-full h-full mt-10 grid grid-cols-3 gap-3 items-center text-center">
+            <div id="displayed-projects" className="w-full min-h-full mt-5 grid sm:grid-cols-2 grid-cols-1 gap-1 items-center text-center">
                 {displayedProjects.map((project, i) => {
                     return (
                         // TAILWIND PLUGIN
                         // CARDS
-                        <div key={i} className="h-80 text-white w-full rounded-md grid grid-rows-6 bg-background">
-                            <div className="w-full h-full row-span-1  flex justify-center items-center rounded-t-md">
-                                <h1 className=" font-bold"> {project.name} </h1>
-                            </div>
-                            <div className="row-span-3 overflow-hidden flex border-y-4 border-highlightOne">
-                                <img src={project.picture} alt={project.description} className="object-cover w-full h-full" />
-                            </div>
-                            <div className="row-span-2 rounded-b-md flex flex-col items-center justify-center">
-                                <p className="h-2/3 w-5/6 text-left pl-2">{project.description}</p>
-                                <SlideLink className="h-1/3 bg-highlightOne w-full rounded-b-md" href={project.repositoryLink}>Github</SlideLink>
+                        <div key={i} className=" overflow-hidden bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative">
+                            {/* PICTURE */}
+                            <a href={project.repositoryLink} target="_blank" rel="noreferrer" className="block h-80 overflow-hidden">
+                                <img src={project.picture} alt={project.description} className="rounded-t-lg w-full h-full object-cover transition duration-500 ease-in-out transform hover:scale-110" />
+                            </a>
+
+                            {/* INFO */}
+                            <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 ease-in-out bg-black bg-opacity-60 rounded-lg flex flex-col justify-center">
+
+                                <a href={project.repositoryLink} className="text-2xl font-bold tracking-tight text-highlightTwo">
+                                    <h1 className=" font-bold"> {project.name} </h1>
+                                </a>
+
+                                <p className="mb-3 font-normal text-gray-300">{project.description}</p>
+                                <SlideLink className="mt-2 inline-flex justify-center w-full py-4 text-sm font-medium text-center bg-background hover:bg-highlightTwo hover:text-background" href={project.repositoryLink}>Github</SlideLink>
+
                             </div>
                         </div>
                     )

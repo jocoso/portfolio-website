@@ -6,10 +6,11 @@ module.exports = {
         extend: {
             colors: {
                 primary: "#333A73",
-                secondary: "rgba(80, 196, 237, 0.3)",
+                secondary: "#FCCA46",
                 highlightOne: "#fe7f2d",
                 highlightTwo: "#fcca46",
                 background: "#233d4d",
+                backgroundUI: "#A1C181",
             },
             fontFamily: {
                 sans: ['Lato', 'sans-serif']
