@@ -6,14 +6,17 @@ import React from "react";
 
 
 import { Header, Viewer } from "./components";
-import { About, Projects, ResumeSlide, ArtSlide } from "./slides";
+import { About, Projects, ResumeSlide, ArtSlide, ContactMeSlide } from "./slides";
 
 const slides = [
-    { name: "About",    path:"/",          element: <About />       },
-    { name: "Projects", path: "/projects", element: <Projects />    },
-    { name: "Resume",   path: "/resume",   element: <ResumeSlide /> },
-    { name: "Art",      path: "/art",      element: <ArtSlide />    },
+    { name: "About",      path: "/",           element: <About />          },
+    { name: "Projects",   path: "/projects",   element: <Projects />       },
+    { name: "Resume",     path: "/resume",     element: <ResumeSlide />    },
+    { name: "Contact Me", path: "/contact-me", element: <ContactMeSlide /> },
+    { name: "Art",        path: "/art",        element: <ArtSlide />       },
 ];
+
+
 
 function App() {
     return (
