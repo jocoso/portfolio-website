@@ -121,8 +121,8 @@ export default function ResumeSlide() {
 
             <h2>Experience</h2>
             {
-                resumeData.experience.map((exp) => {
-                    return(<>
+                resumeData.experience.map((exp, i) => {
+                    return(<div key={i}>
                         <h5 id="company-name">{exp.companyName}</h5>
                         <p id="job-title">{exp.jobTitle}</p>
                         <div id="dates">
@@ -136,14 +136,14 @@ export default function ResumeSlide() {
                                 })
                             }
                         </p>
-                    </>);
+                    </div>);
                 })
         }
 
         <h2>Education</h2>
         {
-            resumeData.education.map((edu) => {
-                return(<>
+            resumeData.education.map((edu, i) => {
+                return(<div key={i}>
                     <h5 id="school-name">{edu.schoolName}</h5>
                     <p id="school-location">{edu.schoolLocation}</p>
                     <div id="date-graduation">
@@ -157,7 +157,7 @@ export default function ResumeSlide() {
                             })
                         }
                     </p>
-                </>);
+                </div>);
             })
         }
         </Slide>

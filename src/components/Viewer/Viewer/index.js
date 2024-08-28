@@ -85,7 +85,7 @@ export default function Viewer({ slides=[{}] }) {
 
     useEffect(() => {
         if(myInputRef.current) {
-            myInputRef.current.focus();
+            myInputRef.current.blur();
         }
     });
 
@@ -135,7 +135,7 @@ export default function Viewer({ slides=[{}] }) {
             {reel.view()} {/* The Reel component manages this one */}
 
             {/* FOOTER */}
-            <d id="footer" className="group flex flex-row justify-center h-full bg-gray-300 shadow-lg rounded-b-lg">
+            <div id="footer" className="group flex flex-row justify-center h-full bg-gray-300 shadow-lg rounded-b-lg">
                 {/* w-8 h-8 hover:text-highlightTwo */}
                     <a href="https://www.linkedin.com/in/jocoso5273/" target="_blank" ref={myInputRef} className="p-2 p-5">
                         <LiaLinkedin className="w-10 h-10 hover:text-highlightTwo hover:bg-highlightOne rounded-md"/>
@@ -146,7 +146,7 @@ export default function Viewer({ slides=[{}] }) {
                     <a href="https://www.instagram.com/jocoso_code/" target="_blank" ref={myInputRef} className="p-5">
                         <LiaInstagram className="w-10 h-10 hover:text-highlightTwo hover:bg-highlightOne rounded-md"/>
                     </a>
-            </d>
+            </div>
 
         </div>
     

@@ -4,22 +4,22 @@ import "./App.css";
 import React from "react";
 // import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+
 import { Header, Viewer } from "./components";
-import { About, Projects, ResumeSlide } from "./slides";
+import { About, Projects, ResumeSlide, ArtSlide } from "./slides";
 
 const slides = [
-    {name: "About", path:"/", element: <About />},
-    {name: "Projects", path: "/projects", element: <Projects />},
-    {name: "Resume", path: "/resume", element: <ResumeSlide />},
+    { name: "About",    path:"/",          element: <About />       },
+    { name: "Projects", path: "/projects", element: <Projects />    },
+    { name: "Resume",   path: "/resume",   element: <ResumeSlide /> },
+    { name: "Art",      path: "/art",      element: <ArtSlide />    },
 ];
 
 function App() {
     return (
         <div className="min-h-screen min-w-screen bg-background flex flex-col justify-content items-center">
-            
             <Header />
             <Viewer slides={slides} />
-    
         </div>
     );
 }
