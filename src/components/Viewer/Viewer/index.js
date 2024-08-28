@@ -133,9 +133,7 @@ export default function Viewer({ slides=[{}] }) {
             {/* == */}
 
             {reel.view()} {/* The Reel component manages this one */}
-            <div className="h-96">
-                    a
-            </div>
+
             {/* FOOTER */}
             <d id="footer" className="group flex flex-row justify-center h-full bg-gray-300 shadow-lg rounded-b-lg">
                 {/* w-8 h-8 hover:text-highlightTwo */}
