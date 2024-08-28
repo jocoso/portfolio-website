@@ -61,8 +61,10 @@ function App() {
     );
 }
 
-export default () => (
+const RootComponent = () => (
     <StyleProvider>
         <App />
     </StyleProvider>
-)
+);
+
+export default RootComponent;
