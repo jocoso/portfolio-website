@@ -11,7 +11,7 @@ export default function MistakeBox({message, remove }) {
     }, [remove]);
 
     return(
-        <div className="bg-gray-200 p-2 my-2">
+        <div className="">
             {message}
         </div>
     );

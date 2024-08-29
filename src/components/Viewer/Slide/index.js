@@ -1,17 +1,15 @@
 import React from "react";
 
-import Title from "../../Title/index";
-
 export default function Slide({ title, children }) {
     return(
-        <section id={`slide-${title}`} className="w-full flex flex-col items-center mlr-auto">
+        <section id={`slide-${title}`} className="">
 
-            <div id="slide-container" className="w-9/12 p-0 lg:w-7/12">
+            <div id="slide-container" className="">
                 
                 {/* Slide Presentation */}
-                <Title level={2} className="text-left py-10">{title}</Title> 
+                <h2 className="">{title}</h2> 
 
-                <div id="children-container" className="text-left text-lg w-full lato-base pb-16 [&>p]:my-3 [&>p]:tracking-wide">
+                <div id="children-container" className="">
                     {children} {/* CONTENT */}
                 </div>
 

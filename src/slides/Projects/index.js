@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 
 import { Slide } from "../../components";
-import { SlideLink } from "../../components/Viewer/Slide/components";
 
 export default function Projects() {
     
@@ -104,7 +103,7 @@ export default function Projects() {
                                 </a>
 
                                 <p className="mb-3 font-normal text-gray-300">{project.description}</p>
-                                <SlideLink className="mt-2 inline-flex justify-center w-full py-4 text-sm font-medium text-center bg-background hover:bg-highlightTwo hover:text-background" href={project.repositoryLink}>Github</SlideLink>
+                                <a className="mt-2 inline-flex justify-center w-full py-4 text-sm font-medium text-center bg-background hover:bg-highlightTwo hover:text-background" href={project.repositoryLink}>Github</a>
 
                             </div>
                         </div>

@@ -112,16 +112,14 @@ export default function Viewer({ slides=[{}] }) {
     reel.insert();
 
     return(
-        <div id="viewer-container" className="flex flex-col min-h-20 bg-white rounded-xl shadow-md">
+        <div id="viewer-container" className="">
             {/* NAVBAR */}
-            <div id="navigation-bar" className=" bg-gray-300 shadow-lg rounded-t-lg">
-                <ul className="flex flex-row flex-wrap justify-center">
+            <div id="navigation-bar" className=" ">
+                <ul className="">
                     {
                         slides.map((slide) => {
-                            return(<li key={slide.path} className="group relative h-full min-w-10 p-5">
-                                
-                                <span className="absolute inset-y-0 bottom-0 left-1/2 w-0 h-full bg-highlightOne transition-all duration-300 ease-out transform -translate-x-1/2 group-hover:w-full"></span>    
-                                <a href={slide.path} className="relative text-2xl font-semibold group-hover:text-highlightTwo" >
+                            return(<li key={slide.path} className="">  
+                                <a href={slide.path} className="" >
                                     {slide.name}    
                                 </a>
                                 
@@ -135,16 +133,16 @@ export default function Viewer({ slides=[{}] }) {
             {reel.view()} {/* The Reel component manages this one */}
 
             {/* FOOTER */}
-            <div id="footer" className="group flex flex-row justify-center h-full bg-gray-300 shadow-lg rounded-b-lg">
+            <div id="footer" className="">
                 {/* w-8 h-8 hover:text-highlightTwo */}
-                    <a href="https://www.linkedin.com/in/jocoso5273/" target="_blank" ref={myInputRef} className="p-2 p-5">
-                        <LiaLinkedin className="w-10 h-10 hover:text-highlightTwo hover:bg-highlightOne rounded-md"/>
+                    <a href="https://www.linkedin.com/in/jocoso5273/" target="_blank" ref={myInputRef} className="">
+                        <LiaLinkedin className=""/>
                     </a>
-                    <a href="https://x.com/Jocoso_Code" target="_blank" ref={myInputRef} className="p-2 p-5">
-                        <LiaTwitter className="w-10 h-10 hover:text-highlightTwo hover:bg-highlightOne rounded-md"/>
+                    <a href="https://x.com/Jocoso_Code" target="_blank" ref={myInputRef} className="">
+                        <LiaTwitter className=""/>
                     </a>
-                    <a href="https://www.instagram.com/jocoso_code/" target="_blank" ref={myInputRef} className="p-5">
-                        <LiaInstagram className="w-10 h-10 hover:text-highlightTwo hover:bg-highlightOne rounded-md"/>
+                    <a href="https://www.instagram.com/jocoso_code/" target="_blank" ref={myInputRef} className="">
+                        <LiaInstagram className=""/>
                     </a>
             </div>
 

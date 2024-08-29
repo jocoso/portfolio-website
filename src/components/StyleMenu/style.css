@@ -1,0 +1,76 @@
+
+[class*="-dropdown"] {
+    border-color: inherit;
+    color: inherit;
+}
+
+/* Summer Style - STYLEMENU */
+
+.summer-dropdown-button {
+    
+}
+
+.summer-dropdown-menu {
+    background-color: rgba(var(--summer-ui), 0.7); 
+    color: black;   
+}
+
+.summer-dropdown-item :hover {
+    background-color: rgb(var(--summer-contrast));
+    color: white;
+}
+
+/* Winter Style - STYLEMENU */
+
+.winter-dropdown-button {
+    
+}
+
+.winter-dropdown-menu {
+    background-color: rgba(var(--winter-ui), 0.7);
+}
+
+.winter-dropdown-item :hover {
+    background-color: rgb(var(--winter-contrast));
+    color:black;
+}
+
+/* Fall Style - STYLEMENU */
+
+.fall-dropdown-button {
+    
+}
+
+.fall-dropdown-menu {
+    background-color: rgba(var(--fall-ui), 0.7);
+    color: white;
+}
+
+.fall-dropdown-item :hover {
+    background-color: rgb(var(--winter-contrast));
+    color:black;
+}
+
+/* Spring Style - STYLEMENU */
+.spring-menu-container {
+   background-color: rgb(var(--spring-contrast));
+   color: black; 
+}
+
+.spring-dropdown-menu {
+    background-color: rgba(var(--spring-ui), 0.7);
+    color: black;
+}
+
+.spring-dropdown-button :hover {
+    background-color: rgb(var(--spring-bg));
+    color: white;
+}
+
+.spring-dropdown-button:hover {
+    background-color: rgb(var(--spring-text));
+}
+
+.spring-dropdown-item :hover {
+    background-color: rgb(var(--spring-contrast));
+}

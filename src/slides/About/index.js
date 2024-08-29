@@ -1,7 +1,6 @@
 import React from "react";
 
 import { Slide } from "../../components";
-import { SlideLink } from "../../components/Viewer/Slide/components";
 
 export default function About() {
 
@@ -28,7 +27,7 @@ export default function About() {
                 that drives my professional fulfillment and success.
             </p>
             <p>
-                I am developing a version control system called <SlideLink href="https://github.com/jocoso/kraken">Kraken</SlideLink>, inspired by the formidable 
+                I am developing a version control system called <a href="https://github.com/jocoso/kraken">Kraken</a>, inspired by the formidable 
                 creature of legend and my favorite animal. Kraken was conceived out of a need
                 for a more art-friendly version control solution, as platforms like GitHub don't excel 
                 at managing art-related content. Instead of settling for less, I created a tool tailored to these 
@@ -40,7 +39,7 @@ export default function About() {
             </p>
 
             <p>
-                I am also designing a browser-adventure game titled <SlideLink href="#">Magebound</SlideLink>. It is still
+                I am also designing a browser-adventure game titled <a href="#">Magebound</a>. It is still
                 being conceptualized, as also is what a browser-adventure game is, but
                 I am more than excited to find out! If you are interested in seeing my plans
                 for this game, click here.
