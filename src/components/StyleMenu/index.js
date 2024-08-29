@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-
 import "./style.css";
 
+// This component renders a dropdown menu that can be controlled via hover or click.
 export default function StyleMenu({
     styles = [],
     onChange,
@@ -10,50 +10,46 @@ export default function StyleMenu({
     const [isOpen, setIsOpen] = useState(false);
     const [triggerType, setTriggerType] = useState("hover");
 
-    const toggleDropdown = () => setIsOpen(!isOpen); // Turning
+    // Function to toggle the visibility of the dropdown menu.
+    const toggleDropdown = () => setIsOpen(!isOpen);
 
     return (
         <div
             id="style-menu-container"
-            className={`${currentStyle}-menu-container relative w-1/7 text-center overflow-visible opacity-1 ${
+            className={`relative w-1/7 text-center overflow-visible ${
                 isOpen ? "rounded-t-md" : "rounded-md"
-            }`}
-            onMouseOver={() => setIsOpen(true)}
-            onMouseOut={() => setIsOpen(false)}
-            style={{}}
+            } ${currentStyle}-menu-container`}
+            onMouseOver={() => triggerType === "hover" && setIsOpen(true)}
+            onMouseOut={() => triggerType === "hover" && setIsOpen(false)}
         >
             <button
                 id="dropdown-button"
                 onClick={triggerType === "click" ? toggleDropdown : null}
-                className={`${currentStyle}-dropdown-button p-3 min-w-[125px] max-w-[125px] text-ellipsis whitespace-nowrap cursor-pointer rounded-md transform transition-colors shadow-md ease-in-out duration-200`}
+                className={`cursor-pointer rounded-md shadow-md p-3 min-w-[125px] max-w-[125px] text-ellipsis whitespace-nowrap transform transition-colors ease-in-out duration-200 ${currentStyle}-dropdown-button dropdown-button`}
                 type="button"
             >
                 {`${currentStyle} style`}
             </button>
-            {/* MENU */}
             {isOpen && (
                 <div
                     id="dropdown-menu"
-                    className={`${currentStyle}-dropdown-menu inline-block z-2 whitespace-nowrap absolute top-full left-0 h-fit min-w-full max-w-full p-0 shadow-lg  ${
-                        isOpen && "rounded-b-md"
-                    } }`}
-                    style={{ opacity: isOpen ? 1 : 0 }}
+                    className={`absolute top-full left-0 z-20 min-w-full max-w-full p-0 shadow-lg rounded-b-md ${currentStyle}-dropdown-menu dropdown-menu`}
+                    style={{ opacity: isOpen ? 1 : 0 }} // Controlled opacity for fade-in/out effect.
                 >
-                    {styles.map((style) => {
-                        return (
-                            <div
-                                id="dropdown-item"
-                                className={`${currentStyle}-dropdown-item w-full p-0 m-0 last:rounded-b-md overflow-hidden transform transition-transform ease-in-out`}
+                    {styles.map((style, i) => (
+                        <div
+                            key={i}
+                            id="dropdown-item"
+                            className={`w-full overflow-hidden last:rounded-b-md ${currentStyle}-dropdown-item dropdown-item`}
+                        >
+                            <button
+                                onClick={() => onChange(style)}
+                                className="w-full h-full"
                             >
-                                <button
-                                    onClick={() => onChange(style)}
-                                    className="w-full h-full "
-                                >
-                                    {style}
-                                </button>
-                            </div>
-                        );
-                    })}
+                                {style}
+                            </button>
+                        </div>
+                    ))}
                 </div>
             )}
         </div>
