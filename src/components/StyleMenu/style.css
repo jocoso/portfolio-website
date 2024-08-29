@@ -6,52 +6,88 @@
 
 /* Summer Style - STYLEMENU */
 
-.summer-dropdown-button {
-    
-}
-
-.summer-dropdown-menu {
-    background-color: rgba(var(--summer-ui), 0.7); 
-    color: black;   
-}
-
-.summer-dropdown-item :hover {
+.summer-menu-container {
     background-color: rgb(var(--summer-contrast));
-    color: white;
-}
+    color: black; 
+ }
+ 
+ .summer-dropdown-menu {
+     background-color: rgba(var(--summer-ui), 0.7);
+     color: black;
+ }
+ 
+ .summer-dropdown-button :hover {
+     background-color: rgb(var(--summer-bg));
+     color: black;
+ }
+ 
+ .summer-dropdown-button:hover {
+     background-color: rgb(var(--summer-text));
+     color: white;
+ }
+ 
+ .summer-dropdown-item :hover {
+     background-color: rgb(var(--summer-contrast));
+     color: white;
+ }
 
 /* Winter Style - STYLEMENU */
 
-.winter-dropdown-button {
-    
-}
-
-.winter-dropdown-menu {
-    background-color: rgba(var(--winter-ui), 0.7);
-}
-
-.winter-dropdown-item :hover {
+.winter-menu-container {
     background-color: rgb(var(--winter-contrast));
-    color:black;
-}
+    color: black; 
+ }
+ 
+ .winter-dropdown-menu {
+     background-color: rgba(var(--winter-ui), 0.7);
+     color: white;
+ }
+ 
+ .winter-dropdown-button :hover {
+     background-color: rgb(var(--winter-bg));
+     color: white;
+ }
+ 
+ .winter-dropdown-button:hover {
+     background-color: rgb(var(--winter-text));
+     color: black;
+ }
+ 
+ .winter-dropdown-item :hover {
+     background-color: rgb(var(--winter-contrast));
+     color: black;
+ }
+
 
 /* Fall Style - STYLEMENU */
 
-.fall-dropdown-button {
-    
-}
-
-.fall-dropdown-menu {
-    background-color: rgba(var(--fall-ui), 0.7);
-    color: white;
-}
-
-.fall-dropdown-item :hover {
-    background-color: rgb(var(--winter-contrast));
-    color:black;
-}
+.fall-menu-container {
+    background-color: rgb(var(--fall-contrast));
+    color: black; 
+ }
+ 
+ .fall-dropdown-menu {
+     background-color: rgba(var(--fall-ui), 0.7);
+     color: white;
+ }
+ 
+ .fall-dropdown-button :hover {
+     background-color: rgb(var(--fall-bg));
+     color: white;
+ }
+ 
+ .fall-dropdown-button:hover {
+     background-color: rgb(var(--fall-text));
+     color: white;
+ }
+ 
+ .fall-dropdown-item :hover {
+     background-color: rgb(var(--fall-contrast));
+     color: black;
+ }
 
 /* Spring Style - STYLEMENU */
+
 .spring-menu-container {
    background-color: rgb(var(--spring-contrast));
    color: black; 
@@ -59,7 +95,7 @@
 
 .spring-dropdown-menu {
     background-color: rgba(var(--spring-ui), 0.7);
-    color: black;
+    color: white;
 }
 
 .spring-dropdown-button :hover {
@@ -69,8 +105,10 @@
 
 .spring-dropdown-button:hover {
     background-color: rgb(var(--spring-text));
+    color: black;
 }
 
 .spring-dropdown-item :hover {
     background-color: rgb(var(--spring-contrast));
+    color: black;
 }
