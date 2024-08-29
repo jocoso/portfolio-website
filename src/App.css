@@ -2,63 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
-/*TODO: Integrate in tailwindcss later*/
-.lato-thin {
-  font-family: "Lato", sans-serif;
-  font-weight: 100;
-  font-style: normal;
+:root {
+    --summer-bg: 255, 255, 255;
+    --summer-text: 68, 119, 119;
+    --summer-ui: 242, 143, 59;
+    --summer-contrast: 200, 85, 61;
+
+    --winter-bg: 11, 37, 69;
+    --winter-text: 238, 244, 237;
+    --winter-ui: 19, 64, 116;
+    --winter-contrast: 141, 169, 196;
+
+    --fall-bg: 241, 220, 167;
+    --fall-text: 103, 83, 62;
+    --fall-ui: 153, 123, 102;
+    --fall-contrast: 155, 155, 122;
+
+    --spring-bg: 108, 88, 76;
+    --spring-text: 240, 234, 210;
+    --spring-ui: 173, 193, 120;
+    --spring-contrast: 255, 203, 105;
 }
 
-.lato-light {
-  font-family: "Lato", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+
+/* Summer Style - ROOT */
+
+.summer-style {
+    background-color: rgb(var(--summer-bg));
+    color: rgb(var(--summer-text));
 }
 
-.lato-regular {
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+/* Winter Style - ROOT */
+
+.winter-style {
+    background-color: rgb(var(--winter-bg));
+    color: rgb(var(--winter-text));
 }
 
-.lato-bold {
-  font-family: "Lato", sans-serif;
-  font-weight: 700;
-  font-style: normal;
+/* Fall Style - ROOT */
+
+.fall-style {
+    background-color: rgb(var(--fall-bg));
+    color: rgb(var(--fall-text));
 }
 
-.lato-black {
-  font-family: "Lato", sans-serif;
-  font-weight: 900;
-  font-style: normal;
-}
+/* Spring Style - ROOT */
 
-.lato-thin-italic {
-  font-family: "Lato", sans-serif;
-  font-weight: 100;
-  font-style: italic;
-}
-
-.lato-light-italic {
-  font-family: "Lato", sans-serif;
-  font-weight: 300;
-  font-style: italic;
-}
-
-.lato-regular-italic {
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  font-style: italic;
-}
-
-.lato-bold-italic {
-  font-family: "Lato", sans-serif;
-  font-weight: 700;
-  font-style: italic;
-}
-
-.lato-black-italic {
-  font-family: "Lato", sans-serif;
-  font-weight: 900;
-  font-style: italic;
+.spring-style {
+    background-color: rgb(var(--spring-bg));
+    color: rgb(var(--spring-text));
 }

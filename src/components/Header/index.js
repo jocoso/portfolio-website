@@ -1,28 +1,30 @@
 import React from "react";
 
-import Title from "../Title";
+import "./style.css";
 
-export default function Header() {
+//console.log(`${process.env.PUBLIC_URL} + "/header-summer-img.jpg`);
+
+export default function Header({ currentStyle='summer' }) {
     return(
         <>
-            <div id="header" className="min-h-[10%] h-[10%] text-center flex flex-col justify-content items-center p-2">
+            <div id="header" className={`${currentStyle}-header w-3/5 h-auto my-20 p-5 rounded-t-lg`}>
                 
                 {/* LOGO */}
-                <div id="logo-container" className="h-1/4 w-2/12 overflow-hidden rounded-full border-2 border-white">
+                <div id="logo-container" className={`${currentStyle}-logo text-center flex flex-col items-center justify-center p-5 w-32 m-auto rounded-full border`}>
                     <img 
                         id="logo"
                         src={`${process.env.PUBLIC_URL}/portfolio-img.webp`} 
                         alt="Logo"
-                        className="min-h-full min-w-full h-full w-full"
+                        className="w-full h-full"
                     />
                 </div>
                 {/* == */}
 
                 {/* INFORMATION */}
-                <div id="information-container" className="w-65">
-                    <Title level={2} className="mt-5 text-highlightOne">Joshua Collado</Title>
-                    <Title level={3} className="text-white">Software Developer</Title>
-                    <p className="text-white lato-semibold mt-5 mb-5">Welcome to my website!</p>
+                <div id="information-container" className={`${currentStyle}-information text-center font-bold`}>
+                    <h2 className="text-5xl">Joshua Collado</h2>
+                    <h3 className="">Software Developer</h3>
+                    <p className="">Welcome to my website!</p>
                 </div>
                 {/* == */}
 
