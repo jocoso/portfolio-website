@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export default function MistakeBox({message, remove, currentStyle="summer" }) {
+export default function MistakeBox({message, remove }) {
     // Hide box after 3 seconds
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -11,11 +11,8 @@ export default function MistakeBox({message, remove, currentStyle="summer" }) {
     }, [remove]);
 
     return(
-        <div className={`${currentStyle}-dropdown-menu absolute top-full left-0 h-fit min-w-full max-w-full p-0 shadow-lg transition-all ease-in-out`
-        }>
-            <div className={`${currentStyle}-dropdown-item w-full p-0 m-0 last:rounded-b-md overflow-hidden`}>
-                {message}   
-            </div>
+        <div className="">
+            {message}
         </div>
     );
 }

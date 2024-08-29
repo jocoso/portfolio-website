@@ -2,95 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-    font-family: "Kulim Park", sans-serif;
-}
-
-h1,
-h2,
-h3,
-h4 {
-    font-weight: 300;
-    font-style: normal;
-    
-}
-
-h1 {font-size: 5.61rem;}
-h2 {font-size: 4.21rem;}
-h3 {font-size: 3.16rem;}
-h4 {font-size: 2.37rem;}
-h5 {font-size: 1.78rem;}
-h6 {font-size: 1.33rem;}
-p  {font-size:    1rem;}
-
 :root {
+    --summer-bg: 255, 255, 255;
+    --summer-text: 68, 119, 119;
+    --summer-ui: 242, 143, 59;
+    --summer-contrast: 200, 85, 61;
 
-    /* Seasonal Backgrounds  */
+    --winter-bg: 11, 37, 69;
+    --winter-text: 238, 244, 237;
+    --winter-ui: 19, 64, 116;
+    --winter-contrast: 141, 169, 196;
 
-    --summer-bg: url("../public/header-summer-img.jpg");
-    --winter-bg: url("../public/header-winter-img.jpg");
-    --fall-bg: url("../public/header-fall-img.jpg");
-    --spring-bg: url("../public/header-spring-img.jpg");
+    --fall-bg: 241, 220, 167;
+    --fall-text: 103, 83, 62;
+    --fall-ui: 153, 123, 102;
+    --fall-contrast: 155, 155, 122;
 
-    /* Seasonal Schemes */
-
-    --summer-text: 61, 64, 91;
-    --winter-text: 246, 255, 248;
-    --fall-text: 39, 62, 71;
-    --spring-text: 129, 138, 163;
-
-    --summer-default: 244, 241, 222;
-    --winter-default: 88, 164, 176;
-    --fall-default: 216, 201, 155;
-    --spring-default: 197, 220, 160;
-    
-    --summer-primary: 224, 122, 95;
-    --winter-primary: 55, 63, 81;
-    --fall-primary: 189, 99, 47;
-    --spring-primary: 245, 242, 184;
-    
-    --summer-secondary: 129, 178, 154;
-    --winter-secondary: 169, 188, 208; 
-    --fall-secondary: 40, 61, 59;
-    --spring-secondary: 249, 218, 208;
-    
-    --summer-accent: 224, 122, 95;
-    --winter-accent: 234, 244, 244;
-    --fall-accent: 216, 151, 60;
-    --spring-accent: 245, 242, 184;
-
-
-    /* light blue rgb() */
-    /* very light brown rgb() */
-    /* darker light brown rgb() */
-    /* pastel green  rgb()*/
-
+    --spring-bg: 108, 88, 76;
+    --spring-text: 240, 234, 210;
+    --spring-ui: 173, 193, 120;
+    --spring-contrast: 255, 203, 105;
 }
+
 
 /* Summer Style - ROOT */
 
 .summer-style {
-    background-color: rgb(var(--summer-default));
+    background-color: rgb(var(--summer-bg));
     color: rgb(var(--summer-text));
 }
 
 /* Winter Style - ROOT */
 
 .winter-style {
-    background-color: rgb(var(--winter-default));
+    background-color: rgb(var(--winter-bg));
     color: rgb(var(--winter-text));
 }
 
 /* Fall Style - ROOT */
 
 .fall-style {
-    background-color: rgb(var(--fall-default));
+    background-color: rgb(var(--fall-bg));
     color: rgb(var(--fall-text));
 }
 
 /* Spring Style - ROOT */
 
 .spring-style {
-    background-color: rgb(var(--spring-default));
+    background-color: rgb(var(--spring-bg));
     color: rgb(var(--spring-text));
 }

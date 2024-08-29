@@ -1,3 +1,4 @@
+
 [class*="-dropdown"] {
     border-color: inherit;
     color: inherit;
@@ -5,84 +6,71 @@
 
 /* Summer Style - STYLEMENU */
 
-.summer-menu-container {
-    background-color: rgb(var(--summer-primary));
-    color: rgb(var(--summer-text));
+.summer-dropdown-button {
+    
 }
 
 .summer-dropdown-menu {
-    background-color: rgba(var(--summer-default), 0.7);
-    color: rgb(var(--summer-text));
-}
-
-.summer-dropdown-button {
-    background-color: rgb(var(--summer-primary));
-    color: rgb(var(--summer-text));
+    background-color: rgba(var(--summer-ui), 0.7); 
+    color: black;   
 }
 
 .summer-dropdown-item :hover {
-    background-color: rgb(var(--summer-text));
-    color: rgb(var(--summer-accent));
+    background-color: rgb(var(--summer-contrast));
+    color: white;
 }
 
 /* Winter Style - STYLEMENU */
 
-.winter-menu-container {
-    background-color: rgb(var(--winter-primary));
-    color: rgb(var(--winter-text));
+.winter-dropdown-button {
+    
 }
 
 .winter-dropdown-menu {
-    background-color: rgba(var(--winter-default), 0.7);
-    color: rgb(var(--winter-text));
-}
-
-.winter-dropdown-button {
-    background-color: rgb(var(--winter-primary));
-    color: rgb(var(--winter-text));
+    background-color: rgba(var(--winter-ui), 0.7);
 }
 
 .winter-dropdown-item :hover {
-    background-color: rgb(var(--winter-text));
-    color: rgb(var(--summer-accent));
+    background-color: rgb(var(--winter-contrast));
+    color:black;
 }
-
 
 /* Fall Style - STYLEMENU */
 
-.fall-menu-container {
-    background-color: rgb(var(--fall-primary));
-    color: rgb(var(--fall-text));
+.fall-dropdown-button {
+    
 }
 
 .fall-dropdown-menu {
-    background-color: rgba(var(--fall-default), 0.7);
-    color: rgb(var(--fall-text));
-}
-
-.fall-dropdown-button :hover {
-    background-color: rgb(var(--fall-primary));
-    color: rgb(var(--fall-text));
+    background-color: rgba(var(--fall-ui), 0.7);
+    color: white;
 }
 
 .fall-dropdown-item :hover {
-    background-color: rgb(var(--fall-text));
-    color: rgb(var(--fall-accent));
+    background-color: rgb(var(--winter-contrast));
+    color:black;
 }
 
 /* Spring Style - STYLEMENU */
-
 .spring-menu-container {
-    background-color: rgb(var(--spring-primary));
-    color: rgb(var(--spring-text));
+   background-color: rgb(var(--spring-contrast));
+   color: black; 
 }
 
 .spring-dropdown-menu {
-    background-color: rgba(var(--spring-default), 0.7);
-    color: rgb(var(--spring-text));
+    background-color: rgba(var(--spring-ui), 0.7);
+    color: black;
+}
+
+.spring-dropdown-button :hover {
+    background-color: rgb(var(--spring-bg));
+    color: white;
+}
+
+.spring-dropdown-button:hover {
+    background-color: rgb(var(--spring-text));
 }
 
 .spring-dropdown-item :hover {
-    background-color: rgb(var(--spring-text));
-    color: rgb(var(--spring-accent));
+    background-color: rgb(var(--spring-contrast));
 }

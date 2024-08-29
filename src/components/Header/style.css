@@ -1,51 +1,103 @@
-/* Seasonal Header Styles */
+/* Summer Style - HEADER */
 
-/* Apply shared styles for all headers */
-[class*="-header"] {
-    position: relative; /* Position relative needed for the ::after pseudoelement */
+.summer-header {
+    /* top, transparent black, faked with gradient */
+    background: linear-gradient(rgba(0, 0, 0, 0.07), rgba(0, 0, 0, 0.93)),
+        /* bottom, image */ url("../../../public/header-summer-img.jpg");
+
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center center;
+
+    box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.3);
+}
+.summer-header h2 {
+    color: rgb(242, 143, 59);
+}
+.summer-logo {
+    border-color: rgb(242, 143, 59);
+}
+.summer-information {
+    color: rgb(255, 213, 194);
 }
 
-/* Define individual background images */
-.summer-header {
-    background-image: var(--summer-bg);
-}
+/* Winter Style - HEADER */
+
 .winter-header {
-    background-image: var(--winter-bg);
-}
-.fall-header {
-    background-image: var(--fall-bg);
-}
-.spring-header {
-    background-image: var(--spring-bg);
+    /* opacity: 0.8; */
+    /* top, transparent black, faked with gradient */
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)),
+        /* bottom, image */ url("../../../public/header-winter-img.jpg");
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Default h2 style inside headers */
-[class*="-header"] h2 {
-    color: rgb(var(--summer-accent)); /* Default color */
-}
-
-/* Override h2 color for specific seasons */
 .winter-header h2 {
-    color: rgb(var(--winter-accent));
-}
-.fall-header h2 {
-    color: var(--fall-accent);
-}
-.spring-header h2 {
-    color: var(--spring-accent);
+    color: rgb(238, 244, 237);
 }
 
-/* Dark transparent overlay for all headers */
-[class*="-header"]::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.3); /* Adjust darkness as needed */
-    z-index: 1; /* Ensure it's behind the content */
+.winter-logo {
+    border-color: rgb(238, 244, 237);
+}
+
+.winter-information {
+    color: rgb(171, 199, 226);
+}
+
+/* Fall Style - HEADER */
+
+.fall-header {
+    /* opacity: 0.8; */
+    /* top, transparent black, faked with gradient */
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)),
+        /* bottom, image */ url("../../../public/header-fall-img.jpg");
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.3);
+}
+
+.fall-header h2 {
+    color: rgb(242, 143, 59);
+}
+
+.fall-logo {
+    border-color: rgb(255, 203, 105);
+}
+
+.fall-information {
+    color: rgb(255, 213, 194);
+}
+
+/* Spring Style - HEADER */
+
+.spring-header {
+    /* opacity: 0.8; */
+    /* top, transparent black, faked with gradient */
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),
+        /* bottom, image */ url("../../../public/header-spring-img.jpg");
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.3);
+}
+
+.spring-header h2 {
+    color: rgb(173, 193, 120);
+}
+
+.spring-logo {
+    border-color: rgb(173, 193, 120);
+}
+
+.spring-information {
+    color: rgb(221, 229, 182);
 }
