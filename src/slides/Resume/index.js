@@ -97,7 +97,7 @@ export default function ResumeSlide() {
     return (
         <Slide title="Resume">
             {/*  */}
-            <h1 id="resume-name">{resumeData.name}</h1>
+            <h4 id="resume-name">{resumeData.name}</h4>
             <div id="resume-contact">
                 <p id="tel-number">{resumeData.contact.number}</p>
                 <p id="email">{resumeData.contact.email}</p>
@@ -116,10 +116,10 @@ export default function ResumeSlide() {
                 })}
             </div>
             
-            <h2>Summary</h2>
+            <h5>Summary</h5>
             <p id="summary">{resumeData.summary}</p>
 
-            <h2>Experience</h2>
+            <h5>Experience</h5>
             {
                 resumeData.experience.map((exp, i) => {
                     return(<div key={i}>
@@ -140,11 +140,11 @@ export default function ResumeSlide() {
                 })
         }
 
-        <h2>Education</h2>
+        <h5>Education</h5>
         {
             resumeData.education.map((edu, i) => {
                 return(<div key={i}>
-                    <h5 id="school-name">{edu.schoolName}</h5>
+                    <h6 id="school-name">{edu.schoolName}</h6>
                     <p id="school-location">{edu.schoolLocation}</p>
                     <div id="date-graduation">
                         {edu.dateGraduation}

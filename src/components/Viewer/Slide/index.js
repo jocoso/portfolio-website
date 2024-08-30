@@ -15,13 +15,13 @@ export default function Slide(props) {
     return (
         <section
             id={`slide-${props.title}`}
-            className={`${currentStyle.style}-slide slide w-full h-full rounded-lg md:mb-20 bg-opacity-80`}
+            className={`${currentStyle.style}-slide slide w-full h-full lg:w-9/12 rounded-lg md:mb-20 bg-opacity-80 overflow-hidden shadow-md`}
         >
             <div id="slide-container" className="">
                 {/* Slide Presentation */}
-                <h2 className="w-full bg-red">{props.title}</h2>
+                <h3 className="w-full my-10 pl-12 shadow-md ">{props.title}</h3>
 
-                <div id="children-container" className="min-h-screen">
+                <div id="children-container" className="min-h-screen p-10">
                     {props.children} {/* CONTENT */}
                 </div>
             </div>

@@ -1,8 +1,8 @@
 .slide {
-    background-color: rgba(var(--primary-color), 0.3);
+    background-color: rgba(var(--primary-color), 0.4);
 }
-.slide h2 {
-    background-color: rgba(var(--text-color), 0.85);
+.slide h3 {
+    background-color: rgba(var(--text-color), 0.9);
     color: rgb(var(--accent-color));
 }
 

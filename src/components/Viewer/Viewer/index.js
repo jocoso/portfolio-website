@@ -75,7 +75,7 @@ export default function Viewer({ slides = [{}], currentStyle = "summer" }) {
     return (
         <div
             id="viewer-container"
-            className="relative mx-auto w-full sm:min-h-full md:min-h-full sm:w-full md:w-10/12 lg:w-11/12 z-0"
+            className="relative mx-auto w-full sm:min-h-full md:min-h-full sm:w-full md:w-10/12 lg:w-11/12 z-0 flex flex-col justify-center"
         >
             {/* NAVIGATION BAR */}
             <div
@@ -108,7 +108,7 @@ export default function Viewer({ slides = [{}], currentStyle = "summer" }) {
 
 
 
-            <div id="viewer-content" className="w-full md:w-3/4 m-auto mt-10">
+            <div id="viewer-content" className="w-full md:w-3/4 m-auto mt-10 flex justify-center">
                 {reel.view(currentStyle)} {/* Managed by Reel instance */}
             </div>
 
