@@ -1,0 +1,53 @@
+/* Adds a subtle shadow box by default, and changes to a shadow when hovered */
+.navigation-item {
+    box-shadow: 0 0 0 transparent;
+}
+
+.navigation-item:hover {
+    box-shadow: 0 2px 0 0px rgb(var(--accent-color));
+    color: var(--text-color);
+}
+
+/* Base styles for contact bar */
+.viewer-contact-bar {
+    background-color: rgba(var(--primary-color));
+    color: rgb(var(--text-color));
+}
+.viewer-contact-bar > a:hover {
+    background-color: rgb(var(--text-color));
+    color: rgb(var(--accent-color));
+}
+
+
+/* Define individual hovering styles */
+.summer-viewer-contact-bar,
+.summer-navigation-item {
+    --accent-color: var(--summer-accent);
+    --text-color: var(--summer-text);
+    --bg-color: var(--summer-default);
+    --primary-color: var(--summer-primary);
+}
+
+.winter-viewer-contact-bar,
+.winter-navigation-item {
+    --accent-color: var(--winter-accent);
+    --text-color: var(--winter-text);
+    --bg-color: var(--winter-default);
+    --primary-color: var(--winter-primary);
+}
+
+.fall-viewer-contact-bar,
+.fall-navigation-item {
+    --accent-color: var(--fall-accent);
+    --text-color: var(--fall-text);
+    --bg-color: var(--fall-default);
+    --primary-color: var(--fall-primary);
+}
+
+.spring-viewer-contact-bar,
+.spring-navigation-item {
+    --accent-color: var(--spring-accent);
+    --text-color: var(--spring-text);
+    --bg-color: var(--spring-default);
+    --primary-color: var(--spring-primary);
+}

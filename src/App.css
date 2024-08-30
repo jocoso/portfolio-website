@@ -7,21 +7,25 @@
 }
 
 h1,
-h2,
-h3,
-h4 {
+h2 {
     font-weight: 300;
     font-style: normal;
-    
 }
 
-h1 {font-size: 5.61rem;}
+/* DEFAULT FONT-SIZE */
+h1 {
+    font-size: 40px;
+    font-stile: normal;
+}
 h2 {font-size: 4.21rem;}
 h3 {font-size: 3.16rem;}
 h4 {font-size: 2.37rem;}
 h5 {font-size: 1.78rem;}
 h6 {font-size: 1.33rem;}
-p  {font-size:    1rem;}
+p  {
+    font-size: 20px; 
+    font-style: normal;
+} 
 
 :root {
 
@@ -34,36 +38,29 @@ p  {font-size:    1rem;}
 
     /* Seasonal Schemes */
 
-    --summer-text: 61, 64, 91;
-    --winter-text: 246, 255, 248;
-    --fall-text: 39, 62, 71;
-    --spring-text: 129, 138, 163;
-
     --summer-default: 244, 241, 222;
-    --winter-default: 88, 164, 176;
-    --fall-default: 216, 201, 155;
-    --spring-default: 197, 220, 160;
-    
+    --summer-text: 61, 64, 91;
     --summer-primary: 224, 122, 95;
-    --winter-primary: 55, 63, 81;
-    --fall-primary: 189, 99, 47;
-    --spring-primary: 245, 242, 184;
-    
     --summer-secondary: 129, 178, 154;
-    --winter-secondary: 169, 188, 208; 
-    --fall-secondary: 40, 61, 59;
-    --spring-secondary: 249, 218, 208;
-    
     --summer-accent: 224, 122, 95;
+    
+    --winter-default: 88, 164, 176;
+    --winter-text: 246, 255, 248;
+    --winter-primary: 55, 63, 81;
+    --winter-secondary: 169, 188, 208; 
     --winter-accent: 234, 244, 244;
+    
+    --fall-default: 216, 201, 155;
+    --fall-text: 39, 62, 71;
+    --fall-primary: 189, 99, 47;
+    --fall-secondary: 40, 61, 59;
     --fall-accent: 216, 151, 60;
+    
+    --spring-default: 197, 220, 160;
+    --spring-text: 129, 138, 163;
+    --spring-primary: 245, 242, 184;
+    --spring-secondary: 249, 218, 208;
     --spring-accent: 245, 242, 184;
-
-
-    /* light blue rgb() */
-    /* very light brown rgb() */
-    /* darker light brown rgb() */
-    /* pastel green  rgb()*/
 
 }
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 
 // This component renders a dropdown menu that can be controlled via hover or click.
@@ -8,7 +8,13 @@ export default function StyleMenu({
     currentStyle = "summer",
 }) {
     const [isOpen, setIsOpen] = useState(false);
-    const [triggerType, setTriggerType] = useState("hover");
+    const [triggerType, setTriggerType] = useState("click");
+
+    // Detect if the device support hover
+    useEffect(() => {
+        const canHover = window.matchMedia("(hover: hover)").matches;
+        setTriggerType(canHover ? "hover" : "click")
+    }, []);
 
     // Function to toggle the visibility of the dropdown menu.
     const toggleDropdown = () => setIsOpen(!isOpen);

@@ -1,4 +1,4 @@
-/* General dropdown styles for all seasonal themes */
+/* General dropdown styles */
 [class*="-dropdown"] {
     border-color: inherit;
     color: inherit;
@@ -6,7 +6,7 @@
 
 /* Base styles for dropdown components */
 .dropdown-menu {
-    background-color: rgba(var(--default-bg), 0.7);
+    background-color: rgba(var(--bg-color), 0.7);
     color: rgb(var(--text-color));
 }
 
@@ -26,7 +26,7 @@
 .summer-dropdown-menu {
     --primary-color: var(--summer-primary);
     --text-color: var(--summer-text);
-    --default-bg: var(--summer-default);
+    --bg-color: var(--summer-default);
     --accent-color: var(--summer-accent);
 }
 
@@ -36,7 +36,7 @@
 .winter-dropdown-menu {
     --primary-color: var(--winter-primary);
     --text-color: var(--winter-text);
-    --default-bg: var(--winter-default);
+    --bg-color: var(--winter-default);
     --accent-color: var(--winter-accent);
 }
 
@@ -46,7 +46,7 @@
 .fall-dropdown-menu {
     --primary-color: var(--fall-primary);
     --text-color: var(--fall-text);
-    --default-bg: var(--fall-default);
+    --bg-color: var(--fall-default);
     --accent-color: var(--fall-accent);
 }
 
@@ -56,6 +56,6 @@
 .spring-dropdown-menu {
     --primary-color: var(--spring-primary);
     --text-color: var(--spring-text);
-    --default-bg: var(--spring-default);
+    --bg-color: var(--spring-default);
     --accent-color: var(--spring-accent);
 }

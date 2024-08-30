@@ -1,0 +1,39 @@
+.slide {
+    background-color: rgba(var(--primary-color), 0.3);
+}
+.slide h2 {
+    background-color: rgba(var(--text-color), 0.85);
+    color: rgb(var(--accent-color));
+}
+
+/* Summer Style - Slide */
+.summer-slide {
+    --primary-color: var(--summer-primary);
+    --text-color: var(--summer-text);
+    --bg-color: var(--summer-default);
+    --accent-color: var(--summer-accent);
+}
+
+/* Winter Style - Slide */
+.winter-slide {
+    --primary-color: var(--winter-primary);
+    --text-color: var(--winter-text);
+    --bg-color: var(--winter-default);
+    --accent-color: var(--winter-accent);
+}
+
+/* Fall Style - Slide */
+.fall-slide {
+    --primary-color: var(--fall-primary);
+    --text-color: var(--fall-text);
+    --bg-color: var(--fall-default);
+    --accent-color: var(--fall-accent);
+}
+
+/* Spring Style - Slide */
+.spring-slide {
+    --primary-color: var(--spring-primary);
+    --text-color: var(--spring-text);
+    --bg-color: var(--spring-default);
+    --accent-color: var(--spring-accent);
+}
