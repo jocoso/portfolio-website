@@ -121,7 +121,7 @@ export default function Viewer({ slides = [{}], currentStyle = "summer" }) {
             {/* CONTACTS BAR */}
             <div
                 id="viewer-contact-bar"
-                className={`text-2xl p-3 ${currentStyle}-viewer-contact-bar viewer-contact-bar sm:text-center sm:relative sm:bottom-0 sm:opacity-100 sm:items-center sm:flex-row sm:w-full sm:h-full sm:mt-10 md:fixed md:bottom-auto md:top-1/2 md:left-0 md:h-fit md:mt-0 md:w-auto md:flex-col`}
+                className={`text-2xl ${currentStyle}-viewer-contact-bar viewer-contact-bar sm:text-center sm:relative sm:bottom-0 sm:opacity-100 sm:items-center sm:flex-row sm:w-full sm:h-full sm:mt-10 md:fixed md:bottom-auto md:top-1/2 md:left-0 md:h-fit md:mt-0 md:w-2/12 md:ml-3 md:flex-col group`}
             >
                 {/* w-8 h-8 hover:text-highlightTwo */}
 
@@ -129,9 +129,9 @@ export default function Viewer({ slides = [{}], currentStyle = "summer" }) {
                     href="https://www.linkedin.com/in/jocoso5273/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-fit h-fit"
+                    className="w-full h-full inline-block"
                 >
-                    <LiaLinkedin className="" />
+                    <LiaLinkedin />
                     <span>Linked In</span>
                 </a>
 
@@ -139,9 +139,9 @@ export default function Viewer({ slides = [{}], currentStyle = "summer" }) {
                     href="https://x.com/Jocoso_Code"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-fit h-fit"
+                    className="w-full h-full inline-block"
                 >
-                    <LiaTwitter className="" />
+                    <LiaTwitter />
                     <span>Twitter</span>
                 </a>
 
@@ -149,7 +149,7 @@ export default function Viewer({ slides = [{}], currentStyle = "summer" }) {
                     href="https://www.instagram.com/jocoso_code/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-fit h-fit"
+                    className="w-full h-full inline-block"
                 >
                     <LiaInstagram />
                     <span>Instagram</span>

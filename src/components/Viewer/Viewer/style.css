@@ -8,13 +8,14 @@
     color: var(--text-color);
 }
 
-/* Base styles for contact bar */
+/* Base styles for the bar with my website */
 .viewer-contact-bar {
     background-color: rgba(var(--primary-color));
     color: rgb(var(--text-color));
 }
-.viewer-contact-bar > a:hover {
-    background-color: rgb(var(--text-color));
+.viewer-contact-bar a:hover {
+    --bg-opacity: 1;
+    background-color: rgb(var(--text-color), var(--bg-opacity));
     color: rgb(var(--accent-color));
 }
 
