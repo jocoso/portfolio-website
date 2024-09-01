@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import StyleContext from "../styleContext";
+import StyleContext from "../../../slides/styleContext";
 
 import "./style.css";
 
@@ -15,13 +15,12 @@ export default function Slide(props) {
     return (
         <section
             id={`slide-${props.title}`}
-            className={`${currentStyle.style}-slide slide w-full h-full lg:w-9/12 rounded-lg md:mb-20 bg-opacity-80 overflow-hidden shadow-md`}
+            className={`${currentStyle.style}-slide slide w-full h-full rounded-lg md:mb-20 bg-opacity-80 overflow-hidden my-28`}
         >
-            <div id="slide-container" className="">
+            <div id="slide-container" className="flex flex-col w-full h-full">
                 {/* Slide Presentation */}
-                <h3 className="w-full my-10 pl-12 shadow-md ">{props.title}</h3>
 
-                <div id="children-container" className="min-h-screen p-10">
+                <div id="children-container" className="min-h-screen">
                     {props.children} {/* CONTENT */}
                 </div>
             </div>

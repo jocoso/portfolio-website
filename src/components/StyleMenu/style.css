@@ -15,6 +15,11 @@
     color: rgb(var(--text-color));
 }
 
+.dropdown-button:hover {
+    background-color: rgb(var(--secondary-color));
+    color: rgb(var(--bg-color));
+}
+
 .dropdown-item:hover {
     background-color: rgb(var(--text-color));
     color: rgb(var(--accent-color));
@@ -28,6 +33,7 @@
     --text-color: var(--summer-text);
     --bg-color: var(--summer-default);
     --accent-color: var(--summer-accent);
+    --secondary-color: var(--summer-secondary);
 }
 
 /* Winter Style - Dropdown Menu */
@@ -38,6 +44,7 @@
     --text-color: var(--winter-text);
     --bg-color: var(--winter-default);
     --accent-color: var(--winter-accent);
+    --secondary-color: var(--winter-secondary);
 }
 
 /* Fall Style - Dropdown Menu */
@@ -48,6 +55,7 @@
     --text-color: var(--fall-text);
     --bg-color: var(--fall-default);
     --accent-color: var(--fall-accent);
+    --secondary-color: var(--fall-secondary);
 }
 
 /* Spring Style - Dropdown Menu */
@@ -58,4 +66,5 @@
     --text-color: var(--spring-text);
     --bg-color: var(--spring-default);
     --accent-color: var(--spring-accent);
+    --secondary-color: var(--spring-secondary);
 }

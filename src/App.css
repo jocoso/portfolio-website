@@ -3,12 +3,24 @@
 @tailwind utilities;
 
 * {
-    font-family: "Kulim Park", sans-serif;
+
 }
 
 h1,
-h2 {
-    font-weight: 300;
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+
+p {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
     font-style: normal;
 }
 
@@ -23,8 +35,10 @@ h4 {font-size: 2.37rem;}
 h5 {font-size: 1.78rem;}
 h6 {font-size: 1.33rem;}
 p  {
-    font-size: 20px; 
+    font-size: 1.35rem; 
+    letter-spacing: 0.06rem;
     font-style: normal;
+    margin-bottom: 20px;
 } 
 
 :root {
@@ -32,62 +46,86 @@ p  {
     /* Seasonal Backgrounds  */
 
     --summer-bg: url("../public/header-summer-img.jpg");
+    /* image(url(mask.png), skyblue, linear-gradient(rgb(0 0 0 / 100%), transparent)); */
     --winter-bg: url("../public/header-winter-img.jpg");
     --fall-bg: url("../public/header-fall-img.jpg");
     --spring-bg: url("../public/header-spring-img.jpg");
 
     /* Seasonal Schemes */
 
-    --summer-default: 244, 241, 222;
-    --summer-text: 61, 64, 91;
-    --summer-primary: 224, 122, 95;
-    --summer-secondary: 129, 178, 154;
-    --summer-accent: 224, 122, 95;
-    
-    --winter-default: 88, 164, 176;
-    --winter-text: 246, 255, 248;
-    --winter-primary: 55, 63, 81;
-    --winter-secondary: 169, 188, 208; 
-    --winter-accent: 234, 244, 244;
-    
-    --fall-default: 216, 201, 155;
-    --fall-text: 39, 62, 71;
-    --fall-primary: 189, 99, 47;
-    --fall-secondary: 40, 61, 59;
-    --fall-accent: 216, 151, 60;
-    
-    --spring-default: 197, 220, 160;
-    --spring-text: 129, 138, 163;
-    --spring-primary: 245, 242, 184;
-    --spring-secondary: 249, 218, 208;
-    --spring-accent: 245, 242, 184;
+    --summer-default: 240, 230, 140;    /* Light golden yellow */
+    --summer-text: 20, 60, 120;         /* Deep ocean blue */
+    --summer-primary: 255, 165, 0;      /* Bright orange */
+    --summer-secondary: 95, 158, 160;   /* Cadet blue */
+    --summer-accent: 255, 215, 0;       /* Metallic gold */
 
+    
+    --winter-default: 235, 245, 255;    /* Lightest blue */
+    --winter-text: 20, 25, 30;          /* Almost black blue */
+    --winter-primary: 195, 210, 225;    /* Soft blue */
+    --winter-secondary: 60, 75, 90;     /* Darker blue */
+    --winter-accent: 150, 170, 190;     /* Intermediate blue */
+
+    
+    --fall-default: 205, 170, 125;  /* Warm beige */
+    --fall-text: 47, 37, 35;        /* Dark brown */
+    --fall-primary: 183, 105, 50;   /* Rusty orange */
+    --fall-secondary: 173, 135, 80; /* Dusky amber */
+    --fall-accent: 212, 156, 92;    /* Soft golden */
+    
+    
+    --spring-default: 235, 245, 223;   /* Light pastel green */
+    --spring-text: 30, 40, 120;        /* Navy blue  */
+    --spring-primary: 255, 180, 120;   /* Soft coral */
+    --spring-secondary: 120, 180, 255; /* Light blue */
+    --spring-accent: 180, 255, 120;    /* Vibrant lime green */
+    
+    
+
+}
+
+.style {
+    --opacity: 0.6;
+    background-color: rgb(var(--bg-color), var(--opacity));
+    color: rbg(var(--text-color));
 }
 
 /* Summer Style - ROOT */
 
 .summer-style {
-    background-color: rgb(var(--summer-default));
-    color: rgb(var(--summer-text));
+    --bg-color: var(--summer-default);
+    --text-color: var(--summer-text);
+    --accent-color: var(--summer-accent);
+    --primary-color: var(--summer-primary);
+    --secondary-color: var(--summer-secondary);
 }
 
 /* Winter Style - ROOT */
 
 .winter-style {
-    background-color: rgb(var(--winter-default));
-    color: rgb(var(--winter-text));
+    --bg-color: var(--winter-default);
+    --text-color: var(--winter-text);
+    --accent-color: var(--winter-accent);
+    --primary-color: var(--winter-primary);
+    --secondary-color: var(--winter-secondary);
 }
 
 /* Fall Style - ROOT */
 
 .fall-style {
-    background-color: rgb(var(--fall-default));
-    color: rgb(var(--fall-text));
+    --bg-color: var(--fall-default);
+    --text-color: var(--fall-text);
+    --accent-color: var(--fall-accent);
+    --primary-color: var(--fall-primary);
+    --secondary-color: var(--fall-secondary);
 }
 
 /* Spring Style - ROOT */
 
 .spring-style {
-    background-color: rgb(var(--spring-default));
-    color: rgb(var(--spring-text));
+    --bg-color: var(--spring-default);
+    --text-color: var(--spring-text);
+    --accent-color: var(--spring-accent);
+    --primary-color: var(--spring-primary);
+    --secondary-color: var(--spring-secondary);
 }

@@ -1,0 +1,44 @@
+
+.aboutme-content img, 
+.aboutme-content p {
+    /* background-color: rgba(var(--color-secondary), .17) */
+}
+
+.aboutme-content h6 {
+    color: rgba(var(--color-text), .5);
+}
+
+.summer-aboutme-content {
+    --color-accent: var(--summer-accent);
+    --color-primary: var(--summer-primary);
+    --color-secondary: var(--summer-secondary);
+    --color-text: var(--summer-text);
+    --color-default: var(--summer-default);
+}
+
+
+.winter-aboutme-content {
+    --color-accent: var(--winter-accent);
+    --color-primary: var(--winter-primary);
+    --color-secondary: var(--winter-secondary);
+    --color-text: var(--winter-text);
+    --color-default: var(--winter-default);
+}
+
+
+.fall-aboutme-content {
+    --color-accent: var(--fall-accent);
+    --color-primary: var(--fall-primary);
+    --color-secondary: var(--fall-secondary);
+    --color-text: var(--fall-text);
+    --color-default: var(--fall-default);
+}
+
+
+.spring-aboutme-content {
+    --color-accent: var(--spring-accent);
+    --color-primary: var(--spring-primary);
+    --color-secondary: var(--spring-secondary);
+    --color-text: var(--spring-text);
+    --color-default: var(--spring-default);
+}

@@ -10,7 +10,7 @@ export default function Error({ message }) {
             <img
                 src={`${process.env.PUBLIC_URL}/error-img.jpg`}
                 alt="art"
-                className="w-1/3 h-full bg-red-600"
+                className="w-1/3 h-full"
             />
 
             <p>Ce n'est pas une diapositive.</p>

@@ -1,11 +1,16 @@
 /* Adds a subtle shadow box by default, and changes to a shadow when hovered */
+
+.viewer-navigation-bar {
+    border-color: rgba(var(--text-color));
+}
+
 .navigation-item {
-    box-shadow: 0 0 0 transparent;
+    color: rgb(var(--text-color));
 }
 
 .navigation-item:hover {
-    box-shadow: 0 2px 0 0px rgb(var(--accent-color));
-    color: var(--text-color);
+
+    
 }
 
 /* Base styles for the bar with my website */
@@ -13,42 +18,48 @@
     background-color: rgba(var(--primary-color));
     color: rgb(var(--text-color));
 }
-.viewer-contact-bar a:hover {
-    --bg-opacity: 1;
-    background-color: rgb(var(--text-color), var(--bg-opacity));
-    color: rgb(var(--accent-color));
-}
 
+.viewer-contact-bar a:hover {
+    color: rgba(var(--accent-color), 1);
+}
 
 /* Define individual hovering styles */
 .summer-viewer-contact-bar,
-.summer-navigation-item {
+.summer-navigation-item,
+.summer-viewer-navigation-bar {
     --accent-color: var(--summer-accent);
     --text-color: var(--summer-text);
     --bg-color: var(--summer-default);
     --primary-color: var(--summer-primary);
+    --secondary-color: var(--summer-secondary);
 }
 
 .winter-viewer-contact-bar,
-.winter-navigation-item {
+.winter-navigation-item,
+.winter-viewer-navigation-bar {
     --accent-color: var(--winter-accent);
     --text-color: var(--winter-text);
     --bg-color: var(--winter-default);
     --primary-color: var(--winter-primary);
+    --secondary-color: var(--winter-secondary);
 }
 
 .fall-viewer-contact-bar,
-.fall-navigation-item {
+.fall-navigation-item,
+.fall-viewer-navigation-bar {
     --accent-color: var(--fall-accent);
     --text-color: var(--fall-text);
     --bg-color: var(--fall-default);
     --primary-color: var(--fall-primary);
+    --secondary-color: var(--fall-secondary);
 }
 
 .spring-viewer-contact-bar,
-.spring-navigation-item {
+.spring-navigation-item, 
+.spring-viewer-navigation-bar{
     --accent-color: var(--spring-accent);
     --text-color: var(--spring-text);
     --bg-color: var(--spring-default);
     --primary-color: var(--spring-primary);
+    --secondary-color: var(--spring-secondary);
 }

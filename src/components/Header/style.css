@@ -5,7 +5,7 @@
     position: relative; /* Position relative needed for the ::after pseudoelement */
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: bottom;
 }
 
 /* Define individual background images */
@@ -23,29 +23,17 @@
 }
 
 /* Default h2 style inside headers */
-[class*="-header"] h2 {
-    color: rgb(var(--summer-accent)); /* Default color */
+[class*="-header"] {
+    color: rgb(var(--summer-text)); /* Default color */
 }
 
-/* Override h2 color for specific seasons */
-.winter-header h2 {
-    color: rgb(var(--winter-accent));
+.winter-header * {
+    color: rgb(var(--winter-text));
 }
-.fall-header h2 {
-    color: var(--fall-accent);
+.fall-header * {
+    color: var(--fall-primary);
 }
-.spring-header h2 {
-    color: var(--spring-accent);
+.spring-header {
+    color: var(--spring-rext);
 }
 
-/* Dark transparent overlay for all headers */
-[class*="-header"]::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.3); /* Adjust darkness as needed */
-    z-index: 1; /* Ensure it's behind the content */
-}

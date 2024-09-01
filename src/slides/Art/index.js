@@ -44,7 +44,7 @@ export default function ArtSlide() {
                 isVisible &&
                 <div
                     id="black-screen"
-                    className="fixed inset-0 w-full h-auto bg-black bg-opacity-60 flex justify-center items-center"
+                    className="fixed inset-0 w-full h-auto bg-black bg-opacity-60 flex justify-center items-center z-50"
                     onClick={handleShowcaseSwitch}
                 >
                     <img

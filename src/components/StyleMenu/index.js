@@ -31,7 +31,7 @@ export default function StyleMenu({
             <button
                 id="dropdown-button"
                 onClick={triggerType === "click" ? toggleDropdown : null}
-                className={`cursor-pointer rounded-md shadow-md p-3 min-w-[125px] max-w-[125px] text-ellipsis whitespace-nowrap transform transition-colors ease-in-out duration-200 ${currentStyle}-dropdown-button dropdown-button`}
+                className={`cursor-pointer rounded-b-md shadow-md p-3 min-w-[125px] max-w-lg text-ellipsis whitespace-nowrap transform transition-colors ease-in-out duration-200 ${currentStyle}-dropdown-button dropdown-button hover:rounded-b-none`}
                 type="button"
             >
                 {`${currentStyle} style`}
@@ -46,7 +46,7 @@ export default function StyleMenu({
                         <div
                             key={i}
                             id="dropdown-item"
-                            className={`w-full overflow-hidden last:rounded-b-md ${currentStyle}-dropdown-item dropdown-item`}
+                            className={`w-full overflow-hidden ${currentStyle}-dropdown-item dropdown-item`}
                         >
                             <button
                                 onClick={() => onChange(style)}

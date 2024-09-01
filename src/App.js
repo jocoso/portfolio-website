@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import StyleContext from "./components/Viewer/styleContext";
+import StyleContext from "./slides/styleContext";
 import "./App.css";
 
 // Components
@@ -14,7 +14,6 @@ const STYLES = ["summer", "winter", "fall", "spring"];
 
 // Context Provider Component
 function StyleProvider({ children }) {
-
     // Initialize the localStorage or default to 'summer'
     const [style, setStyle] = useState(() => {
         const savedStyle = localStorage.getItem('style');
@@ -30,6 +29,8 @@ function StyleProvider({ children }) {
     useEffect(() => {
         localStorage.setItem('style', JSON.stringify(style));
     }, [style]);
+
+    
 
     return (
         <StyleContext.Provider value={{ style, setStyle }}>
@@ -59,7 +60,7 @@ function App() {
     ];
 
     return (
-        <div className={`${style}-style flex flex-col items-center w-full h-full sm:min-h-screen`}>
+        <div className={`${style}-style style flex flex-col items-center w-full h-full relative`}>
             {/* Styles the Header */}
 
             <Header currentStyle={style} />
@@ -72,7 +73,6 @@ function App() {
 
             {/* Styles General Content */}
             <Viewer slides={slides} currentStyle={style} />
-           
         </div>
     );
 }
