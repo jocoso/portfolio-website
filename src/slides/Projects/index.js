@@ -1,6 +1,7 @@
 import React, {useState, useContext} from "react";
 import StyleContext from "../styleContext";
 import { Slide } from "../../components";
+import "./style.css";
 
 export default function Projects() {
     const currentStyle = useContext(StyleContext).style || 'summer';
@@ -56,7 +57,7 @@ export default function Projects() {
             
     // Classname of every item in the navigation bar.
     const itemClassName="flex items-center relative z-0 justify-center group min-w-32 px-5 sm:h-19 md:h-19 lg:h-20 text-center";
-    const buttonClassName="relative z-10 h-full font-semibold text-base md:text-lg lg:text-xl transition-all duration-300 group-hover:text-shadow-xl";
+    const buttonClassName="absolute z-10 h-full text-xl font-bold w-full font-semibold text-base transition-all duration-300 group-hover:text-shadow-xl";
             
     return(
                 
@@ -69,11 +70,11 @@ export default function Projects() {
                 </p>
                 
                 {/* Inner Navigation Bar */}
-                <ul className={`${currentStyle}-portfolio-nb portfolio-nb w-2/3 h-fit flex justify-center mx-auto py-0 items-center`}>
+                <ul className={`${currentStyle}-projects-nb projects-nb w-2/3 h-fit flex justify-center  mx-auto py-0 items-center`}>
                     
                     <li className={itemClassName}>
                         <button className={buttonClassName} onClick={() => handleButtonClick([1, 2, 3])}>All</button>
-                        <span className="w-full h-0 group-hover:h-full absolute inset transition-all duration-300 group-hover:shadow-lg"></span>
+                        <span className="w-full h-0 group-hover:h-full absolute inset transition-all duration-300"></span>
                     </li>
                     <li className={itemClassName}>
                         <button className={buttonClassName} onClick={() => handleButtonClick([1])}>Websites</button>
@@ -91,27 +92,27 @@ export default function Projects() {
                 </ul>
 
                 {/* Project Container */}
-                <div id="displayed-projects" className="w-full min-h-full mt-5 grid sm:grid-cols-2 grid-cols-1 gap-1 items-center text-center">
+                <div id="displayed-projects" className="w-full min-h-full mt-10 items-center justify-center text-center">
                     
                     {displayedProjects.map((project, i) => {
                         return (
                             
-                            <div key={i} className=" overflow-hidden bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative">
+                            <div key={i} className={`${currentStyle}-projects projects overflow-hidden bg-white border border-gray-200 shadow rounded-md dark:bg-gray-800 dark:border-gray-700 relative w-5/6 mx-auto my-10`}>
                                 {/* PICTURE */}
-                                <a href={project.repositoryLink} target="_blank" rel="noreferrer" className="block h-80 overflow-hidden">
-                                    <img src={project.picture} alt={project.description} className="rounded-t-lg w-full h-full object-cover transition duration-500 ease-in-out transform hover:scale-110" />
+                                <a href={project.repositoryLink} target="_blank" rel="noreferrer" className="block h-80 overflow-hidden relative">
+                                    <img src={project.picture} alt={project.description} className="rounded-t-lg w-full h-screen absolute bottom-0 translate-y-1/2 object-cover transition duration-500 ease-in-out transform" />
                                 </a>
 
                                 {/* INFO */}
-                                <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 ease-in-out bg-black bg-opacity-60 rounded-lg flex flex-col justify-center">
+                                <div id="project-info" className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 ease-in-out bg-black bg-opacity-60 rounded-lg flex flex-col justify-center">
+                                    <div className="w-1/2 mx-auto">
+                                        <a href={project.repositoryLink} className="text-2xl font-bold tracking-tight">
+                                            <h1 className=" font-bold"> {project.name} </h1>
+                                        </a>
 
-                                    <a href={project.repositoryLink} className="text-2xl font-bold tracking-tight text-highlightTwo">
-                                        <h1 className=" font-bold"> {project.name} </h1>
-                                    </a>
-
-                                    <p className="mb-3 font-normal text-gray-300">{project.description}</p>
-                                    <a className="mt-2 inline-flex justify-center w-full py-4 text-sm font-medium text-center bg-background hover:bg-highlightTwo hover:text-background" href={project.repositoryLink}>Github</a>
-
+                                        <p className="mb-3 font-normal text-gray-300">{project.description}</p>
+                                        <a className="mt-2 inline-block rounded-full justify-center w-full py-4 text-2xl opacity-50 hover:opacity-100 font-bold text-center transition-all ease-linear duration-300" target="_blank" rel="noreferrer noopener" href={project.repositoryLink}>Github</a>
+                                    </div>
                                 </div>
                             </div>
                         

@@ -1,0 +1,44 @@
+.projects-nb li:hover button { 
+    color: rgb(var(--color-accent));
+}
+
+.projects-nb li span {
+    background-color: rgb(var(--color-text));
+}
+
+.projects div > a:first-child {
+    color: rgb(var(--color-accent));
+}
+
+.projects div > a:last-child {
+    background-color: rgb(var(--color-accent));
+    color: rgb(var(--color-text));
+}
+
+.summer-projects-nb,
+.summer-projects {
+    --color-text: var(--summer-text);
+    --color-default: var(--summer-default);
+    --color-accent: var(--summer-accent);
+}
+
+.winter-projects-nb,
+.winter-projects {
+    --color-text: var(--winter-text);
+    --color-default: var(--winter-default);
+    --color-accent: var(--winter-accent);
+}
+
+.fall-projects-nb,
+.fall-projects {
+    --color-text: var(--fall-text);
+    --color-default: var(--fall-default);
+    --color-accent: var(--fall-accent);
+}
+
+.spring-projects-nb,
+.spring-projects {
+    --color-text: var(--spring-text);
+    --color-default: var(--spring-default);
+    --color-accent: var(--spring-accent);
+}

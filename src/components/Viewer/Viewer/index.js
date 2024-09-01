@@ -97,10 +97,10 @@ export default function Viewer({ slides = [{}], currentStyle = "summer" }) {
         {/* Navigation Bar */}
         <div
             id="viewer-navigation-bar"
-            className={`${currentStyle}-viewer-navigation-bar viewer-navigation-bar top-0 left-1/2 z-40 -translate-x-1/2 backdrop-blur-md w-10/12 lg:w-5/12 md:rounded-b-xl md:border md:fixed sm:w-full md:border-t-0`}
+            className={`${currentStyle}-viewer-navigation-bar viewer-navigation-bar top-10 left-1/2 z-40 -translate-x-1/2 backdrop-blur-lg bg-black bg-opacity-10 w-1/3 md:rounded-full md:fixed`}
         >
             
-            <ul className="flex items-center justify-around font-medium">
+            <ul className="flex items-center justify-center font-bold">
 
                 {slides.map((slide) => {
                     return (
@@ -108,11 +108,11 @@ export default function Viewer({ slides = [{}], currentStyle = "summer" }) {
                         <li
                             key={slide.path}
                             id="navigation-item"
-                            className={`${currentStyle}-navigation-item navigation-item items-center ${isMenuOpen ? "" : "hidden"} md:flex min-h-20 text-xl sm:text-lg md:text-2xl opacity-100 hover:opacity-50 overflow-hidden transition duration-500 ease-in-out`}
+                            className={`${currentStyle}-navigation-item navigation-item items-center ${isMenuOpen ? "" : "hidden"} md:flex p-2 m-2 min-w-36 rounded-full bg-transparent hover:bg-white hover:bg-opacity-50 text-xl sm:text-lg md:text-2xl opacity-[93%] hover:opacity-100 overflow-hidden transition duration-500 ease-linear`}
                         >
                             <a
                                 href={slide.path}
-                                className=""
+                                className="mx-auto"
                             >
                                 {slide.name}
                             </a>
