@@ -1,26 +1,21 @@
-<template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-</template>
+<script setup>
+import { ref } from 'vue'
+import Navbar from './components/Navbar.vue'
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+const routes = ref([
+  {name:    'About', route: '/about', style:{
+    color: 'red'
+  }},
+  {name:     'Home', route: '/'},
+  {name:     'Blog', route: '/blog'},
+  {name:      'Art', route: '/art'},
+  {name: 'Projects', route: '/projects'},
+])
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<template>
+<navbar :right="routes.slice(1)" :left="[routes[0]]"></navbar>
+</template>
+
+

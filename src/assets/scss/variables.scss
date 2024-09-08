@@ -1,0 +1,7 @@
+$bg-color: #efefefff;
+$txt-color: #213e57;
+
+@mixin background-opacity($color, $opacity: 1) {
+    background: $color;
+    background: rgba($color, $opacity);
+}
