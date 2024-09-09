@@ -1,11 +1,10 @@
 <script setup>
 import { ref } from 'vue'
 import Navbar from './components/Navbar.vue'
+import pulsatingButton from '@/components/pulsatingButton.vue';
 
 const routes = ref([
-  {name:    'About', route: '/about', style:{
-    color: 'red'
-  }},
+  {name:    'Say Hi!', route: '/contact-me', component: pulsatingButton},
   {name:     'Home', route: '/'},
   {name:     'Blog', route: '/blog'},
   {name:      'Art', route: '/art'},
