@@ -1,5 +1,7 @@
 $bg-color: #efefefff;
 $txt-color: #213e57;
+$primary-color: #89aac7;
+$highlight-color: #318fe0;
 
 @mixin background-opacity($color, $opacity: 1) {
     background: $color;

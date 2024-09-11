@@ -1,17 +1,19 @@
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, useAttrs } from 'vue';
 
 const props = defineProps({
     href: {
         type: String,
-        require: true
+        required: true
     }
-})
+});
+const attrs = useAttrs();
 
+console.log(attrs)
 
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
 *, *:before, *:after {
     box-sizing: border-box;
     margin: 0;
@@ -127,7 +129,7 @@ $borderW: 2px;
 </style>
 
 <template>
-    <a :href="props.href" class="blob-btn">
+    <a :href="href" v-bind:="attrs" :class="[attrs.class, 'blob-btn']" aria-label="Interactive button">
         <slot></slot>
         <span class="blob-btn__inner">
             <span class="blob-btn__blobs">

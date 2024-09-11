@@ -1,22 +1,30 @@
 <script setup>
+import {defineProps, useAttrs} from 'vue';
 const props = defineProps({
     href: {
         type: String,
         require: true
     }
-})
+});
+
+const attrs = useAttrs();
+
 </script>
 
 <style lang="sass" scoped>
+*, *:before, *:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+    
 .btn:link,
 .btn:visited {
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 40px;
     display: inline-block;
-    border-radius: 15px;
     transition: all .2s;
-    position: absolute;    
+    position: absolute;  
 }
 
 .btn:hover {
@@ -30,9 +38,14 @@ const props = defineProps({
 }
 
 .btn-style {
+    border-radius: 15px;
     background-color:white;
     color: $txt-color;
     border: 5px solid $txt-color;
+    max-height: 5rem;
+    max-width: fit-content;
+    padding: 10px 30px;
+    font-size: xx-large;
 }
 
 .btn::after {
@@ -61,7 +74,7 @@ const props = defineProps({
 </style>
 
 <template>
-    <a :href="props.href" class="btn btn-style">
+    <a :href="props.href" v-bind="attrs" :class="['btn', 'btn-style']" :download="props.download ? '' : null">
         <slot></slot>
     </a>
 </template>
