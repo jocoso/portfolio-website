@@ -1,11 +1,11 @@
 import { useQuery } from '@apollo/client';
 
-const Home = () => {
+const Blog = () => {
     return (
         <main>
-
+            <h1>Blog</h1>
         </main>
     )
 };
 
-export default Home;
+export default Blog;
