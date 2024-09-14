@@ -2,8 +2,14 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './App.jsx';
-import Home from './pages/Home.jsx';
 import Error from './pages/Error.jsx';
+
+import About from './pages/About.jsx';
+import Art from './pages/Art.jsx';
+import Blog from './pages/Blog.jsx';
+import ContactMe from './pages/ContactMe.jsx';
+import Projects from './pages/Projects.jsx';
+
 
 const router = createBrowserRouter([
     {
@@ -13,8 +19,24 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <Home />,
+                element: <About />,
             },
+            {
+                path: '/projects',
+                element: <Projects />,
+            },
+            {
+                path: '/art',
+                element: <Art />,
+            },
+            {
+                path: '/blog',
+                element: <Blog />,
+            },
+            {
+                path: '/contact-me',
+                element: <ContactMe />,
+            }
         ],
     },
 ]);

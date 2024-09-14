@@ -1,11 +1,11 @@
 import { useQuery } from '@apollo/client';
 
-const Footer = () => {
+const Art = () => {
     return (
         <main>
-            <h1>Footer</h1>
+            <h1>My Art</h1>
         </main>
     )
 };
 
-export default Footer;
+export default Art;
