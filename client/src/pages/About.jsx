@@ -12,9 +12,8 @@ import Avatar from '../assets/portfolio-avatar-img.svg';
 const About = () => {
     return (
         <main>
-            <h1>About Me</h1>
-            <img src={Avatar} alt="" />
             <Title header={1}>About Me</Title>
+            <img src={Avatar} alt="" />
             <Paragraph>
                 My name is <span>Josh</span>. I am a developer, an artist and a teacher.
             </Paragraph>
