@@ -8,7 +8,6 @@ const ProjectList = ({ projects = [] }) => {
 
     return(
         <>
-            <h3>Projects</h3>
             <div>
                 {projects &&
                     projects.map((project) => {

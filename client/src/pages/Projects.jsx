@@ -1,6 +1,7 @@
 import { useQuery } from "@apollo/client";
 import ProjectList from "../components/ProjectList";
 import { QUERY_PROJECTS } from "../utils/queries";
+import Title from "../components/Title";
 
 const Projects = () => {
     const { loading, error, data } = useQuery(QUERY_PROJECTS);
@@ -10,6 +11,7 @@ const Projects = () => {
         <main>
             <div>
                 <div>
+                    <Title>Projects</Title>
                     {error && <div>Error: {error.message}</div>}
                     {loading ? (
                         <div>Loading...</div>
