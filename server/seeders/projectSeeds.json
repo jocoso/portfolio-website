@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Kraken",
+        "images":[
+            "upload/project-kraken-img-1.bmp",
+            "upload/project-kraken-img-2.bmp"
+        ],
+        "content": "Kraken is a dedicated version control system designed for artists to manage and track changes in their digital artworks. It offers a suite of commands that mimic traditional VCS operations but are tailored specifically for art file management."
+    },
+    {
+        "title": "RAWR",
+        "images": [
+            "upload/project-rawr-img-1.webp"
+        ],
+        "content": "Kitty Virtual Assistant is a virtual pet that help users with different tasks."
+    }
+]
