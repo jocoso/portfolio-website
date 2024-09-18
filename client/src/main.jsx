@@ -9,6 +9,8 @@ import Art from './pages/Art.jsx';
 import Blog from './pages/Blog.jsx';
 import ContactMe from './pages/ContactMe.jsx';
 import Projects from './pages/Projects.jsx';
+import SinglePost from './pages/SinglePost.jsx';
+import SingleProject from './pages/SingleProject.jsx';
 
 
 const router = createBrowserRouter([
@@ -36,6 +38,14 @@ const router = createBrowserRouter([
             {
                 path: '/contact-me',
                 element: <ContactMe />,
+            },
+            {
+                path: '/post/:postId',
+                element: <SinglePost />,
+            }, 
+            {
+                path: '/projects/:projectId',
+                element: <SingleProject />,
             }
         ],
     },

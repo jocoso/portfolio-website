@@ -1,6 +1,3 @@
-// Libraries
-import { useQuery } from '@apollo/client';
-
 // Components
 import Title from '../components/Title';
 import Paragraph from '../components/Paragraph';

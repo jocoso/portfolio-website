@@ -1,11 +1,15 @@
-import { useQuery } from '@apollo/client';
+import ContactMeForm from "../components/ContactMeForm";
 
-const AboutMe = () => {
+const Home = () => {
     return (
         <main>
-            <h1>About Me</h1>
+            <div>
+                <div style={{ border: "1px dotted #1a1a1a" }}>
+                    <ContactMeForm />
+                </div>
+            </div>
         </main>
-    )
+    );
 };
 
-export default AboutMe;
+export default Home;
