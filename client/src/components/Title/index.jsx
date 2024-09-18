@@ -1,4 +1,3 @@
-import { useQuery } from '@apollo/client';
 
 // Replaces h1, h2, h3, h4, h5, h6 to keep the a general theme
 const Title = ({ children, style={}, className='' }) => {

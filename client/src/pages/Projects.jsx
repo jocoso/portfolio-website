@@ -1,6 +1,10 @@
 import { useQuery } from "@apollo/client";
-import ProjectList from "../components/ProjectList";
+
+import QueryList from "../components/QueryList";
+import CozyProject from "../components/CozyProject";
+
 import { QUERY_PROJECTS } from "../utils/queries";
+import Title from "../components/Title";
 
 const Projects = () => {
     const { loading, error, data } = useQuery(QUERY_PROJECTS);
@@ -8,20 +12,26 @@ const Projects = () => {
 
     return (
         <main>
-            <div>
+            <Title>Projects</Title>
+            {error && (
                 <div>
-                    {error && <div>Error: {error.message}</div>}
-                    {loading ? (
-                        <div>Loading...</div>
-                    ) : (
-                        projects.length > 0 ? (
-                        <ProjectList projects={projects} />
-                        ) : (
-                            <div>No projects found.</div>
-                        )
-                    )}
+                    <p>Error: {error.message}</p>
+                    {/* Optionally provide more helpful messaging */}
+                    <button onClick={() => window.location.reload()}>
+                        Retry
+                    </button>
                 </div>
-            </div>
+            )}
+            {loading ? (
+                <div>
+                    <p>Loading...</p>
+                    {/* You can use a spinner or a skeleton loader here for better UX */}
+                </div>
+            ) : projects.length > 0 ? (
+                <QueryList items={projects} Component={CozyProject} />
+            ) : (
+                <div>No projects found. Please check back later!</div>
+            )}
         </main>
     );
 };
