@@ -12,7 +12,7 @@ const Projects = () => {
 
     return (
         <main className="flex flex-col">
-            <Title className="w-full text-center mt-36">Projects</Title>
+            <Title className="w-full text-center mt-32 mb-10">Projects</Title>
             <div>
                 {error && (
                     <div>
@@ -31,14 +31,13 @@ const Projects = () => {
                 ) : projects.length > 0 ? (
                     <div
                         className=" grid 
-                                    grid-cols-1 
-                                    sm:grid-cols-2 
-                                    md:grid-cols-3 
-                                    justify-items-center 
+                                    grid-cols-autofill-400 
+                                    grid-rows-auto
                                     text-center 
                                     w-full 
                                     h-max 
-                                    gap-1
+                                    gap-10
+                                    justify-center
                                     grid-flow-col-dense"
                     >
                         <QueryList items={projects} Component={CozyProject} />

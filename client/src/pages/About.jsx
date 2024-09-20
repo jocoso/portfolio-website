@@ -15,7 +15,7 @@ const About = () => {
             </div>
             <div className="mx-auto text-center pt-[50%] w-8/12">
                 <Title className="text-center">About Me</Title>
-                <Paragraph>
+                <Paragraph className="text-4xl">
                     My name is <span className="text-meditation">Josh</span>. I am a developer, an artist
                     and a teacher.
                 </Paragraph>

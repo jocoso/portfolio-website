@@ -8,9 +8,9 @@ const Title = ({ children, style = {}, className = "", tier = 1 }) => {
         "font-ramaraja text-5xl text-darkbrown", // h5
         "font-ramaraja text-4xl text-darkbrown", // h6
     ];
-    const isValid = tier < headers.length && tier > 0;
-    const header = `${className} ${headers[isValid ? tier - 1 : 0]}`;
-    console.log(header);
+    const isValid = tier <= headers.length && tier > 0; // Valid if tier 0 <= tier <= headers.length
+    const header = `${className} ${headers[isValid ? tier - 1 : 0]}`; // Safe to do thanks to previous line
+
     return (
         <div style={style} className={header}>
             {children}

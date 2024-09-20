@@ -13,11 +13,36 @@ const CozyProject = ({ data }) => {
             : text;
     };
     return (
-        <Link to={`/projects/${_id}`} className="w-8/12 col-span-1">
-            <div className="min-h-full w-full p-6 bg-primary border border-darkbrown rounded-lg shadow-lg flex flex-col justify-between transition transform hover:scale-105 hover:shadow-2xl">
-                <Title className="my-3" tier={5}>{title}</Title>
-                <CozyImage className="" uri={logoUri || "https://via.placeholder.com/150"} alt={title} />
-                <Paragraph className="text-lg my-5">{truncatedText(content)}</Paragraph>
+        <Link
+            to={`/projects/${_id}`}
+            className="w-full h-auto min-h-[600px] text-center align-middle"
+        >
+            {/* Card */}
+            <div className="flex flex-col h-full w-full p-3 bg-primary border-8 border-opacity-80 border-darkbrown rounded-3xl shadow-lg justify-between overflow-hidden transition transform hover:scale-105 hover:shadow-2xl shadow-black">
+                {/* Title */}
+                <div className="h-1/6 w-full flex justify-center self-start overflow-hidden">
+                    <div className="border-4 h-2/3 border-darkbrown  w-full rounded-full pt-2 flex items-center">
+                        <Title className="ml-10 text-center max-h-full max-w-full" tier={6}>
+                            {title}
+                        </Title>
+                    </div>
+                </div>
+
+                {/* Image / Logo */}
+                <div className="h-3/6 w-full flex justify-center items-center overflow-hidden">
+                    <CozyImage
+                        className="max-h-full max-w-full object-contain"
+                        uri={logoUri}
+                        alt={title}
+                    />
+                </div>
+
+                {/* Description */}
+                <div className="h-2/6 w-full flex justify-center items-center overflow-hidden">
+                    <Paragraph className="text-3xl max-h-full max-w-full">
+                        {truncatedText(content)}
+                    </Paragraph>
+                </div>
             </div>
         </Link>
     );
