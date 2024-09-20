@@ -6,23 +6,24 @@ const CozyButton = ({
     onClick,
     download = false,
 }) => {
+    const theme = "bg-primary font-ramaraja text-[3.0096rem] text-darkBrown py-3 px-8 rounded-full shadow-lg font-semibold hover:shadow-2xl focus:right-4 focus:ring-green-200 transition whitespace-nowrap";
     return (
-        <main>
+        <div className={className}>
             {download ? (
                 <a
                     style={style}
-                    className={className}
+                    className={theme}
                     onClick={onClick}
                     download
                 >
                     {children}
                 </a>
             ) : (
-                <a style={style} className={className} onClick={onClick}>
+                <a style={style} className={theme} onClick={onClick}>
                     {children}
                 </a>
             )}
-        </main>
+        </div>
     );
 };
 

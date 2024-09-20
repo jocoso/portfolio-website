@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import QueryList from "../components/QueryList";
 import CozyComment from "../components/CozyComment";
@@ -28,6 +28,7 @@ const SinglePost = () => {
 
     return (
         <div>
+            <Link to={`/projects/`}> {`< Back`} </Link>
             <h3>
                 {title} written by {author.name || "Unknown Author"}
                 <br />

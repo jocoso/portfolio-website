@@ -12,6 +12,7 @@ import Projects from './pages/Projects.jsx';
 import SinglePost from './pages/SinglePost.jsx';
 import SingleProject from './pages/SingleProject.jsx';
 
+import "./main.css"
 
 const router = createBrowserRouter([
     {
