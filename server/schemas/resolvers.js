@@ -154,9 +154,9 @@ const resolvers = {
             }
         },
 
-        addArt: async (parent, { image, description }) => {
+        addArt: async (parent, { name, image, description }) => {
             try {
-                return await Art.create({ image, description });
+                return await Art.create({ name, image, description });
             } catch (err) {
                 console.error("Error adding art:", err);
                 throw new Error("Failed to add art");

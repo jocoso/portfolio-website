@@ -26,11 +26,13 @@ export const ADD_PROJECT = gql`
 
 export const ADD_ART = gql`
     mutation addArt(
+        $name: String
         $image: String!
         $description: String
     ) {
-        addArt(image: $image, description: $description) {
+        addArt(name: $name, image: $image, description: $description) {
             _id
+            name
             image
             description
         }

@@ -42,6 +42,7 @@ export const QUERY_ARTS = gql`
     query allArts {
         arts {
             _id
+            name
             image
             description
         }
@@ -51,6 +52,7 @@ export const QUERY_SINGLE_ART = gql`
     query singleArt($artId: ID!) {
         art(artId: $artId) {
             _id
+            name
             image
             description
         }

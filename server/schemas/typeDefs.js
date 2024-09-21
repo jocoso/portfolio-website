@@ -15,6 +15,7 @@ const typeDefs = `
 
     type Art {
         _id: ID!
+        name: String
         image: String!
         description: String
     }
@@ -72,7 +73,7 @@ const typeDefs = `
         addProject(title: String!, images: [String]!, content: String!): Project
         removeProject(projectId: ID!): Project
 
-        addArt(image: String!, description: String): Art
+        addArt(name: String, image: String!, description: String): Art
         removeArt(artId: ID!): Art
 
         addPost(title: String!, content: String, comments: [blogCommentInput], author: ID!, datePublished: Date!): Post

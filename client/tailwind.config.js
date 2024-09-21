@@ -6,7 +6,7 @@ module.exports = {
         extend: {
             gridTemplateColumns: {
                 'autofill-400': 'repeat(auto-fill, 425px)',
-                'fill-remaining': '1fr'
+                'fill-remaining': '1fr',
             },
             gridTemplateRows: {
                 '650': '650px',

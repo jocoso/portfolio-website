@@ -1,6 +1,9 @@
 const { Schema, model } = require("mongoose");
 
 const artSchema = new Schema({
+    name: {
+        type: String,
+    },
     image: {
         type: String,
         unique: true,
