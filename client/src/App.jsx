@@ -42,15 +42,10 @@ function App() {
     return (
         <ApolloProvider client={client}>
             <div className="min-h-screen min-w-screen flex flex-col bg-background">
-                {/* Header Section */}
-                <Header items={navItems}/>
-
-                {/* Main Content Section */}
+                <Header items={navItems} />
                 <main className="flex-grow w-[90%] max-w-7xl mx-auto h-full py-10">
                     <Outlet />
                 </main>
-
-                {/* Footer Section */}
                 <Footer />
             </div>
         </ApolloProvider>

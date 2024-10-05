@@ -5,14 +5,14 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
     plugins: [react()],
     css: {
-        postcss: './postcss.config.js'
+        postcss: "./postcss.config.js",
     },
     server: {
-        port: 3000,
-        open: true,
+        port: 3000, // Vite dev server port
+        open: true, // Automatically open the browser on server start
         proxy: {
             "/graphql": {
-                target: "http://localhost:8000",
+                target: "http://localhost:3001", // Correct GraphQL server port
                 changeOrigin: true,
                 secure: false,
             },
