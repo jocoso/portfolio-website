@@ -2,11 +2,12 @@ const express = require("express");
 const { ApolloServer } = require("@apollo/server");
 const { expressMiddleware } = require("@apollo/server/express4");
 const path = require("path");
+require("dotenv").config();
 
 const { typeDefs, resolvers } = require("./schemas");
 const db = require("./config/connection");
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 3001; // Consistent with the .env file
 const app = express();
 const server = new ApolloServer({
     typeDefs,
@@ -28,6 +29,7 @@ const startApolloServer = async () => {
             });
         }
 
+        // Use Apollo GraphQL middleware
         app.use("/graphql", expressMiddleware(server));
 
         db.once("open", () => {
@@ -37,7 +39,7 @@ const startApolloServer = async () => {
             });
         });
     } catch (err) {
-        console.error("Error starting server:", error);
+        console.error("Error starting server:", err); // Corrected error logging
     }
 };
 

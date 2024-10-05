@@ -1,12 +1,17 @@
-import { useQuery } from '@apollo/client';
+import { twMerge } from "tailwind-merge";
 
-// Replaces p to keep style consistent
-const Paragraph = ({ children, style={}, className='' }) => {
+const Paragraph = ({ children, style = {}, className = "" }) => {
     return (
-        <main>
-            <p style={ style } className={ className }>{ children }</p>
-        </main>
-    )
+        <p
+            style={style}
+            className={twMerge(
+                "font-normal text-darkBrown font-ramaraja",
+                className
+            )}
+        >
+            {children}
+        </p>
+    );
 };
 
 export default Paragraph;

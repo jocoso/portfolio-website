@@ -17,6 +17,7 @@
         "concurrently": "^8.2.0"
     },
     "dependencies": {
-        "graphql": "^16.9.0"
+        "graphql": "^16.9.0",
+        "tailwind-merge": "^2.5.2"
     }
 }

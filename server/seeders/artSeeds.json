@@ -1,34 +1,42 @@
 [
     {
         "image": "upload/art-piratemage-img.bmp",
-        "description": "A mage pirate."
+        "description": "A mage pirate.",
+        "name": "Sorcerous Buccaneer"
     },
     {
         "image": "upload/art-lolitadoll-img.bmp",
-        "description": "A Doll dressed in Lolita fashion."
+        "description": "A Doll dressed in Lolita fashion.",
+        "name": "Lolita Doll"
     },
     {
         "image": "upload/art-avatarface-img.bmp",
-        "description": "Avatar."
+        "description": "Avatar.",
+        "name": "Spirit of the Avatar"
     },
     {
         "image": "upload/art-cains-img.bmp",
-        "description": "Cains"
+        "description": "Cains",
+        "name": "Cains' Brotherhood"
     },
     {
         "image": "upload/art-dollmakers-img.bmp",
-        "description": "A priest walking down a church hallway. Behind him, there is an Eldrich terror."
+        "description": "A priest walking down a church hallway. Behind him, there is an Eldrich terror.",
+        "name": "The Priest and the Terror"
     },
     {
         "image": "upload/art-gwand-img.bmp",
-        "description": "A gun and a wand combined"
+        "description": "A gun and a wand combined",
+        "name": "Gunwand"
     },
     {
         "image": "upload/art-liesacrosstheriver-img.gif",
-        "description": "A drawing of a boy in the beach. His face is scratched and the scratches move."
+        "description": "A drawing of a boy in the beach. His face is scratched and the scratches move.",
+        "name": "The Marked Boy by the Sea"
     },
     {
         "image": "upload/art-magicalbullet-img.bmp",
-        "description": "A 'bullet' made out of glass with a red liquid inside."
+        "description": "A 'bullet' made out of glass with a red liquid inside.",
+        "name": "Crimson Glass Bullet"
     }
 ]
