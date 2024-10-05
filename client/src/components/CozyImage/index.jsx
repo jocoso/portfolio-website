@@ -1,22 +1,30 @@
-import React from "react";
+import { twMerge } from "tailwind-merge";
 
-const CozyImage = ({ className = "", id, style, uri, altText }) => {
+const CozyImage = ({
+    className = "",
+    id,
+    style,
+    uri,
+    altText = "Image",
+    fallbackUri = "https://via.placeholder.com/150",
+}) => {
+    const styleClass = twMerge(
+        "w-48 h-48 md:w-64 md:h-64 lg:w-96 lg:h-96",
+        className
+    );
+
     return (
-        <div
+        <img
             id={id}
-            className={`${className}`}
-            style={{
-                ...style,
-                backgroundImage: `url(${uri || "https://via.placeholder.com/150"})`,
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: style?.backgroundPosition || "center",
-                backgroundSize: style?.backgroundSize || "cover",
-                width: style?.width || '100%',
-                height: style?.height || '100%',
-                display: "block"
+            className={styleClass}
+            style={style}
+            src={uri || fallbackUri}
+            onError={(e) => {
+                e.target.onerror = null; // prevents infinite looping
+                e.target.src = fallbackUri;
             }}
-            aria-label={altText}
-        ></div>
+            alt={altText}
+        />
     );
 };
 

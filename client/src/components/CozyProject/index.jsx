@@ -5,107 +5,64 @@ import { Link } from "react-router-dom";
 
 const CozyProject = ({ data }) => {
     const { _id, title, content, images } = data;
-    const logoUri = `/assets/${images[0]}`;
+    const logoUri = images?.[0] ? `/assets/${images[0]}` : "https://via.placeholder.com/150"; // Fallback for image
 
-    const truncatedText = (text) => {
-        return text.length > 100
-            ? text.split(" ").slice(0, 12).join(" ") + "..."
-            : text;
-    };
     return (
         <Link
             to={`/projects/${_id}`}
-            className="w-full h-auto min-h-[600px] text-center align-middle"
+            aria-label={`View project titled ${title}`}
+            className="w-full h-auto text-center align-middle"
         >
             {/* Card */}
-            <div className="
-                flex 
-                flex-col 
-                h-full 
-                w-full 
-                p-3 
-                bg-primary 
-                border-8 
-                border-opacity-80 
-                border-darkbrown 
-                rounded-3xl 
-                shadow-lg 
-                justify-between 
-                overflow-hidden 
-                transition 
-                transform 
-                hover:scale-105 
-                hover:shadow-2xl 
-                shadow-black
-            ">
-                
-                {/* Title */}
-                <div className="
-                    h-1/6 
-                    w-full 
+            <article
+                className="
                     flex 
-                    justify-center 
-                    self-start 
-                    overflow-hidden
-                ">
-
-                    {/* Border Decor */}
-                    <div className="
-                        border-4 h-2/3 
-                        bg-darkbrown  
-                        border-accent
-                        w-full 
-                        rounded-full 
-                        pt-2 
-                        flex 
-                        items-center
-                    ">
-
-                        <Title
-                            className="ml-10 text-center max-h-full max-w-full text-accent"
-                            tier={6}
-                        >
+                    flex-col 
+                    h-full 
+                    w-full 
+                    p-3 
+                    bg-primary 
+                    border-8 
+                    border-opacity-80 
+                    border-darkbrown 
+                    rounded-3xl 
+                    shadow-lg 
+                    justify-between 
+                    overflow-hidden 
+                    transition 
+                    transform 
+                    hover:scale-105 
+                    hover:shadow-2xl 
+                    shadow-black
+                    min-h-[600px]
+                    md:min-h-[500px]
+                "
+            >
+                {/* Title */}
+                <div className="h-auto w-full flex justify-center items-center overflow-hidden mb-3">
+                    <div className="border-4 h-16 bg-darkbrown border-accent w-full rounded-full flex items-center justify-center">
+                        <h2 className="text-center text-accent text-2xl md:text-3xl">
                             {title}
-                        </Title>
-                    
+                        </h2>
                     </div>
-
                 </div>
 
                 {/* Image / Logo */}
-                <div className="
-                    h-3/6 
-                    w-full 
-                    flex 
-                    justify-center 
-                    items-center 
-                    overflow-hidden
-                ">
-
+                <div className="h-auto w-full flex justify-center items-center overflow-hidden mb-4">
                     <CozyImage
-                        className="max-h-full max-w-full object-contain"
+                        className="max-h-48 max-w-48 object-contain"
                         uri={logoUri}
                         alt={title}
                     />
-
                 </div>
 
                 {/* Description */}
-                <div className="
-                    h-2/6 
-                    w-full 
-                    flex 
-                    justify-center 
-                    items-center 
-                    overflow-hidden
-                ">
-
-                    <Paragraph className="text-3xl max-h-full max-w-full">
-                        {truncatedText(content)}
+                <div className="h-auto w-full flex justify-center items-center overflow-hidden">
+                    <Paragraph className="text-lg md:text-xl line-clamp-3">
+                        {content}
                     </Paragraph>
-
                 </div>
-            </div>
+            </article>
         </Link>
     );
 };
