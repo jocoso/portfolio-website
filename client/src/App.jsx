@@ -8,7 +8,7 @@ import "./App.css";
 
 const client = new ApolloClient({
     uri: process.env.NODE_ENV === 'production'
-        ? 'https://my-portfolio-server.onrender.com/graphql'  // Your backend URL
+        ? process.env.PRODUCTION_URL  // Your backend URL
         : 'http://localhost:3001/graphql',  // Local development fallback
     cache: new InMemoryCache(),
 });
