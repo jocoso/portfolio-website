@@ -22,35 +22,14 @@ const startApolloServer = async () => {
         await server.start();
 
         // Apply CORS middleware globally
-        app.use(
-            cors({
-                origin: [process.env.FRONTEND_URL || "https://portfolio-website-w0q7.onrender.com", "http://localhost:3000"], // Allow requests from frontend URL
-                credentials: true,
-                allowedHeaders: ["Content-Type", "Authorization"], // Ensure the correct headers are allowed
-            })
-        );
-
-        app.use(function (req, res, next) {
-            res.header("Access-Control-Allow-Origin", "*");
-            res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
-            res.header(
-                "Access-Control-Allow-Headers",
-                "Origin, X-Requested-With, Content-Type, Accept"
-            );
-            next();
-        });
+        app.use(cors());
 
         // Body parsing middleware
         app.use(express.urlencoded({ extended: false }));
         app.use(express.json());
 
         // Apply Apollo GraphQL middleware
-        app.use(
-            "/graphql",
-            expressMiddleware(server, {
-                context: async ({ req }) => ({ req }),
-            })
-        );
+        app.use("/graphql", expressMiddleware(server));
 
         // Connect to the database and start the server
         db.once("open", () => {
