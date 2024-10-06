@@ -5,15 +5,16 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
     plugins: [react()],
     css: {
-        postcss: "./postcss.config.cjs",  // Corrected path to PostCSS config
+        postcss: "./postcss.config.cjs", // Corrected path to PostCSS config
     },
     server: {
-        port: process.env.PORT || 3000,  // Vite development server port
-        host: '0.0.0.0',
-        open: true,  // Automatically open the browser on server start
+        port: process.env.PORT || 3000, // Vite development server port
+        host: "0.0.0.0",
+        open: true, // Automatically open the browser on server start
         proxy: {
             "/graphql": {
-                target: "http://localhost:3001",  // Proxy for GraphQL server during development
+                target:
+                    process.env.VITE_PRODUCTION_URL || "http://localhost:3001", // Proxy for GraphQL server during development
                 changeOrigin: true,
                 secure: false,
             },
@@ -21,11 +22,11 @@ export default defineConfig({
     },
     // Build configuration, ensuring correct output and optimized bundle
     build: {
-        outDir: "dist",  // Build output directory
+        outDir: "dist", // Build output directory
         rollupOptions: {
             output: {
                 manualChunks: {
-                    vendor: ["react", "react-dom"],  // Split out vendor code for better caching
+                    vendor: ["react", "react-dom"], // Split out vendor code for better caching
                 },
             },
         },
@@ -36,7 +37,12 @@ export default defineConfig({
     },
     resolve: {
         alias: {
-            '@': '/src',  // Aliases for cleaner imports (optional)
+            "@": "/src", // Aliases for cleaner imports (optional)
         },
+    },
+    define: {
+        "process.env.VITE_PRODUCTION_URL": JSON.stringify(
+            process.env.VITE_PRODUCTION_URL
+        ), // Define VITE_PRODUCTION_URL
     },
 });
