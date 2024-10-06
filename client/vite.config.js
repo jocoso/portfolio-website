@@ -1,49 +1,26 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [react()],
-    css: {
-        postcss: "./postcss.config.cjs", // Corrected path to PostCSS config
-    },
     server: {
-        port: process.env.PORT || 3000, // Vite development server port
-        host: "0.0.0.0",
-        open: true, // Automatically open the browser on server start
+        port: process.env.PORT || 3000,
+        open: true,
+        host: true,
+        // Important for MERN Setup: Here we're establishing a relationship between our two development servers.
+        // We are pointing our Vite client-side development server to proxy API requests to our server-side Node server at port 3001.
+        // Without this line, API calls would attempt to query for data from the current domain: localhost:3000
         proxy: {
             "/graphql": {
-                target: process.env.VITE_PRODUCTION_URL || "http://localhost:3001", // Proxy for GraphQL server during development
+                target:
+                    process.env.VITE_API_URL || "http://localhost:3001/graphql",
                 changeOrigin: true,
                 secure: false,
             },
         },
     },
-    // Build configuration, ensuring correct output and optimized bundle
-    build: {
-        outDir: "dist", // Build output directory
-        rollupOptions: {
-            output: {
-                manualChunks: {
-                    vendor: ["react", "react-dom"], // Split out vendor code for better caching
-                },
-            },
-        },
-    },
-    // Preview configuration for testing production build locally
-    preview: {
-        port: 5000, // Port for preview server (adjust as necessary)
-    },
-    resolve: {
-        alias: {
-            "@": "/src", // Aliases for cleaner imports (optional)
-        },
-    },
-    define: {
-        "process.env.VITE_PRODUCTION_URL": JSON.stringify(
-            process.env.VITE_PRODUCTION_URL
-        ), // Define VITE_PRODUCTION_URL for client-side access
-    },
 });
-
-
