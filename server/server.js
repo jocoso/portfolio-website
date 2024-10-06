@@ -24,7 +24,7 @@ const startApolloServer = async () => {
         // Apply CORS middleware globally
         app.use(
             cors({
-                origin: process.env.FRONTEND_URL || "http://localhost:3000", // Allow requests from frontend URL
+                origin: [process.env.FRONTEND_URL || "https://portfolio-website-w0q7.onrender.com", "http://localhost:3000"], // Allow requests from frontend URL
                 credentials: true,
                 allowedHeaders: ["Content-Type", "Authorization"], // Ensure the correct headers are allowed
             })
