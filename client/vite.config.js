@@ -8,7 +8,8 @@ export default defineConfig({
         postcss: "./postcss.config.cjs",  // Corrected path to PostCSS config
     },
     server: {
-        port: 3000,  // Vite development server port
+        port: process.env.PORT || 3000,  // Vite development server port
+        host: '0.0.0.0',
         open: true,  // Automatically open the browser on server start
         proxy: {
             "/graphql": {
