@@ -34,15 +34,6 @@ const startApolloServer = async () => {
         app.use(express.urlencoded({ extended: false }));
         app.use(express.json());
 
-        // Remove serving the frontend from backend if the frontend is deployed separately
-        if (process.env.NODE_ENV === "production") {
-            app.use(express.static(path.join(__dirname, "../client/dist")));
-
-            app.get("*", (req, res) => {
-                res.sendFile(path.join(__dirname, "../client/dist/index.html"));
-            });
-        }
-
         // Apply Apollo GraphQL middleware
         app.use(
             "/graphql",
