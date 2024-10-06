@@ -11,6 +11,7 @@ const client = new ApolloClient({
         ? import.meta.env.VITE_PRODUCTION_URL  // Your backend URL
         : 'http://localhost:3001/graphql',  // Local development fallback
     cache: new InMemoryCache(),
+    credentials: 'include',
 });
 
 function App() {
