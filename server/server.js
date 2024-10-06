@@ -34,7 +34,14 @@ const startApolloServer = async () => {
         }
 
         // Use Apollo GraphQL middleware
-        app.use("/graphql", expressMiddleware(server));
+        app.use("/graphql", expressMiddleware(server, {
+            context: async ({ req }) => ({ req }),
+            cors: {
+                origin: process.env.FRONTEND_URL || 'https://localhost:3000',
+                credentials: true,
+                allowedHeaders: ['Content-Type', 'Authorization'],
+            }
+        }));
 
         db.once("open", () => {
             app.listen(PORT, () => {
