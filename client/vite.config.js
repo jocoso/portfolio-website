@@ -13,8 +13,7 @@ export default defineConfig({
         open: true, // Automatically open the browser on server start
         proxy: {
             "/graphql": {
-                target:
-                    process.env.VITE_PRODUCTION_URL || "http://localhost:3001", // Proxy for GraphQL server during development
+                target: process.env.VITE_PRODUCTION_URL || "http://localhost:3001", // Proxy for GraphQL server during development
                 changeOrigin: true,
                 secure: false,
             },
@@ -43,6 +42,6 @@ export default defineConfig({
     define: {
         "process.env.VITE_PRODUCTION_URL": JSON.stringify(
             process.env.VITE_PRODUCTION_URL
-        ), // Define VITE_PRODUCTION_URL
+        ), // Define VITE_PRODUCTION_URL for client-side access
     },
 });
