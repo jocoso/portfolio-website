@@ -22,7 +22,8 @@ const startApolloServer = async () => {
         app.use(express.urlencoded({ extended: false }));
         app.use(express.json());
         app.use(cors({
-            origin: process.env.FRONTEND_URL || 'http://localhost:3000'
+            origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+            credentials: true,
         }));
         if (process.env.NODE_ENV === "production") {
             app.use(express.static(path.join(__dirname, "../client/dist")));
