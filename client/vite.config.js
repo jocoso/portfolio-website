@@ -5,7 +5,7 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
     plugins: [react()],
     css: {
-        postcss: "./postcss.config.js",  // Ensure correct path to PostCSS config
+        postcss: "./postcss.config.cjs",  // Corrected path to PostCSS config
     },
     server: {
         port: 3000,  // Vite development server port
