@@ -22,7 +22,10 @@ const startApolloServer = async () => {
         await server.start();
 
         // Apply CORS middleware globally
-        app.use(cors());
+        app.use(cors({
+            origin: process.env.VITE_PRODUCTION_URL,
+            credentials: true
+        }));
 
         // Body parsing middleware
         app.use(express.urlencoded({ extended: false }));
