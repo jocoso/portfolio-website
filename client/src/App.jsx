@@ -8,7 +8,7 @@ import "./App.css";
 
 const client = new ApolloClient({
     // Dynamically switch between local and production backend URLs
-    uri: import.meta.env.VITE_BACKEND_URL || 'https://your-backend-deployed-url/graphql',
+    uri: import.meta.env.VITE_BACKEND_URL || 'https://portfolio-website-w0q7.onrender.com/graphql',
     cache: new InMemoryCache(),
 });
 
