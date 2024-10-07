@@ -8,7 +8,7 @@ dotenv.config();
 export default defineConfig({
     plugins: [react()],
     server: {
-        port: process.env.PORT || 3000,
+        port: import.meta.env.VITE_PORT || 3000,
         open: true,
         host: true,
         // Important for MERN Setup: Here we're establishing a relationship between our two development servers.
@@ -17,7 +17,7 @@ export default defineConfig({
         proxy: {
             "/graphql": {
                 target:
-                    process.env.VITE_API_URL ,
+                    import.meta.env.VITE_API_URL ,
                 changeOrigin: true,
                 secure: false,
             },
