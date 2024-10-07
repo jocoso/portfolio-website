@@ -7,11 +7,9 @@ import Footer from "./components/Footer";
 import "./App.css";
 
 const client = new ApolloClient({
-    uri: import.meta.env.MODE === 'production'
-        ? import.meta.env.VITE_PRODUCTION_URL  // Your backend URL
-        : 'http://localhost:3001/graphql',  // Local development fallback
+    // Dynamically switch between local and production backend URLs
+    uri: process.env.VITE_BACKEND_URL || 'https://your-backend-deployed-url/graphql',
     cache: new InMemoryCache(),
-    credentials: 'include',
 });
 
 function App() {

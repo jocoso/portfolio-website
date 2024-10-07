@@ -2,7 +2,6 @@ const express = require("express");
 const { ApolloServer } = require("@apollo/server");
 const { expressMiddleware } = require("@apollo/server/express4");
 const cors = require("cors");
-const path = require("path");
 require("dotenv").config();
 
 const { typeDefs, resolvers } = require("./schemas");
@@ -16,13 +15,14 @@ const server = new ApolloServer({
 
 const app = express();
 
+// Apply CORS globally to allow frontend requests from specified origins
 app.use(
     cors({
         origin: [
-            "http://localhost:3000",
-            process.env.VITE_PRODUCTION_URL,
+            "http://localhost:3000", // For local development
+            process.env.VITE_PRODUCTION_URL, // For production, the frontend URL (use env variable)
         ],
-        credentials: true,
+        credentials: true, // Allow credentials (e.g., cookies, authorization headers)
     })
 );
 
@@ -31,9 +31,7 @@ const startApolloServer = async () => {
         // Start the Apollo server
         await server.start();
 
-        // Apply CORS middleware globally
-
-        // Body parsing middleware
+        // Body parsing middleware for Express
         app.use(express.urlencoded({ extended: false }));
         app.use(express.json());
 
@@ -47,7 +45,7 @@ const startApolloServer = async () => {
             });
         });
     } catch (err) {
-        console.error("Error starting server:", err); // Error logging
+        console.error("Error starting server:", err); // Error logging for debugging
     }
 };
 
