@@ -16,16 +16,22 @@ const server = new ApolloServer({
 
 const app = express();
 
+app.use(
+    cors({
+        origin: [
+            "http://localhost:3000",
+            process.env.VITE_PRODUCTION_URL,
+        ],
+        credentials: true,
+    })
+);
+
 const startApolloServer = async () => {
     try {
         // Start the Apollo server
         await server.start();
 
         // Apply CORS middleware globally
-        app.use(cors({
-            origin: process.env.VITE_PRODUCTION_URL,
-            credentials: true
-        }));
 
         // Body parsing middleware
         app.use(express.urlencoded({ extended: false }));
