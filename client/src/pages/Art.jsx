@@ -11,18 +11,13 @@ const Art = () => {
     const { loading, error, data } = useQuery(QUERY_ARTS);
     const arts = data?.arts || [];
 
-    const [hoveredItem, setHoveredItem] = useState(null); // Merge hover state into one
+    const [hoveredItem, setHoveredItem] = useState(null);
     const [isPreviewing, setPreviewing] = useState(false);
 
-    // Handle hover and preview actions in a single state update
-    const handleHover = (item) => {
-        setHoveredItem(item);
-    };
+    const handleHover = (item) => setHoveredItem(item);
 
     const handleLeave = () => {
-        if (!isPreviewing) {
-            setHoveredItem(null);
-        }
+        if (!isPreviewing) setHoveredItem(null);
     };
 
     const handleClick = () => {
@@ -33,12 +28,9 @@ const Art = () => {
     };
 
     useEffect(() => {
-        if (isPreviewing) {
-            setHoveredItem(null);
-        }
+        if (isPreviewing) setHoveredItem(null);
     }, [isPreviewing]);
 
-    // Memoize the preview template to prevent unnecessary re-renders
     const previewTemplate = useMemo(() => {
         if (!hoveredItem) return null;
 
@@ -61,71 +53,69 @@ const Art = () => {
         );
     }, [hoveredItem]);
 
+    if (loading) {
+        return <div className="text-center">Loading...</div>;
+    }
+
+    if (error) {
+        return (
+            <div className="text-center text-red-600">
+                <p>Error: {error.message}</p>
+                <button
+                    className="bg-blue-500 text-white p-2 mt-4"
+                    onClick={() => window.location.reload()}
+                >
+                    Retry
+                </button>
+            </div>
+        );
+    }
+
     return (
         <main className="p-8">
-            {loading ? (
-                <div className="text-center">Loading...</div>
-            ) : (
-                <div className="mt-16">
-                    <Title className="text-center">Art</Title>
-                    {error && (
-                        <div className="text-center text-red-600">
-                            <p>Error: {error.message}</p>
-                            <button
-                                className="bg-blue-500 text-white p-2 mt-4"
-                                onClick={() => window.location.reload()}
-                            >
-                                Retry
-                            </button>
+            <div className="mt-16">
+                <Title className="text-center">Art</Title>
+                {arts.length > 0 ? (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <QueryList
+                            items={arts}
+                            Component={CozyArt}
+                            className="grid grid-cols-3 gap-4"
+                            onMouseEnter={handleHover}
+                            onMouseLeave={handleLeave}
+                            onClick={handleClick}
+                        />
+                        <div className="flex flex-col justify-center items-center text-center">
+                            {hoveredItem ? (
+                                <>
+                                    <Title tier={3}>
+                                        {hoveredItem.name || "Untitled"}
+                                    </Title>
+                                    <Paragraph className="text-2xl md:text-3xl mt-4">
+                                        {hoveredItem.description ||
+                                            "No description available."}
+                                    </Paragraph>
+                                </>
+                            ) : (
+                                <>
+                                    <Paragraph className="text-2xl md:text-3xl">
+                                        Hover over any image to see its
+                                        description.
+                                    </Paragraph>
+                                    <Paragraph className="text-2xl md:text-3xl">
+                                        Click to preview the image.
+                                    </Paragraph>
+                                </>
+                            )}
                         </div>
-                    )}
-                    {arts.length > 0 ? (
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            {/* Artwork Grid */}
-                            <QueryList
-                                items={arts}
-                                Component={CozyArt}
-                                className="grid grid-cols-3 gap-4"
-                                onMouseEnter={handleHover}
-                                onMouseLeave={handleLeave}
-                                onClick={handleClick}
-                            />
-
-                            {/* Hovered Image Details */}
-                            <div className="flex flex-col justify-center items-center text-center">
-                                {hoveredItem ? (
-                                    <div>
-                                        <Title tier={3}>
-                                            {hoveredItem?.name || "Untitled"}
-                                        </Title>
-                                        <Paragraph className="text-2xl md:text-3xl mt-4">
-                                            {hoveredItem?.description ||
-                                                "No description available."}
-                                        </Paragraph>
-                                    </div>
-                                ) : (
-                                    <div>
-                                        <Paragraph className="text-2xl md:text-3xl">
-                                            Hover over any image to see its
-                                            description.
-                                        </Paragraph>
-                                        <Paragraph className="text-2xl md:text-3xl">
-                                            Click to preview the image.
-                                        </Paragraph>
-                                    </div>
-                                )}
-                            </div>
-
-                            {/* Preview Template */}
-                            {isPreviewing && previewTemplate}
-                        </div>
-                    ) : (
-                        <div className="text-center">
-                            No artworks found. Please check back later!
-                        </div>
-                    )}
-                </div>
-            )}
+                        {isPreviewing && previewTemplate}
+                    </div>
+                ) : (
+                    <div className="text-center">
+                        No artworks found. Please check back later!
+                    </div>
+                )}
+            </div>
         </main>
     );
 };
