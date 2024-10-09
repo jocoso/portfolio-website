@@ -3,7 +3,7 @@ const typeDefs = `
 
     type User {
         _id: ID!
-        name: String
+        name: String!
     }
 
     type Project {
@@ -15,7 +15,7 @@ const typeDefs = `
 
     type Art {
         _id: ID!
-        name: String
+        name: String!
         image: String!
         description: String
     }
@@ -43,17 +43,44 @@ const typeDefs = `
         message: String!
     }
 
-    input blogCommentInput {
+    input BlogCommentInput {
         commenterName: String!
         content: String
         date: Date
+    }
+
+    input AddProjectInput {
+        title: String!
+        images: [String!]!
+        content: String!
+    }
+
+    input AddArtInput {
+        name: String!
+        image: String!
+        description: String
+    }
+
+    input AddPostInput {
+        title: String!
+        content: String
+        comments: [BlogCommentInput]
+        author: ID!
+        datePublished: Date!
+    }
+
+    input AddMessageInput {
+        name: String!
+        email: String!
+        subject: String!
+        message: String!
     }
 
     type Query {
         users: [User]!
         user(userId: ID!): User
 
-        projects: [Project]
+        projects: [Project]!
         project(projectId: ID!): Project
 
         arts: [Art]!
@@ -70,16 +97,16 @@ const typeDefs = `
         addUser(name: String!, password: String!): User
         removeUser(userId: ID!): User
 
-        addProject(title: String!, images: [String]!, content: String!): Project
+        addProject(input: AddProjectInput!): Project
         removeProject(projectId: ID!): Project
 
-        addArt(name: String, image: String!, description: String): Art
+        addArt(input: AddArtInput!): Art
         removeArt(artId: ID!): Art
 
-        addPost(title: String!, content: String, comments: [blogCommentInput], author: ID!, datePublished: Date!): Post
+        addPost(input: AddPostInput!): Post
         removePost(postId: ID!): Post
 
-        addMessage(name: String!, email: String!, subject: String!, message: String!): Message
+        addMessage(input: AddMessageInput!): Message
         removeMessage(messageId: ID!): Message
     }
 `;

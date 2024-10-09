@@ -1,14 +1,13 @@
 import { twMerge } from "tailwind-merge";
 
 const Paragraph = ({ children, style = {}, className = "" }) => {
+    const combinedClassName = twMerge(
+        "font-normal text-darkBrown font-ramaraja",
+        className
+    );
+
     return (
-        <p
-            style={style}
-            className={twMerge(
-                "font-normal text-darkBrown font-ramaraja",
-                className
-            )}
-        >
+        <p style={style} className={combinedClassName}>
             {children}
         </p>
     );

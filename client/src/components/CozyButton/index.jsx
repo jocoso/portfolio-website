@@ -4,34 +4,33 @@ const CozyButton = ({
     className = "",
     onClick,
     download = false,
-    href = "#", // Optional prop to handle href when download is true
+    href = "#",
 }) => {
-    const theme =
-        "bg-primary font-ramaraja text-[3.0096rem] text-darkBrown py-3 px-8 rounded-full shadow-lg font-semibold hover:shadow-2xl focus:right-4 focus:ring-green-200 transition duration-500 whitespace-nowrap";
+    const baseStyle =
+        "bg-primary font-ramaraja text-[3.0096rem] text-darkBrown py-3 px-8 rounded-full shadow-lg font-semibold transition duration-500 whitespace-nowrap";
+    const hoverStyle = "hover:shadow-2xl focus:ring-green-200";
 
-    // If download is true, use anchor tag with download functionality
+    const buttonStyles = `${baseStyle} ${hoverStyle} ${className}`;
+
+    // Use anchor tag for download links
     if (download) {
         return (
-            <div className={className}>
-                <a href={href} style={style} className={theme} download>
-                    {children}
-                </a>
-            </div>
+            <a href={href} style={style} className={buttonStyles} download>
+                {children}
+            </a>
         );
     }
 
-    // Otherwise, use button for onClick behavior
+    // Use button for onClick behavior
     return (
-        <div className={className}>
-            <button
-                style={style}
-                className={theme}
-                onClick={onClick}
-                type="button"
-            >
-                {children}
-            </button>
-        </div>
+        <button
+            style={style}
+            className={buttonStyles}
+            onClick={onClick}
+            type="button"
+        >
+            {children}
+        </button>
     );
 };
 

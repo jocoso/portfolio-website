@@ -1,53 +1,52 @@
+require("dotenv").config(); // Load environment variables
+
 const express = require("express");
 const { ApolloServer } = require("@apollo/server");
 const { expressMiddleware } = require("@apollo/server/express4");
 const cors = require("cors");
-require("dotenv").config();
-
+const compression = require("compression");
 const { typeDefs, resolvers } = require("./schemas");
 const db = require("./config/connection");
 
-const PORT = process.env.PORT || 3001; // Consistent with the .env file
+const PORT = process.env.PORT || 3001;
+
 const server = new ApolloServer({
     typeDefs,
     resolvers,
+    plugins: [], // Ready for future plugins
 });
 
 const app = express();
 
-// Apply CORS globally to allow frontend requests from specified origins
+// Apply middleware before server starts
+app.use(compression());
 app.use(
     cors({
-        origin: [
-            "http://localhost:3000", // For local development
-            process.env.VITE_PRODUCTION_URL, // For production, the frontend URL (use env variable)
-        ],
-        credentials: true, // Allow credentials (e.g., cookies, authorization headers)
+        origin: ["http://localhost:3000", process.env.VITE_PRODUCTION_URL],
+        credentials: true,
     })
 );
 
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+// Start Apollo Server
 const startApolloServer = async () => {
     try {
-        // Start the Apollo server
         await server.start();
-
-        // Body parsing middleware for Express
-        app.use(express.urlencoded({ extended: false }));
-        app.use(express.json());
 
         // Apply Apollo GraphQL middleware
         app.use("/graphql", expressMiddleware(server));
 
-        // Connect to the database and start the server
+        // Start the server once DB connection is open
         db.once("open", () => {
-            app.listen({ port: PORT, host: "0.0.0.0" }, () => {
-                console.log(`🚀 Server running on port ${PORT}`);
+            app.listen(PORT, () => {
+                console.log(`🚀 Server running on http://localhost:${PORT}/graphql`);
             });
         });
     } catch (err) {
-        console.error("Error starting server:", err); // Error logging for debugging
+        console.error("Error starting server:", err);
     }
 };
 
-// Start the Apollo server
 startApolloServer();

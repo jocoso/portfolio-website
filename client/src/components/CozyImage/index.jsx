@@ -3,7 +3,7 @@ import { twMerge } from "tailwind-merge";
 const CozyImage = ({
     className = "",
     id,
-    style,
+    style = {},
     uri,
     altText = "Image",
     fallbackUri = "https://via.placeholder.com/150",
@@ -13,16 +13,18 @@ const CozyImage = ({
         className
     );
 
+    const handleError = (e) => {
+        e.target.onerror = null; // Prevents infinite looping
+        e.target.src = fallbackUri; // Set fallback image
+    };
+
     return (
         <img
             id={id}
             className={styleClass}
             style={style}
             src={uri || fallbackUri}
-            onError={(e) => {
-                e.target.onerror = null; // prevents infinite looping
-                e.target.src = fallbackUri;
-            }}
+            onError={handleError}
             alt={altText}
         />
     );

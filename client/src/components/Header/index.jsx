@@ -7,8 +7,23 @@ const Navbar = ({ items = [] }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
+        setIsMenuOpen((prev) => !prev);
     };
+
+    const renderNavItems = () =>
+        items.map((item) => (
+            <li
+                key={item.id}
+                className={twMerge(
+                    "py-4 md:py-0 text-lg md:text-base text-center",
+                    location.pathname === item.route
+                        ? "border-b-2 border-accent"
+                        : "hover:text-accent"
+                )}
+            >
+                <Link to={item.route}>{item.name}</Link>
+            </li>
+        ));
 
     return (
         <header className="bg-darkbrown text-white shadow-lg">
@@ -41,7 +56,7 @@ const Navbar = ({ items = [] }) => {
                                     ? "M6 18L18 6M6 6l12 12"
                                     : "M4 6h16M4 12h16M4 18h16"
                             }
-                        ></path>
+                        />
                     </svg>
                 </button>
 
@@ -52,19 +67,7 @@ const Navbar = ({ items = [] }) => {
                         isMenuOpen ? "block" : "hidden md:flex"
                     )}
                 >
-                    {items.map((item) => (
-                        <li
-                            key={item.id}
-                            className={twMerge(
-                                "py-4 md:py-0 text-lg md:text-base text-center",
-                                location.pathname === item.route
-                                    ? "border-b-2 border-accent"
-                                    : "hover:text-accent"
-                            )}
-                        >
-                            <Link to={item.route}>{item.name}</Link>
-                        </li>
-                    ))}
+                    {renderNavItems()}
                 </ul>
             </nav>
         </header>

@@ -1,6 +1,12 @@
 const { User, Project, Art, Post, Message } = require("../models");
 const { GraphQLScalarType, Kind } = require("graphql");
 
+// Reusable function for error handling
+const handleError = (err, entity) => {
+    console.error(`Error fetching ${entity}:`, err);
+    throw new Error(`Failed to fetch ${entity}`);
+};
+
 const resolvers = {
     Date: new GraphQLScalarType({
         name: "Date",
@@ -24,16 +30,14 @@ const resolvers = {
             try {
                 return await User.find();
             } catch (err) {
-                console.error("Error fetching users:", err);
-                throw new Error("Failed to fetch users");
+                handleError(err, "users");
             }
         },
         user: async (parent, { userId }) => {
             try {
                 return await User.findOne({ _id: userId });
             } catch (err) {
-                console.error("Error fetching user:", err);
-                throw new Error("Failed to fetch user");
+                handleError(err, "user");
             }
         },
 
@@ -41,16 +45,14 @@ const resolvers = {
             try {
                 return await Project.find();
             } catch (err) {
-                console.error("Error fetching projects:", err);
-                throw new Error("Failed to fetch projects");
+                handleError(err, "projects");
             }
         },
         project: async (parent, { projectId }) => {
             try {
                 return await Project.findOne({ _id: projectId });
             } catch (err) {
-                console.error("Error fetching project:", err);
-                throw new Error("Failed to fetch project");
+                handleError(err, "project");
             }
         },
 
@@ -58,45 +60,34 @@ const resolvers = {
             try {
                 return await Art.find();
             } catch (err) {
-                console.error("Error fetching art:", err);
-                throw new Error("Failed to fetch art pieces");
+                handleError(err, "arts");
             }
         },
         art: async (parent, { artId }) => {
             try {
                 return await Art.findOne({ _id: artId });
             } catch (err) {
-                console.error("Error fetching art:", err);
-                throw new Error("Failed to fetch art piece");
+                handleError(err, "art");
             }
         },
 
         posts: async () => {
             try {
                 const posts = await Post.find().populate("author");
-                
-                console.log("Posts fetched", posts)
-
-                return posts.filter(
-                    (post) => post.author !== null && post.author !== undefined
-                );
+                return posts.filter((post) => post.author);
             } catch (err) {
-                console.error("Error fetching posts:", err);
-                throw new Error("Failed to fetch posts");
+                handleError(err, "posts");
             }
         },
         post: async (parent, { postId }) => {
             try {
-                const post = await Post.findOne({ _id: postId }).populate("author")
-                
-                console.log(post);
-                
-                if(!post || !post.author)
+                const post = await Post.findOne({ _id: postId }).populate("author");
+                if (!post || !post.author) {
                     throw new Error("Post not found or author is missing");
+                }
                 return post;
             } catch (err) {
-                console.error("Error fetching post:", err);
-                throw new Error("Failed to fetch post");
+                handleError(err, "post");
             }
         },
 
@@ -104,16 +95,14 @@ const resolvers = {
             try {
                 return await Message.find();
             } catch (err) {
-                console.error("Error fetching messages:", err);
-                throw new Error("Failed to fetch messages");
+                handleError(err, "messages");
             }
         },
-        message: async (parent, { postId }) => {
+        message: async (parent, { messageId }) => {
             try {
                 return await Message.findOne({ _id: messageId });
             } catch (err) {
-                console.error("Error fetching message:", err);
-                throw new Error("Failed to fetch message");
+                handleError(err, "message");
             }
         },
     },
@@ -123,34 +112,29 @@ const resolvers = {
             try {
                 return await User.create({ name, password });
             } catch (err) {
-                console.error("Error adding user:", err);
-                throw new Error("Failed to add user");
+                handleError(err, "add user");
             }
         },
         removeUser: async (parent, { userId }) => {
             try {
                 return await User.findOneAndDelete({ _id: userId });
             } catch (err) {
-                console.error("Error removing user:", err);
-                throw new Error("Failed to remove user");
+                handleError(err, "remove user");
             }
         },
 
         addProject: async (parent, { title, images, content }) => {
             try {
-                const newProject = new Project({ title, images, content });
-                return await newProject.save();
+                return await Project.create({ title, images, content });
             } catch (err) {
-                console.error("Error adding project:", err);
-                throw new Error("Failed to add project");
+                handleError(err, "add project");
             }
         },
         removeProject: async (parent, { projectId }) => {
             try {
                 return await Project.findOneAndDelete({ _id: projectId });
             } catch (err) {
-                console.error("Error removing project:", err);
-                throw new Error("Failed to remove project");
+                handleError(err, "remove project");
             }
         },
 
@@ -158,62 +142,44 @@ const resolvers = {
             try {
                 return await Art.create({ name, image, description });
             } catch (err) {
-                console.error("Error adding art:", err);
-                throw new Error("Failed to add art");
+                handleError(err, "add art");
             }
         },
         removeArt: async (parent, { artId }) => {
             try {
                 return await Art.findOneAndDelete({ _id: artId });
             } catch (err) {
-                console.error("Error removing art:", err);
-                throw new Error("Failed to remove art");
+                handleError(err, "remove art");
             }
         },
 
-        addPost: async (
-            parent,
-            { title, content, comments, author, datePublished }
-        ) => {
-            // Added async here
+        addPost: async (parent, { title, content, comments, author, datePublished }) => {
             try {
-                console.log({ title, content, comments, author, datePublished})
-                return await Post.create({
-                    title,
-                    content,
-                    comments,
-                    author,
-                    datePublished,
-                });
+                return await Post.create({ title, content, comments, author, datePublished });
             } catch (err) {
-                console.error("Error adding post:", err);
-                throw new Error("Failed to add post");
+                handleError(err, "add post");
             }
         },
         removePost: async (parent, { postId }) => {
             try {
                 return await Post.findOneAndDelete({ _id: postId });
             } catch (err) {
-                console.error("Error removing post:", err);
-                throw new Error("Failed to remove post");
+                handleError(err, "remove post");
             }
         },
 
         addMessage: async (parent, { name, email, subject, message }) => {
-            // Added async here
             try {
                 return await Message.create({ name, email, subject, message });
             } catch (err) {
-                console.error("Error adding message:", err);
-                throw new Error("Failed to add message");
+                handleError(err, "add message");
             }
         },
         removeMessage: async (parent, { messageId }) => {
             try {
                 return await Message.findOneAndDelete({ _id: messageId });
             } catch (err) {
-                console.error("Error removing post:", err);
-                throw new Error("Failed to remove post");
+                handleError(err, "remove message");
             }
         },
     },

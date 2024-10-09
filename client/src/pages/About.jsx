@@ -8,17 +8,23 @@ import CozyImage from "../components/CozyImage";
 import Avatar from "../assets/portfolio-avatar-img.svg";
 
 const About = () => {
+    const containerClass = "flex justify-center items-center w-full";
+    const textContainerClass =
+        "flex flex-col justify-center items-center text-center w-10/12 mx-auto";
+    const imageClass = "w-3/4 md:w-full h-auto"; // Responsive image width
+
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 min-h-screen w-full">
-            <div className="flex justify-center items-center w-full">
+        <section className="grid grid-cols-1 md:grid-cols-2 min-h-screen w-full">
+            <div className={containerClass}>
                 <CozyImage
-                    className="w-3/4 md:w-full h-auto" // Responsive image width
+                    className={imageClass}
                     uri={Avatar}
                     alt="Portrait of Josh"
+                    loading="lazy" // Lazy load for performance optimization
                 />
             </div>
-            <div className="flex flex-col justify-center items-center text-center w-10/12 mx-auto">
-                <Title className="text-center">About Me</Title>
+            <div className={textContainerClass}>
+                <Title>About Me</Title>
                 <Paragraph className="text-xl md:text-3xl mt-4">
                     My name is <span className="text-meditation">Josh</span>. I
                     am a developer, an artist, and a teacher.
@@ -30,7 +36,7 @@ const About = () => {
                     Download My Resume
                 </CozyButton>
             </div>
-        </div>
+        </section>
     );
 };
 

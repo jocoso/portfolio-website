@@ -13,14 +13,15 @@ const Title = ({ children, style = {}, className = "", tier = 1 }) => {
         `text-base md:text-lg lg:text-xl ${commonStyles}`, // h6
     ];
 
-    // Ensure the tier is between 1 and 6, default to h1 otherwise
-    const headerStyle = headers[Math.min(Math.max(tier - 1, 0), 5)];
+    // Clamp tier between 1 and 6
+    const validTier = Math.min(Math.max(tier, 1), 6);
+    const headerStyle = headers[validTier - 1]; // Get the corresponding header style
 
     // Merge Tailwind styles
     const mergedClassNames = twMerge(headerStyle, className);
 
     // Dynamically select the header tag (h1 - h6)
-    const Tag = `h${Math.min(Math.max(tier, 1), 6)}`;
+    const Tag = `h${validTier}`;
 
     return (
         <Tag style={style} className={mergedClassNames}>

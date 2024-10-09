@@ -3,10 +3,28 @@ import { useParams, Link } from "react-router-dom";
 
 import QueryList from "../components/QueryList";
 import CozyComment from "../components/CozyComment";
-
 import { QUERY_SINGLE_POST } from "../utils/queries";
 import Title from "../components/Title";
 import Paragraph from "../components/Paragraph";
+
+// Function to format date
+const formatDate = (dateString) => {
+    const rawDate = new Date(dateString);
+    return `${
+        rawDate.getMonth() + 1
+    }-${rawDate.getDate()}-${rawDate.getFullYear()}`;
+};
+
+// Error and Loading Components
+const ErrorComponent = ({ message }) => (
+    <div className="text-center text-red-500 mt-10">
+        Error loading post: {message}
+    </div>
+);
+
+const LoadingComponent = () => (
+    <div className="text-center mt-10">Loading...</div>
+);
 
 const SinglePost = () => {
     const { postId } = useParams();
@@ -14,30 +32,19 @@ const SinglePost = () => {
         variables: { postId },
     });
 
-    if (loading) {
-        return <div className="text-center mt-10">Loading...</div>;
-    }
-
-    if (error) {
-        return (
-            <div className="text-center text-red-500 mt-10">
-                Error loading post: {error.message}
-            </div>
-        );
-    }
+    // Early return for loading and error states
+    if (loading) return <LoadingComponent />;
+    if (error) return <ErrorComponent message={error.message} />;
 
     const post = data?.post || {};
     const { author, comments, content, datePublished, title } = post;
 
-    const rawDate = new Date(datePublished);
-    const formattedDate = `${
-        rawDate.getMonth() + 1
-    }-${rawDate.getDate()}-${rawDate.getFullYear()}`;
+    // Memoize formatted date and comments
+    const formattedDate = formatDate(datePublished);
 
-    // Ensure each comment has a unique ID (if not from the backend, we'll use the date)
     const updatedComments = comments.map((comment) => ({
         ...comment,
-        _id: comment._id || comment.date, // Use _id or fallback to date if necessary
+        _id: comment._id || comment.date,
     }));
 
     return (
@@ -65,9 +72,7 @@ const SinglePost = () => {
             <div className="bg-white p-6 border rounded-lg shadow-md my-6">
                 <blockquote
                     className="text-2xl italic border-l-4 border-indigo-600 pl-4"
-                    style={{
-                        lineHeight: "1.8",
-                    }}
+                    style={{ lineHeight: "1.8" }}
                 >
                     {content}
                 </blockquote>
