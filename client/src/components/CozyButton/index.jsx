@@ -4,7 +4,7 @@ const CozyButton = ({
     className = "",
     onClick,
     download = false,
-    href = "#",
+    href = "", // Set to an empty string by default
 }) => {
     const baseStyle =
         "bg-primary font-ramaraja text-[3.0096rem] text-darkBrown py-3 px-8 rounded-full shadow-lg font-semibold transition duration-500 whitespace-nowrap";
@@ -13,7 +13,7 @@ const CozyButton = ({
     const buttonStyles = `${baseStyle} ${hoverStyle} ${className}`;
 
     // Use anchor tag for download links
-    if (download) {
+    if (download && href) {  // Ensure href is not empty when download is true
         return (
             <a href={href} style={style} className={buttonStyles} download>
                 {children}

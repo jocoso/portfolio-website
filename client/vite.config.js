@@ -12,10 +12,13 @@ if (result.error) {
     console.error("Failed to load .env file", result.error);
 }
 
+const productionUrl = process.env.VITE_PRODUCTION_URL;
+console.error(productionUrl)
+
 export default defineConfig({
     plugins: [react(), visualizer()],
     server: {
-        port: parseInt(process.env.VITE_PORT, 10) || 3000,
+        port: parseInt(process.env.VITE_PORT, 10) || 3001,
         open: true,
         host: true,
         proxy: {

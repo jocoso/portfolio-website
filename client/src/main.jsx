@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import Error from "./pages/Error.jsx"; // Static error page
 
-import "./main.css"; // CSS import
+
 
 // Lazy load components
 const About = lazy(() => import("./pages/About.jsx"));

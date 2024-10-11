@@ -6,12 +6,13 @@ import CozyImage from "../components/CozyImage";
 
 // Assets
 import Avatar from "../assets/portfolio-avatar-img.svg";
+import resume from "../assets/Joshua.Collado.Resume.pdf";
 
 const About = () => {
     const containerClass = "flex justify-center items-center w-full";
     const textContainerClass =
         "flex flex-col justify-center items-center text-center w-10/12 mx-auto";
-    const imageClass = "w-3/4 md:w-full h-auto"; // Responsive image width
+    const imageClass = "w-3/4 md:w-full max-w-lg h-auto"; // Responsive image with max width
 
     return (
         <section className="grid grid-cols-1 md:grid-cols-2 min-h-screen w-full">
@@ -19,7 +20,7 @@ const About = () => {
                 <CozyImage
                     className={imageClass}
                     uri={Avatar}
-                    alt="Portrait of Josh"
+                    alt="Portrait of Josh smiling in front of a scenic background"
                     loading="lazy" // Lazy load for performance optimization
                 />
             </div>
@@ -31,7 +32,9 @@ const About = () => {
                 </Paragraph>
                 <CozyButton
                     className="mt-8 md:mt-12 px-6 py-3 md:px-8 md:py-4"
-                    aria-label="Download Resume"
+                    aria-label="Download my resume in PDF format"
+                    download
+                    href={resume} // Properly passing the resume file as href
                 >
                     Download My Resume
                 </CozyButton>
