@@ -99,13 +99,10 @@ Contributions are welcome! If you have suggestions or find any issues, feel free
 
 You can reach me at:
 
-- **Email**: [your-email@example.com](mailto:your-email@example.com)
+- **Email**: [joshua.colladojh@gmail.com](joshua.colladojh@gmail.com)
 - **GitHub**: [https://github.com/jocoso](https://github.com/jocoso)
 
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
----
-
-This should be a good foundation for your portfolio README! Let me know if you want any changes or further customization.
