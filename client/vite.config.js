@@ -25,9 +25,7 @@ export default defineConfig({
             "/graphql": {
                 target:
                     process.env.VITE_PRODUCTION_URL ||
-                    "https://portfolio-website-be-9ohl.onrender.com/graphql",
-                changeOrigin: true,
-                secure: process.env.NODE_ENV === "production", // Enforce secure connection in production
+                    "https://portfolio-website-be-9ohl.onrender.com/graphql"
             },
         },
     },

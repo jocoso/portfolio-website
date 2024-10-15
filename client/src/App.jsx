@@ -2,14 +2,13 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { Outlet } from "react-router-dom";
 import { useMemo } from "react";
 
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 import "./App.css";
 
-
-const uri = `http://${import.meta.env.VITE_PRODUCTION_URL}` ||"http://portfolio-website-w0q7.onrender.com/graphql";
-console.error(uri);
+const uri = import.meta.env.VITE_PRODUCTION_URL ||"http://portfolio-website-w0q7.onrender.com/graphql";
 
 // Apollo Client setup
 const client = new ApolloClient({

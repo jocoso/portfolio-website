@@ -20,9 +20,10 @@ const app = express();
 
 // Apply middleware before server starts
 app.use(compression());
+app.use(cors());
 app.use(
     cors({
-        origin: ["http://localhost:3001", process.env.VITE_PRODUCTION_URL],
+        origin: ["http://localhost:3001/graphql", process.env.VITE_PRODUCTION_URL],
         credentials: true,
     })
 );
@@ -41,7 +42,7 @@ const startApolloServer = async () => {
         // Start the server once DB connection is open
         db.once("open", () => {
             app.listen(PORT, () => {
-                console.log(`🚀 Server running on http://localhost:${PORT}/graphql`);
+                console.log(`🚀 Server running on ${process.env.VITE_PRODUCTION_URL || "https://localhost:3001/graphql"}`);
             });
         });
     } catch (err) {
