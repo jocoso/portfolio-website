@@ -1,6 +1,3 @@
-Here’s a README based on the provided template:
-
----
 
 # Portfolio Website
 
