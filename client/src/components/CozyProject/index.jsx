@@ -30,7 +30,7 @@ const CozyProject = ({ data }) => {
                 {/* Image / Logo */}
                 <div className="mb-4 flex justify-center items-center overflow-hidden">
                     <CozyImage
-                        className="max-h-48 max-w-48 object-contain"
+                        className="max-h-full max-w-full object-contain"
                         uri={getLogoUri()}
                         alt={title}
                     />

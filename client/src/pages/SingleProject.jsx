@@ -5,7 +5,7 @@ import Title from "../components/Title";
 import CozyImage from "../components/CozyImage";
 
 // Loading and Error Components
-const Loading = () => <div className="text-center mt-10">Loading...</div>;
+const Loading = () => <div className="w-10 text-center mt-10">Loading...</div>;
 
 const Error = ({ message }) => (
     <div className="text-center text-red-500 mt-10">

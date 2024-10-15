@@ -97,7 +97,7 @@ const typeDefs = `
         addUser(name: String!, password: String!): User
         removeUser(userId: ID!): User
 
-        addProject(input: AddProjectInput!): Project
+        addProject(title: String!, images: [String!]!, content:String!): Project
         removeProject(projectId: ID!): Project
 
         addArt(input: AddArtInput!): Art

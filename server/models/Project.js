@@ -11,11 +11,7 @@ const projectSchema = new Schema(
         images: [
             {
                 type: String,
-                trim: true,
-                match: [
-                    /^https?:\/\/.*\.(jpeg|jpg|gif|png)$/,
-                    "Please enter a valid image URL (jpg, jpeg, gif, png)",
-                ], // Optional: Validate image URLs for correct format
+                trim: true
             },
         ],
         content: {

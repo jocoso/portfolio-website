@@ -5,7 +5,7 @@ import CozyButton from "../components/CozyButton";
 import CozyImage from "../components/CozyImage";
 
 // Assets
-import Avatar from "../assets/portfolio-avatar-img.svg";
+import Avatar from "../assets/portfolio-avatar-img.webp";
 import resume from "../assets/Joshua.Collado.Resume.pdf";
 
 const About = () => {

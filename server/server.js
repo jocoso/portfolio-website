@@ -23,7 +23,10 @@ app.use(compression());
 app.use(cors());
 app.use(
     cors({
-        origin: ["http://localhost:3001/graphql", process.env.VITE_PRODUCTION_URL],
+        origin: [
+            "http://localhost:3001/graphql",
+            process.env.VITE_PRODUCTION_URL,
+        ],
         credentials: true,
     })
 );
@@ -42,7 +45,12 @@ const startApolloServer = async () => {
         // Start the server once DB connection is open
         db.once("open", () => {
             app.listen(PORT, () => {
-                console.log(`🚀 Server running on ${process.env.VITE_PRODUCTION_URL || "https://localhost:3001/graphql"}`);
+                console.log(
+                    `🚀 Server running on ${
+                        process.env.VITE_PRODUCTION_URL ||
+                        "http://localhost:3001/graphql"
+                    }`
+                );
             });
         });
     } catch (err) {

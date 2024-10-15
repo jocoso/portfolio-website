@@ -9,7 +9,7 @@ const CozyImage = ({
     fallbackUri = "https://via.placeholder.com/150",
 }) => {
     const styleClass = twMerge(
-        "w-48 h-48 md:w-64 md:h-64 lg:w-96 lg:h-96",
+        "w-11/12 h-11/12 lg:w-10/12 lg:h-10/12",
         className
     );
 
