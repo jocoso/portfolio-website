@@ -15,6 +15,7 @@ const ContactMe = lazy(() => import("./pages/ContactMe.jsx"));
 const Projects = lazy(() => import("./pages/Projects.jsx"));
 const SinglePost = lazy(() => import("./pages/SinglePost.jsx"));
 const SingleProject = lazy(() => import("./pages/SingleProject.jsx"));
+const Login = lazy(() => import("./pages/Login.jsx"));
 
 // Router configuration
 const router = createBrowserRouter([
@@ -60,6 +61,14 @@ const router = createBrowserRouter([
                 element: (
                     <Suspense fallback={<div>Loading...</div>}>
                         <ContactMe />
+                    </Suspense>
+                ),
+            },
+            {
+                path: "/login",
+                element: (
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <Login />
                     </Suspense>
                 ),
             },

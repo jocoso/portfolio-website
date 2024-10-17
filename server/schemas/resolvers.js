@@ -1,5 +1,7 @@
 const { User, Project, Art, Post, Message } = require("../models");
 const { GraphQLScalarType, Kind } = require("graphql");
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 
 // Reusable function for error handling
 const handleError = (err, entity) => {
@@ -8,6 +10,7 @@ const handleError = (err, entity) => {
 };
 
 const resolvers = {
+    // Custom Date Scalar Type
     Date: new GraphQLScalarType({
         name: "Date",
         description: "Custom Date scalar type",
@@ -18,13 +21,14 @@ const resolvers = {
             return value.getTime();
         },
         parseLiteral(ast) {
-            if (ast.kind === Kind.INT) {
+            if(ast.kind === Kind.INT) {
                 return new Date(parseInt(ast.value, 10));
             }
             return null;
         },
     }),
 
+    // Query Resolvers
     Query: {
         users: async () => {
             try {
@@ -41,9 +45,11 @@ const resolvers = {
             }
         },
 
-        projects: async () => {
+        projects: async() => {
             try {
-                return await Project.find();
+                const projects = await Project.find();
+                console.log("Fetched projects:", projects);
+                return projects || [];
             } catch (err) {
                 handleError(err, "projects");
             }
@@ -73,22 +79,27 @@ const resolvers = {
 
         posts: async () => {
             try {
-                const posts = await Post.find().populate("author");
-                return posts.filter((post) => post.author);
-            } catch (err) {
-                handleError(err, "posts");
-            }
-        },
-        post: async (parent, { postId }) => {
-            try {
                 const post = await Post.findOne({ _id: postId }).populate("author");
-                if (!post || !post.author) {
+                if(!post || !post.author) {
                     throw new Error("Post not found or author is missing");
                 }
                 return post;
             } catch (err) {
                 handleError(err, "post");
             }
+        },
+        post: async () => {
+            try {
+                try{
+                    const post = await Post.findOne({ _id: postId }).populate("author");
+                    if(!post || !post.author) {
+                        throw new Error("Post not found or author is missing");
+                    }
+                    return post;
+                } catch (err) {
+                    handleError(err, "post");
+                }
+            } catch(err) {}
         },
 
         messages: async () => {
@@ -107,7 +118,36 @@ const resolvers = {
         },
     },
 
+    // Mutation Resolvers
     Mutation: {
+        login: async (parent, { username, password }) => {
+            try {
+                // Find the user by username
+                const user = await User.findOne({ name: username });
+
+                if (!user) {
+                    throw new Error('User not found');
+                }
+
+                // Compare the provided password with the stored hashed password
+                const valid = await bcrypt.compare(password, user.password);
+                if(!valid)
+                    throw new Error('Invalid password');
+
+                // Create a JWT token
+                const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+                    expiresIn: '1h', // Token expiry time
+                });
+
+                // Return the token and the user
+                return {
+                    token,
+                    user,
+                };
+            } catch(err) {
+                handleError(err, "login")
+            }
+        },
         addUser: async (parent, { name, password }) => {
             try {
                 return await User.create({ name, password });
@@ -130,10 +170,25 @@ const resolvers = {
                 handleError(err, "add project");
             }
         },
+        updateProject: async(parent, { id, input }) => {
+            try {
+                const updatedProject = await Project.findByIdAndUpdate (
+                    id,
+                    { $set: input },
+                    { new: true, runValidators: true }
+                );
+
+                if(!updatedProject) throw new Error("Project not found");
+
+                return updatedProject;
+            } catch (err) {
+                handleError(err, "update project");
+            }
+        },
         removeProject: async (parent, { projectId }) => {
             try {
                 return await Project.findOneAndDelete({ _id: projectId });
-            } catch (err) {
+            } catch(err) {
                 handleError(err, "remove project");
             }
         },
@@ -141,7 +196,7 @@ const resolvers = {
         addArt: async (parent, { name, image, description }) => {
             try {
                 return await Art.create({ name, image, description });
-            } catch (err) {
+            } catch(err) {
                 handleError(err, "add art");
             }
         },
@@ -156,7 +211,7 @@ const resolvers = {
         addPost: async (parent, { title, content, comments, author, datePublished }) => {
             try {
                 return await Post.create({ title, content, comments, author, datePublished });
-            } catch (err) {
+            } catch(err) {
                 handleError(err, "add post");
             }
         },
@@ -183,6 +238,6 @@ const resolvers = {
             }
         },
     },
-};
+}
 
 module.exports = resolvers;

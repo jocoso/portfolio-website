@@ -48,6 +48,17 @@ const MESSAGE_FIELDS = gql`
 `;
 
 // Use fragments in the mutations
+export const LOGIN = gql`
+    mutation login($username: String!, $password: String!) {
+        login(username: $username, password: $password) {
+            token
+            user {
+                _id
+                name
+            }
+        }
+    }
+`;
 
 export const ADD_USER = gql`
     mutation addUser($name: String!, $password: String!) {

@@ -1,18 +1,23 @@
 const typeDefs = `
     scalar Date
 
+    # User Type
     type User {
         _id: ID!
         name: String!
     }
 
+    # Project Type
     type Project {
         _id: ID!
         title: String!
-        images: [String!]!
-        content: String
+        images: [String]
+        content: String!
+        createdAt: String!
+        updatedAt: String!
     }
 
+    # Art Type
     type Art {
         _id: ID!
         name: String!
@@ -20,12 +25,14 @@ const typeDefs = `
         description: String
     }
 
+    # Blog Comment Type
     type BlogComment {
         commenterName: String!
         content: String
         date: Date!
     }
 
+    # Post Type
     type Post {
         _id: ID!
         title: String!
@@ -35,12 +42,25 @@ const typeDefs = `
         datePublished: Date!
     }
 
+    # Message Type
     type Message {
         _id: ID!
         name: String!
         email: String!
         subject: String!
         message: String!
+    }
+
+    type AuthPayload {
+        token: String!
+        user: User!
+    }
+
+    # Input Types
+    input UpdateProjectInput {
+        title: String
+        images: [String]
+        content: String
     }
 
     input BlogCommentInput {
@@ -76,28 +96,33 @@ const typeDefs = `
         message: String!
     }
 
+    # Query Type
     type Query {
-        users: [User]!
+
+        users: [User!]
         user(userId: ID!): User
 
         projects: [Project]!
         project(projectId: ID!): Project
 
-        arts: [Art]!
+        arts: [Art!]
         art(artId: ID!): Art
 
-        posts: [Post]!
+        posts: [Post!]
         post(postId: ID!): Post
 
-        messages: [Message]!
+        messages: [Message!]
         message(messageId: ID!): Message
     }
 
+    # Mutation Type
     type Mutation {
+        login(username: String!, password: String!): AuthPayload!
         addUser(name: String!, password: String!): User
         removeUser(userId: ID!): User
 
-        addProject(title: String!, images: [String!]!, content:String!): Project
+        addProject(title: String!, images: [String], content: String!): Project
+        updateProject(id: ID!, input: UpdateProjectInput!): Project!
         removeProject(projectId: ID!): Project
 
         addArt(input: AddArtInput!): Art
