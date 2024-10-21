@@ -5,9 +5,10 @@ import { QUERY_POSTS } from "../utils/queries";
 import Title from "../components/Title";
 
 const Blog = () => {
+    // Preparing graphql to query for posts.
     const { loading, error, data } = useQuery(QUERY_POSTS);
-    const posts = data?.posts || [];
-
+    const posts = data?.posts || []; // If no post in db, default to an empty array.
+    console.log(error);
     // JSX for error and loading states
     const renderError = error && (
         <div aria-live="polite" className="text-center mt-10">
@@ -20,7 +21,9 @@ const Blog = () => {
             </button>
         </div>
     );
+    // ---
 
+    // Loading screen as the program fetches the data.
     const renderLoading = loading && (
         <div aria-live="polite" className="text-center mt-10">
             <p>Loading...</p>
@@ -29,12 +32,13 @@ const Blog = () => {
             </div>
         </div>
     );
+    // ---
 
     return (
         <main className="min-h-screen flex flex-col items-center mt-32">
             <Title className="text-center mb-10">Blog</Title>
 
-            {/* Conditional rendering */}
+            {/* Displays Blogs IFF there is no error and the page isn't loading. */}
             {renderError || renderLoading || (
                 <div className="w-full max-w-4xl px-4">
                     {posts.length > 0 ? (
@@ -45,11 +49,13 @@ const Blog = () => {
                         />
                     ) : (
                         <div className="text-center">
-                            <p>No blog posts available at the moment. Please check back later!</p>
+                            <p>No blog posts available at the moment. Please check back later!</p> {/* No posts found in DB. */}
                         </div>
                     )}
                 </div>
             )}
+            {/* --- */}
+
         </main>
     );
 };

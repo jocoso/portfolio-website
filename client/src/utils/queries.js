@@ -84,7 +84,7 @@ export const QUERY_PROJECTS = gql`
 
 export const QUERY_SINGLE_PROJECT = gql`
     query singleProject($projectId: ID!) {
-        project(projectId: $projectId) {
+        project(_id: $projectId) {
             ...ProjectFields
         }
     }
@@ -119,8 +119,8 @@ export const QUERY_POSTS = gql`
 `;
 
 export const QUERY_SINGLE_POST = gql`
-    query singlePost($postId: ID!) {
-        post(postId: $postId) {
+    query singlePost($id: ID!) {
+        post(_id: $id) {
             ...PostFields
         }
     }

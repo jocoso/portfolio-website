@@ -19,6 +19,10 @@ const blogCommentSchema = new Schema({
 
 const blogPostSchema = new Schema(
     {
+        _id: {
+            type: Number,
+            required: true
+        },
         title: {
             type: String,
             required: [true, "Title is required"],

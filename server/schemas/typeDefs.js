@@ -103,13 +103,13 @@ const typeDefs = `
         user(userId: ID!): User
 
         projects: [Project]!
-        project(projectId: ID!): Project
+        project(_id: ID!): Project
 
         arts: [Art!]
         art(artId: ID!): Art
 
         posts: [Post!]
-        post(postId: ID!): Post
+        post(_id: ID!): Post
 
         messages: [Message!]
         message(messageId: ID!): Message
@@ -129,7 +129,7 @@ const typeDefs = `
         removeArt(artId: ID!): Art
 
         addPost(input: AddPostInput!): Post
-        removePost(postId: ID!): Post
+        removePost(_id: ID!): Post
 
         addMessage(input: AddMessageInput!): Message
         removeMessage(messageId: ID!): Message

@@ -77,21 +77,21 @@ const resolvers = {
             }
         },
 
+        // Post stuff.
+        // Gets all posts.
         posts: async () => {
             try {
-                const post = await Post.findOne({ _id: postId }).populate("author");
-                if(!post || !post.author) {
-                    throw new Error("Post not found or author is missing");
-                }
-                return post;
+                const posts = await Post.find({}).populate("author");
+                return posts;
             } catch (err) {
                 handleError(err, "post");
             }
         },
+        // Gets one specific post.
         post: async () => {
             try {
                 try{
-                    const post = await Post.findOne({ _id: postId }).populate("author");
+                    const post = await Post.findOne({ _id }).populate("author");
                     if(!post || !post.author) {
                         throw new Error("Post not found or author is missing");
                     }
@@ -215,9 +215,9 @@ const resolvers = {
                 handleError(err, "add post");
             }
         },
-        removePost: async (parent, { postId }) => {
+        removePost: async (parent, { _id }) => {
             try {
-                return await Post.findOneAndDelete({ _id: postId });
+                return await Post.findOneAndDelete({ _id });
             } catch (err) {
                 handleError(err, "remove post");
             }

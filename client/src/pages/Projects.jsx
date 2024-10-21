@@ -5,8 +5,10 @@ import { QUERY_PROJECTS } from "../utils/queries";
 import Title from "../components/Title";
 
 const Projects = () => {
+    // Preparing GraphQL for project query
     const { loading, error, data } = useQuery(QUERY_PROJECTS);
-    const projects = data?.projects || [];
+    const projects = data?.projects || []; // No projects? No problem
+    console.error(projects);
 
     // Reusable error message
     const renderError = error && (
