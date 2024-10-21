@@ -1,12 +1,34 @@
 const { User, Project, Art, Post, Message } = require("../models");
 const { GraphQLScalarType, Kind } = require("graphql");
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 
 // Reusable function for error handling
-const handleError = (err, entity) => {
+const handleError = (err = null, entity = null) => {
     console.error(`Error fetching ${entity}:`, err);
     throw new Error(`Failed to fetch ${entity}`);
+};
+
+const ALERT = (err, message) => {
+    const shout = "ALERT!\n";
+    // Returns an error message iff an error exists
+    // Returns an extra message iff an extra message exits
+    // Put all together in the format `\tERROR: ${err}\n\tMSG: ${message}`
+    //
+    // variable 1 = if err <exists>
+    //                  return "ERR <and Whatever error here>";
+    //              otherwise
+    //                  return <nothing>
+    // variable 2 = if message <exists>
+    //                  return "MSG <and whatever error here"
+    //              otherwise
+    //                  return <nothing>
+    //
+    // print shout + variable 1 + variable 2
+    const error = err ? `\n\tERR: \n ${err}` : "";
+    const msg = message ? `\n\tMSG: ${message}` : "";
+
+    console.error(shout + error + msg);
 };
 
 const resolvers = {
@@ -15,13 +37,13 @@ const resolvers = {
         name: "Date",
         description: "Custom Date scalar type",
         parseValue(value) {
-            return new Date(value);
+            return new Date(value); // For client inputs
         },
         serialize(value) {
-            return value.getTime();
+            return value.toISOString(); // For server output
         },
         parseLiteral(ast) {
-            if(ast.kind === Kind.INT) {
+            if (ast.kind === Kind.INT) {
                 return new Date(parseInt(ast.value, 10));
             }
             return null;
@@ -45,7 +67,7 @@ const resolvers = {
             }
         },
 
-        projects: async() => {
+        projects: async () => {
             try {
                 const projects = await Project.find();
                 console.log("Fetched projects:", projects);
@@ -78,28 +100,31 @@ const resolvers = {
         },
 
         // Post stuff.
-        // Gets all posts.
         posts: async () => {
             try {
-                const posts = await Post.find({}).populate("author");
+                const posts = await Post.find({})
+                .populate({
+                    path: "author", // The path should match the field name in the schema
+                    model: "User",  // Ensure this matches the name of the User model
+                    select: "name"  // Select the fields you want to populate
+                })
+                .exec();
+                
                 return posts.length ? posts : [];
+            } catch (err) {
+                handleError(err, "posts");
+            }
+        },
+        post: async () => {
+            try {
+                const post = await Post.findOne({ _id }).populate("author");
+                if (!post || !post.author) {
+                    throw new Error("Post not found or author is missing");
+                }
+                return post;
             } catch (err) {
                 handleError(err, "post");
             }
-        },
-        // Gets one specific post.
-        post: async () => {
-            try {
-                try{
-                    const post = await Post.findOne({ _id }).populate("author");
-                    if(!post || !post.author) {
-                        throw new Error("Post not found or author is missing");
-                    }
-                    return post;
-                } catch (err) {
-                    handleError(err, "post");
-                }
-            } catch(err) {}
         },
 
         messages: async () => {
@@ -126,26 +151,29 @@ const resolvers = {
                 const user = await User.findOne({ name: username });
 
                 if (!user) {
-                    throw new Error('User not found');
+                    throw new Error("User not found");
                 }
 
                 // Compare the provided password with the stored hashed password
                 const valid = await bcrypt.compare(password, user.password);
-                if(!valid)
-                    throw new Error('Invalid password');
+                if (!valid) throw new Error("Invalid password");
 
                 // Create a JWT token
-                const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-                    expiresIn: '1h', // Token expiry time
-                });
+                const token = jwt.sign(
+                    { userId: user._id },
+                    process.env.JWT_SECRET,
+                    {
+                        expiresIn: "1h", // Token expiry time
+                    }
+                );
 
                 // Return the token and the user
                 return {
                     token,
                     user,
                 };
-            } catch(err) {
-                handleError(err, "login")
+            } catch (err) {
+                handleError(err, "login");
             }
         },
         addUser: async (parent, { name, password }) => {
@@ -170,15 +198,15 @@ const resolvers = {
                 handleError(err, "add project");
             }
         },
-        updateProject: async(parent, { id, input }) => {
+        updateProject: async (parent, { id, input }) => {
             try {
-                const updatedProject = await Project.findByIdAndUpdate (
+                const updatedProject = await Project.findByIdAndUpdate(
                     id,
                     { $set: input },
                     { new: true, runValidators: true }
                 );
 
-                if(!updatedProject) throw new Error("Project not found");
+                if (!updatedProject) throw new Error("Project not found");
 
                 return updatedProject;
             } catch (err) {
@@ -188,7 +216,7 @@ const resolvers = {
         removeProject: async (parent, { projectId }) => {
             try {
                 return await Project.findOneAndDelete({ _id: projectId });
-            } catch(err) {
+            } catch (err) {
                 handleError(err, "remove project");
             }
         },
@@ -196,7 +224,7 @@ const resolvers = {
         addArt: async (parent, { name, image, description }) => {
             try {
                 return await Art.create({ name, image, description });
-            } catch(err) {
+            } catch (err) {
                 handleError(err, "add art");
             }
         },
@@ -208,10 +236,26 @@ const resolvers = {
             }
         },
 
-        addPost: async (parent, { title, content, comments, author, datePublished }) => {
+        addPost: async (parent, { input }) => {
             try {
-                return await Post.create({ title, content, comments, author, datePublished });
-            } catch(err) {
+                const { author, content, title, datePublished } = input;
+
+                // Check if author exists
+                const user = await User.findById(author);
+                if (!user) throw new Error("Author unknown");
+                else console.log(user);
+
+                const newPost = new Post({
+                    author: user,
+                    content,
+                    title,
+                    datePublished: datePublished || new Date().toISOString(),
+                });
+
+                await newPost.save(); // Save post to db.
+
+                return newPost; // Return newly created post.
+            } catch (err) {
                 handleError(err, "add post");
             }
         },
@@ -238,6 +282,6 @@ const resolvers = {
             }
         },
     },
-}
+};
 
 module.exports = resolvers;

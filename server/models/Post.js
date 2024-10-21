@@ -19,10 +19,6 @@ const blogCommentSchema = new Schema({
 
 const blogPostSchema = new Schema(
     {
-        _id: {
-            type: Number,
-            required: true
-        },
         title: {
             type: String,
             required: [true, "Title is required"],
@@ -41,7 +37,7 @@ const blogPostSchema = new Schema(
         author: {
             type: Schema.Types.ObjectId,
             ref: "User",
-            required: [true, "Author is required"],
+            required: false,
         },
         datePublished: {
             type: Date,

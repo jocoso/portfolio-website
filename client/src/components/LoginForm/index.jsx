@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import { useMutation } from "@apollo/client";
 import { LOGIN } from "../../utils/mutation";
 
@@ -7,31 +8,36 @@ const LoginForm = ({ loginId, className, style }) => {
         username: "",
         password: "",
     });
-
     const [login, { error }] = useMutation(LOGIN);
-
-    const cleanInput = () => {
-        setFormData({ username: "", password: "" });
-    };
+    const navigate = useNavigate();
 
     const handleLogin = async (event) => {
         event.preventDefault();
-
+        
         // Client-side validation
-        const { username, password } = formData;
-        if (!username || !password) {
-            console.error("All fields are required.");
-            return;
-        }
-
         try {
-            await login({ variables: { loginId, ...formData } });
-            cleanInput(); // Clean inputs after successful submission
-        } catch (err) {
-            console.error("Failed to submit message:", err);
-        }
-    };
 
+            const { username, password } = formData;
+
+            const { data } = await login({
+                variables: { username, password }
+            });
+
+            if(data.login.token) {
+                // Store token in local storage
+                localStorage.setItem('token', data.login.token);
+                // store user information
+                localStorage.setItem('user', JSON.stringify(data.login.user));
+
+                // Redirect...
+                navigate('/');
+            }
+        } catch(err) {
+            // Purposely empty.
+        }
+
+    };
+    
     const handleChange = (event) => {
         const { name, value } = event.target;
         setFormData((prevData) => ({
@@ -39,6 +45,7 @@ const LoginForm = ({ loginId, className, style }) => {
             [name]: value,
         }));
     };
+    
 
     const renderError = () =>
         error && <p className="text-red-500 mt-2">Error: {error.message}</p>;

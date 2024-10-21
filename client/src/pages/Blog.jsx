@@ -3,12 +3,13 @@ import QueryList from "../components/QueryList";
 import CozyPost from "../components/CozyPost";
 import { QUERY_POSTS } from "../utils/queries";
 import Title from "../components/Title";
+import { isLoggedIn } from "../utils/util";
 
 const Blog = () => {
     // Preparing graphql to query for posts.
     const { loading, error, data } = useQuery(QUERY_POSTS);
     const posts = data?.posts || []; // If no post in db, default to an empty array.
-    console.log(error);
+
     // JSX for error and loading states
     const renderError = error && (
         <div aria-live="polite" className="text-center mt-10">
@@ -49,13 +50,22 @@ const Blog = () => {
                         />
                     ) : (
                         <div className="text-center">
-                            <p>No blog posts available at the moment. Please check back later!</p> {/* No posts found in DB. */}
+                            <p>
+                                No blog posts available at the moment. Please
+                                check back later!
+                            </p>{" "}
+                            {/* No posts found in DB. */}
                         </div>
                     )}
                 </div>
             )}
             {/* --- */}
-
+            {/* If Logged in... */}
+            {isLoggedIn() ? (
+                <div>I am rendering because you have logged in.</div>
+            ) : (
+                <div>I display because you haven't logged in yet.</div>
+            )}
         </main>
     );
 };

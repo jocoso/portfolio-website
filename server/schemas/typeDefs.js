@@ -37,9 +37,9 @@ const typeDefs = `
         _id: ID!
         title: String!
         content: String
-        comments: [BlogComment]!
         author: User!
         datePublished: Date!
+        comments: [BlogComment]!
     }
 
     # Message Type
@@ -86,7 +86,7 @@ const typeDefs = `
         content: String
         comments: [BlogCommentInput]
         author: ID!
-        datePublished: Date!
+        datePublished: Date
     }
 
     input AddMessageInput {
