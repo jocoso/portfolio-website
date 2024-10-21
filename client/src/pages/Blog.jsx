@@ -61,11 +61,9 @@ const Blog = () => {
             )}
             {/* --- */}
             {/* If Logged in... */}
-            {isLoggedIn() ? (
+            {isLoggedIn() || 
                 <div>I am rendering because you have logged in.</div>
-            ) : (
-                <div>I display because you haven't logged in yet.</div>
-            )}
+            }
         </main>
     );
 };
