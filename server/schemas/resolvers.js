@@ -82,7 +82,7 @@ const resolvers = {
         posts: async () => {
             try {
                 const posts = await Post.find({}).populate("author");
-                return posts;
+                return posts.length ? posts : [];
             } catch (err) {
                 handleError(err, "post");
             }
