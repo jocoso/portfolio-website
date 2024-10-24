@@ -1,5 +1,6 @@
 const { User, Project, Art, Post, Message } = require("../models");
 const { GraphQLScalarType, Kind } = require("graphql");
+const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
@@ -76,9 +77,9 @@ const resolvers = {
                 handleError(err, "projects");
             }
         },
-        project: async (parent, { projectId }) => {
+        project: async (parent, { _id }) => {
             try {
-                return await Project.findOne({ _id: projectId });
+                return await Project.findOne({ _id });
             } catch (err) {
                 handleError(err, "project");
             }
@@ -103,13 +104,13 @@ const resolvers = {
         posts: async () => {
             try {
                 const posts = await Post.find({})
-                .populate({
-                    path: "author", // The path should match the field name in the schema
-                    model: "User",  // Ensure this matches the name of the User model
-                    select: "name"  // Select the fields you want to populate
-                })
-                .exec();
-                
+                    .populate({
+                        path: "author", // The path should match the field name in the schema
+                        model: "User", // Ensure this matches the name of the User model
+                        select: "name", // Select the fields you want to populate
+                    })
+                    .exec();
+
                 return posts.length ? posts : [];
             } catch (err) {
                 handleError(err, "posts");
@@ -198,10 +199,10 @@ const resolvers = {
                 handleError(err, "add project");
             }
         },
-        updateProject: async (parent, { id, input }) => {
+        updateProject: async (parent, { _id, input }) => {
             try {
                 const updatedProject = await Project.findByIdAndUpdate(
-                    id,
+                    _id,
                     { $set: input },
                     { new: true, runValidators: true }
                 );
@@ -213,11 +214,19 @@ const resolvers = {
                 handleError(err, "update project");
             }
         },
-        removeProject: async (parent, { projectId }) => {
+        removeProject: async (parent, { _id }) => {
             try {
-                return await Project.findOneAndDelete({ _id: projectId });
+
+                if (!mongoose.Types.ObjectId.isValid(_id)) {
+                    console.error(`Invalid ObjectId: ${_id}`);
+                    return false;
+                }
+
+                const deletedProject = await Project.findOneAndDelete({ _id });
+                return !!deletedProject;
             } catch (err) {
                 handleError(err, "remove project");
+                return false;
             }
         },
 

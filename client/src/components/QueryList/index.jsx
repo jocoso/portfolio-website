@@ -3,6 +3,7 @@ const QueryList = ({
     Component,
     onMouseEnter = () => {},
     onMouseLeave = () => {},
+    onDelete = () => {},
     className = "",
     onClick = () => {},
 }) => {
@@ -19,6 +20,7 @@ const QueryList = ({
                     onMouseEnter={() => onMouseEnter(item)}
                     onMouseLeave={() => onMouseLeave(item)}
                     onClick={() => onClick(item)}
+                    onDelete={() => onDelete(item)}
                 />
             ))}
         </div>

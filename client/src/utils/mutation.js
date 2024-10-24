@@ -1,14 +1,14 @@
 import { gql } from "@apollo/client";
 
 // Define reusable fragments
-const USER_FIELDS = gql`
+export const USER_FIELDS = gql`
     fragment UserFields on User {
         _id
         name
     }
 `;
 
-const PROJECT_FIELDS = gql`
+export const PROJECT_FIELDS = gql`
     fragment ProjectFields on Project {
         _id
         title
@@ -17,7 +17,13 @@ const PROJECT_FIELDS = gql`
     }
 `;
 
-const ART_FIELDS = gql`
+export const DELETE_PROJECT = gql`
+mutation DeleteProject($id: ID!) {
+    removeProject(_id: $id)
+}
+`;
+
+export const ART_FIELDS = gql`
     fragment ArtFields on Art {
         _id
         name
@@ -26,7 +32,7 @@ const ART_FIELDS = gql`
     }
 `;
 
-const POST_FIELDS = gql`
+export const POST_FIELDS = gql`
     fragment PostFields on Post {
         _id
         title
@@ -37,7 +43,7 @@ const POST_FIELDS = gql`
     }
 `;
 
-const MESSAGE_FIELDS = gql`
+export const MESSAGE_FIELDS = gql`
     fragment MessageFields on Message {
         _id
         name

@@ -122,8 +122,8 @@ const typeDefs = `
         removeUser(userId: ID!): User
 
         addProject(title: String!, images: [String], content: String!): Project
-        updateProject(id: ID!, input: UpdateProjectInput!): Project!
-        removeProject(projectId: ID!): Project
+        updateProject(_id: ID!, input: UpdateProjectInput!): Project!
+        removeProject(_id: ID!): Boolean!
 
         addArt(input: AddArtInput!): Art
         removeArt(artId: ID!): Art

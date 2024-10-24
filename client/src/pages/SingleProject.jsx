@@ -22,8 +22,11 @@ const SingleProject = () => {
     if (loading) return <Loading />;
     if (error) return <Error message={error.message} />;
 
+
     const project = data?.project || {};
     const { title, images, content } = project;
+    // Utility function to get logo URI with fallback
+
 
     return (
         <div className="w-full flex flex-col items-center">
@@ -47,7 +50,7 @@ const SingleProject = () => {
                     uri={
                         images.length
                             ? `/assets/${images[0]}`
-                            : "/assets/placeholder.jpg"
+                            : "https://via.placeholder.com/150"
                     }
                     alt={title}
                 />

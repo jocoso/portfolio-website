@@ -1,13 +1,46 @@
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
+import { useNavigate } from "react-router-dom";
 import QueryList from "../components/QueryList";
 import CozyProject from "../components/CozyProject";
 import { QUERY_PROJECTS } from "../utils/queries";
+import { DELETE_PROJECT } from "../utils/mutation";
 import Title from "../components/Title";
 
 const Projects = () => {
     // Preparing GraphQL for project query
     const { loading, error, data } = useQuery(QUERY_PROJECTS);
     const projects = data?.projects || []; // No projects? No problem
+    
+    const [deleteProject] = useMutation(DELETE_PROJECT);
+    
+    const navigate = useNavigate();
+    const handleDelete = async ( projectData ) => {
+        if(!projectData._id) return false;
+
+        try {
+
+            // Execute the mutation and pass ID
+            const { data } = await deleteProject({
+                variables: { id: projectData._id },
+            });
+
+            // Check response
+            if(data && data.removeProject) {
+                console.log('Project deleted successfully');
+                window.location.reload();
+                return true;
+            } else {
+                console.log('Project couldn\'t be deleted.');
+                return false;
+            }
+
+
+        } catch(err) {
+            console.error('Error deleting project:'. err);
+            return false;
+        }
+
+    }
 
     // Reusable error message
     const renderError = error && (
@@ -42,6 +75,7 @@ const Projects = () => {
                             <QueryList
                                 items={projects}
                                 Component={CozyProject}
+                                onDelete={handleDelete}
                                 className="
                                     grid 
                                     grid-cols-1 
