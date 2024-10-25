@@ -1,5 +1,5 @@
 //
-import React, { Suspense, lazy } from "react";
+import { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // 
