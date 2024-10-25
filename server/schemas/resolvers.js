@@ -230,8 +230,9 @@ const resolvers = {
             }
         },
 
-        addArt: async (parent, { name, image, description }) => {
+        addArt: async (parent, { input }) => {
             try {
+                const { name, image, description } = input;
                 return await Art.create({ name, image, description });
             } catch (err) {
                 handleError(err, "add art");
