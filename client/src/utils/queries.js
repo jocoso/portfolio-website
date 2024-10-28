@@ -83,8 +83,8 @@ export const QUERY_PROJECTS = gql`
 `;
 
 export const QUERY_SINGLE_PROJECT = gql`
-    query singleProject($projectId: ID!) {
-        project(_id: $projectId) {
+    query singleProject($id: ID!) {
+        project(_id: $id) {
             ...ProjectFields
         }
     }

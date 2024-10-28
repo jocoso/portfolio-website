@@ -71,13 +71,13 @@ const resolvers = {
         projects: async () => {
             try {
                 const projects = await Project.find();
-                console.log("Fetched projects:", projects);
                 return projects || [];
             } catch (err) {
                 handleError(err, "projects");
             }
         },
-        project: async (parent, { _id }) => {
+
+        project: async (_, { _id }) => {
             try {
                 return await Project.findOne({ _id });
             } catch (err) {

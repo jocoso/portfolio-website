@@ -14,17 +14,15 @@ import { QUERY_SINGLE_POST } from "../utils/queries";
 // Utility function to format dates.
 import { timestampDateToHuman } from "../utils/util.js";
 
-// Local Components.
+// Creating local Components.
 const LoadingComponent = () => (
     <div className="text-center mt-10">Loading...</div>
 );
-const ErrorComponent = ({ message }) => {
-    return(
-        <div className="text-center text-red-500 mt-19">
-            Error loading post: {message}.
-        </div>
-    );
-};
+const ErrorComponent = ({ message }) => (
+    <div className="text-center text-red-500 mt-19">
+        Error loading post: {message}.
+    </div>
+);
 
 const SinglePost = () => {
     const { postId } = useParams();
@@ -33,7 +31,7 @@ const SinglePost = () => {
     const { loading, error, data } = useQuery(QUERY_SINGLE_POST, {
         variables: { id: postId },
     });
-    
+
     // Return early for loading or error states.
     if (loading) return <LoadingComponent />;
     if (error) return <ErrorComponent message={error.message} />;
@@ -78,13 +76,13 @@ const SinglePost = () => {
 
             {/* Comments Section */}
             <div className="my-10">
-                <Title tier={3} className="mb-6">Comments ({comments.length})</Title>
+                <Title tier={3} className="mb-6">
+                    Comments ({comments.length})
+                </Title>
                 {comments.length > 0 ? (
                     <QueryList items={comments} Component={CozyComment} />
                 ) : (
-                    <Paragraph>
-                        No comments yet. Be the first!
-                    </Paragraph>
+                    <Paragraph>No comments yet. Be the first!</Paragraph>
                 )}
             </div>
         </div>
