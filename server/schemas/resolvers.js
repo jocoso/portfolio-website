@@ -116,7 +116,7 @@ const resolvers = {
                 handleError(err, "posts");
             }
         },
-        post: async () => {
+        post: async (_, { _id }) => {
             try {
                 const post = await Post.findOne({ _id }).populate("author");
                 if (!post || !post.author) {

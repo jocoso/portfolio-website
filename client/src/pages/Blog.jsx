@@ -1,30 +1,36 @@
+//
 import { useQuery } from "@apollo/client";
 import QueryList from "../components/QueryList";
 import CozyPost from "../components/CozyPost";
-import { QUERY_POSTS } from "../utils/queries";
 import Title from "../components/Title";
+
+// Importing GraphQL queries and mutations...
+import { QUERY_POSTS } from "../utils/queries";
+
+// Imports isLoggedIn, a function that returns true if the user is loggedIn.
 import { isLoggedIn } from "../utils/util";
 
 const Blog = () => {
-    // Preparing graphql to query for posts.
+    // GraphQL query for fetching posts.
     const { loading, error, data } = useQuery(QUERY_POSTS);
-    const posts = data?.posts || []; // If no post in db, default to an empty array.
+    const posts = data?.posts || [];
 
-    // JSX for error and loading states
+    // JSX for error state.
     const renderError = error && (
         <div aria-live="polite" className="text-center mt-10">
-            <p className="text-red-500">Error: {error.message}</p>
+            <p className="text-red-500">
+                Error: {error.message || "An unexpected error has occurred."}
+            </p>
             <button
-                className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
+                className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition duration-300"
                 onClick={() => window.location.reload()}
             >
                 Retry
             </button>
         </div>
     );
-    // ---
 
-    // Loading screen as the program fetches the data.
+    // JSX for loading state.
     const renderLoading = loading && (
         <div aria-live="polite" className="text-center mt-10">
             <p>Loading...</p>
@@ -33,13 +39,19 @@ const Blog = () => {
             </div>
         </div>
     );
-    // ---
 
-    return (
+    // JSX for no posts available.
+    const renderNoPosts = (
+        <div className="text-center">
+            <p>No blog posts available at the moment. Please check back later!</p>
+        </div>
+    );
+
+    return(
         <main className="min-h-screen flex flex-col items-center mt-32">
             <Title className="text-center mb-10">Blog</Title>
 
-            {/* Displays Blogs IFF there is no error and the page isn't loading. */}
+            {/* Conditional rendering for error, loading, or blog content. */}
             {renderError || renderLoading || (
                 <div className="w-full max-w-4xl px-4">
                     {posts.length > 0 ? (
@@ -49,21 +61,17 @@ const Blog = () => {
                             className="flex flex-col w-full"
                         />
                     ) : (
-                        <div className="text-center">
-                            <p>
-                                No blog posts available at the moment. Please
-                                check back later!
-                            </p>{" "}
-                            {/* No posts found in DB. */}
-                        </div>
+                        renderNoPosts
                     )}
                 </div>
             )}
-            {/* --- */}
-            {/* If Logged in... */}
-            {isLoggedIn() && 
-                <div>I am rendering because you have logged in.</div>
-            }
+            
+            {/* Logged-in state message. */}
+            {isLoggedIn() && (
+                <div className="mt-10 text-center text-indigo-600">
+                    I am rendering because you have logged in.
+                </div>
+            )}
         </main>
     );
 };

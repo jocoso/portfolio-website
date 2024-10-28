@@ -1,74 +1,72 @@
+//
 import { useQuery } from "@apollo/client";
 import { useParams, Link } from "react-router-dom";
 
+// Importing components...
 import QueryList from "../components/QueryList";
 import CozyComment from "../components/CozyComment";
-import { QUERY_SINGLE_POST } from "../utils/queries";
 import Title from "../components/Title";
 import Paragraph from "../components/Paragraph";
 
-// Function to format date
-const formatDate = (dateString) => {
-    const rawDate = new Date(dateString);
-    return `${
-        rawDate.getMonth() + 1
-    }-${rawDate.getDate()}-${rawDate.getFullYear()}`;
-};
+// Importing GraphQL query...
+import { QUERY_SINGLE_POST } from "../utils/queries";
 
-// Error and Loading Components
-const ErrorComponent = ({ message }) => (
-    <div className="text-center text-red-500 mt-10">
-        Error loading post: {message}
-    </div>
-);
+// Utility function to format dates.
+import { timestampDateToHuman } from "../utils/util.js";
 
+// Local Components.
 const LoadingComponent = () => (
     <div className="text-center mt-10">Loading...</div>
 );
+const ErrorComponent = ({ message }) => {
+    return(
+        <div className="text-center text-red-500 mt-19">
+            Error loading post: {message}.
+        </div>
+    );
+};
 
 const SinglePost = () => {
     const { postId } = useParams();
-    const { loading, error, data } = useQuery(QUERY_SINGLE_POST, {
-        variables: { postId },
-    });
 
-    // Early return for loading and error states
+    // Looking for the post to display.
+    const { loading, error, data } = useQuery(QUERY_SINGLE_POST, {
+        variables: { id: postId },
+    });
+    
+    // Return early for loading or error states.
     if (loading) return <LoadingComponent />;
     if (error) return <ErrorComponent message={error.message} />;
 
-    const post = data?.post || {};
-    const { author, comments, content, datePublished, title } = post;
-
-    // Memoize formatted date and comments
-    const formattedDate = formatDate(datePublished);
-
-    const updatedComments = comments.map((comment) => ({
-        ...comment,
-        _id: comment._id || comment.date,
-    }));
+    // Destructure post data with fallback values.
+    const {
+        author = { name: "Unknown Author" },
+        comments = [],
+        content,
+        datePublished,
+        title,
+    } = data?.post || {};
+    const formattedDate = timestampDateToHuman(datePublished);
 
     return (
         <div className="container mx-auto px-4 py-10">
-            {/* Back Link */}
+            {/* Redirect to Blog page. */}
             <Link
-                to="/projects"
+                to="/blog"
                 className="text-indigo-600 hover:underline mb-6 block"
             >
                 &lt; Back
             </Link>
 
             {/* Post Header */}
-            <Title tier={2} className="mb-4">
-                {title}{" "}
-                <span className="text-xl">
-                    by {author.name || "Unknown Author"}
-                </span>
+            <Title tier="2" className="mb-4">
+                {title} <span className="text-xl">by {author.name}</span>
             </Title>
             <Paragraph className="text-gray-500">
                 Posted on {formattedDate}
             </Paragraph>
 
-            {/* Post Content */}
+            {/* Post Content. */}
             <div className="bg-white p-6 border rounded-lg shadow-md my-6">
                 <blockquote
                     className="text-2xl italic border-l-4 border-indigo-600 pl-4"
@@ -80,18 +78,12 @@ const SinglePost = () => {
 
             {/* Comments Section */}
             <div className="my-10">
-                <Title tier={3} className="mb-6">
-                    Comments ({comments.length})
-                </Title>
-
+                <Title tier={3} className="mb-6">Comments ({comments.length})</Title>
                 {comments.length > 0 ? (
-                    <QueryList
-                        items={updatedComments}
-                        Component={CozyComment}
-                    />
+                    <QueryList items={comments} Component={CozyComment} />
                 ) : (
                     <Paragraph>
-                        No comments yet. Be the first to comment!
+                        No comments yet. Be the first!
                     </Paragraph>
                 )}
             </div>

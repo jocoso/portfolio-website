@@ -119,7 +119,7 @@ export const QUERY_POSTS = gql`
 `;
 
 export const QUERY_SINGLE_POST = gql`
-    query singlePost($id: ID!) {
+    query getSinglePost($id: ID!) {
         post(_id: $id) {
             ...PostFields
         }
