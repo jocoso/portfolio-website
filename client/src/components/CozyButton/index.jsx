@@ -4,33 +4,24 @@ const CozyButton = ({
     className = "",
     onClick,
     download = false,
-    href = "", // Set to an empty string by default
+    href = "",
 }) => {
-    const baseStyle =
-        "bg-primary font-ramaraja text-[3.0096rem] text-darkBrown py-3 px-8 rounded-full shadow-lg font-semibold transition duration-500 whitespace-nowrap";
-    const hoverStyle = "hover:shadow-2xl focus:ring-green-200";
+    // Defining styles.
+    const base_componentStyle = `bg-primary font-ramaraja text-[3.0096rem] text-darkBrown py-3 px-8 rounded-full shadow-lg font-semibold transition duration-500 whitespace-nowrap`;
+    const hover_componentStyle = "hover:shadow-2xl focus:ring-green-200";
+    
+    const componentStyle = `${className} ${hover_componentStyle} ${base_componentStyle}`;
 
-    const buttonStyles = `${baseStyle} ${hoverStyle} ${className}`;
-
-    // Use anchor tag for download links
-    if (download && href) {  // Ensure href is not empty when download is true
-        return (
-            <a href={href} style={style} className={buttonStyles} download>
-                {children}
-            </a>
-        );
-    }
-
-    // Use button for onClick behavior
     return (
-        <button
+        <a
+            href={href}
             style={style}
-            className={buttonStyles}
+            className={componentStyle}
             onClick={onClick}
-            type="button"
+            download={download}
         >
             {children}
-        </button>
+        </a>
     );
 };
 

@@ -2,6 +2,7 @@
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { Outlet } from "react-router-dom";
 import { useMemo } from "react";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 //
 import Header from "./components/Header";

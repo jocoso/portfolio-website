@@ -1,9 +1,17 @@
-import Title from "../Title";
-import Paragraph from "../Paragraph";
+//
 import { useMemo } from "react";
 
-const CozyComment = ({ data: { commenterName, content, date } }) => {
-    // Memoize the formatted date for performance
+// Import components.
+import Paragraph from "../Paragraph";
+
+const CozyComment = ({
+    data: {
+        commenterName = "Anonymous",
+        content = "No comment provider",
+        date,
+    },
+}) => {
+    // Memoize the formatted date.
     const formattedDate = useMemo(
         () =>
             new Date(date).toLocaleDateString("en-US", {
@@ -17,16 +25,12 @@ const CozyComment = ({ data: { commenterName, content, date } }) => {
     return (
         <article className="my-6 p-4 border-b border-gray-200">
             <header className="mb-4">
-                <Title tier={3} className="mb-2">
-                    {commenterName || "Anonymous"}
-                </Title>
-                <time dateTime={date} className="text-sm text-gray-500">
+                <Title tier={3} className="mb-2">{commenterName}</Title>
+                <Title dateTime={date} className="text-sm text-gray-500">
                     {formattedDate}
-                </time>
+                </Title>
             </header>
-            <Paragraph className="text-lg">
-                {content || "No comment provided."}
-            </Paragraph>
+            <Paragraph className="text-lg">{content}</Paragraph>
         </article>
     );
 };
