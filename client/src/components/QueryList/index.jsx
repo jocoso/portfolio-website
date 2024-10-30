@@ -1,3 +1,5 @@
+// Given a list of items and a component type make a list of these components...
+// and render them.
 const QueryList = ({
     items = [],
     Component,
