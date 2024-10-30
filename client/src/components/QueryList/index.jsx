@@ -1,8 +1,11 @@
+// Given a list of items and a component type make a list of these components...
+// and render them.
 const QueryList = ({
     items = [],
     Component,
     onMouseEnter = () => {},
     onMouseLeave = () => {},
+    onDelete = () => {},
     className = "",
     onClick = () => {},
 }) => {
@@ -19,6 +22,7 @@ const QueryList = ({
                     onMouseEnter={() => onMouseEnter(item)}
                     onMouseLeave={() => onMouseLeave(item)}
                     onClick={() => onClick(item)}
+                    onDelete={() => onDelete(item)}
                 />
             ))}
         </div>

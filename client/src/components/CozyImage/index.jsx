@@ -1,31 +1,35 @@
+//
 import { twMerge } from "tailwind-merge";
 
+// TODO: Redo this component.
 const CozyImage = ({
     className = "",
     id,
-    style,
+    style = {},
     uri,
     altText = "Image",
     fallbackUri = "https://via.placeholder.com/150",
 }) => {
-    const styleClass = twMerge(
-        "w-48 h-48 md:w-64 md:h-64 lg:w-96 lg:h-96",
+    const mergedClasses = twMerge(
+        "w-11/12 h-11/12 lg:w-10/12 lg:h-10/12",
         className
     );
+
+    const handleError = (e) => {
+        e.target.onerror = null; // Prevents infinite looping
+        e.target.src = fallbackUri; // Sets fallback image
+    }
 
     return (
         <img
             id={id}
-            className={styleClass}
+            className={mergedClasses}
             style={style}
             src={uri || fallbackUri}
-            onError={(e) => {
-                e.target.onerror = null; // prevents infinite looping
-                e.target.src = fallbackUri;
-            }}
+            onError={handleError}
             alt={altText}
         />
-    );
-};
+    )
+}
 
 export default CozyImage;

@@ -1,12 +1,22 @@
 import { useRouteError } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useMemo } from "react";
 
 export default function ErrorPage() {
     const error = useRouteError();
-    console.error(error);
+
+    // Log error only in development
+    if (process.env.NODE_ENV === "development") {
+        console.error(error);
+    }
+
+    // Memoized error message
+    const errorMessage = useMemo(() => {
+        return error?.statusText || error?.message || "Something went wrong!";
+    }, [error]);
 
     return (
-        <div
+        <article
             id="error-page"
             className="flex flex-col items-center justify-center min-h-screen bg-gray-100 px-4"
         >
@@ -14,9 +24,7 @@ export default function ErrorPage() {
             <p className="text-2xl text-gray-700 mb-4">
                 Sorry, an unexpected error has occurred.
             </p>
-            <p className="text-xl text-gray-600 italic mb-8">
-                {error.statusText || error.message}
-            </p>
+            <p className="text-xl text-gray-600 italic mb-8">{errorMessage}</p>
 
             {/* Navigation Buttons */}
             <div className="space-x-4">
@@ -33,6 +41,6 @@ export default function ErrorPage() {
                     Go Back
                 </button>
             </div>
-        </div>
+        </article>
     );
 }

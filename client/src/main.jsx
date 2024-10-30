@@ -1,19 +1,29 @@
-import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+//
+import { Suspense, lazy } from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+// 
+import App from "./App";
+import Error from "./pages/Error";
 
-import App from './App.jsx';
-import Error from './pages/Error.jsx';
+// Load in the background.
+const lazyLoad = (Component) => (
+    <Suspense fallback={<div>loading...</div>}>
+        <Component />
+    </Suspense>
+);
 
-import About from './pages/About.jsx';
-import Art from './pages/Art.jsx';
-import Blog from './pages/Blog.jsx';
-import ContactMe from './pages/ContactMe.jsx';
-import Projects from './pages/Projects.jsx';
-import SinglePost from './pages/SinglePost.jsx';
-import SingleProject from './pages/SingleProject.jsx';
+// Importing Pages...
+const About         = lazy(() => import("./pages/About"));
+const Projects      = lazy(() => import("./pages/Projects"));
+const Art           = lazy(() => import("./pages/Art"));
+const Blog          = lazy(() => import("./pages/Blog"));
+const ContactMe     = lazy(() => import("./pages/ContactMe"));
+const Login         = lazy(() => import("./pages/Login"));
+const SinglePost    = lazy(() => import("./pages/SinglePost"));
+const SingleProject = lazy(() => import("./pages/SingleProject"));
 
-import "./main.css"
-
+// Router configuration
 const router = createBrowserRouter([
     {
         path: '/',
@@ -22,36 +32,41 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <About />,
+                element: lazyLoad(About),
             },
             {
-                path: '/projects',
-                element: <Projects />,
+                path: "/projects",
+                element: lazyLoad(Projects),
             },
             {
-                path: '/art',
-                element: <Art />,
+                path: "/art",
+                element: lazyLoad(Art),
             },
             {
-                path: '/blog',
-                element: <Blog />,
+                path: "/blog",
+                element: lazyLoad(Blog),
             },
             {
-                path: '/contact-me',
-                element: <ContactMe />,
+                path: "/contact-me",
+                element: lazyLoad(ContactMe),
             },
             {
-                path: '/post/:postId',
-                element: <SinglePost />,
-            }, 
+                path: "/login",
+                element: lazyLoad(Login),
+            },
             {
-                path: '/projects/:projectId',
-                element: <SingleProject />,
-            }
+                path: "/post/:postId",
+                element: lazyLoad(SinglePost),
+            },
+            {
+                path: "/projects/:projectId",
+                element: lazyLoad(SingleProject),
+            },
         ],
     },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+// Rendering the application.
+ReactDOM.createRoot(document.getElementById("root")).render(
     <RouterProvider router={router} />
-)
+);

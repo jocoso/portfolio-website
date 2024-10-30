@@ -1,25 +1,28 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import { visualizer } from "rollup-plugin-visualizer";
 import dotenv from "dotenv";
+import path from "path";
 
-dotenv.config();
+const envFilePath = path.resolve(process.cwd(), ".env");
+const result = dotenv.config({ path: envFilePath });
 
-// https://vitejs.dev/config/
+// Check if environment variables were loaded correctly
+if (result.error) {
+    console.error("Failed to load .env file", result.error);
+}
+
 export default defineConfig({
-    plugins: [react()],
+    plugins: [react(), visualizer()],
     server: {
-        port: process.env.PORT || 3000,
+        port: parseInt(process.env.VITE_PORT, 10) || 3000,
         open: true,
         host: true,
-        // Important for MERN Setup: Here we're establishing a relationship between our two development servers.
-        // We are pointing our Vite client-side development server to proxy API requests to our server-side Node server at port 3001.
-        // Without this line, API calls would attempt to query for data from the current domain: localhost:3000
         proxy: {
             "/graphql": {
                 target:
-                    process.env.VITE_API_URL ,
-                changeOrigin: true,
-                secure: false,
+                    process.env.VITE_PRODUCTION_URL ||
+                    "http://portfolio-website-be-9ohl.onrender.com/graphql",
             },
         },
     },

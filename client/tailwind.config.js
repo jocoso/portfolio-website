@@ -1,8 +1,8 @@
+
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
     content: ["./src/**/*.{js,jsx,ts,tsx}"],
     theme: {
-        
         extend: {
             gridTemplateColumns: {
                 'autofill-400': 'repeat(auto-fill, 425px)',

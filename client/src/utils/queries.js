@@ -1,120 +1,146 @@
 import { gql } from "@apollo/client";
 
+// Define reusable fragments
+const USER_FIELDS = gql`
+    fragment UserFields on User {
+        _id
+        name
+    }
+`;
+
+const PROJECT_FIELDS = gql`
+    fragment ProjectFields on Project {
+        _id
+        title
+        images
+        content
+    }
+`;
+
+const ART_FIELDS = gql`
+    fragment ArtFields on Art {
+        _id
+        name
+        image
+        description
+    }
+`;
+
+const POST_FIELDS = gql`
+    fragment PostFields on Post {
+        _id
+        title
+        content
+        comments {
+            commenterName
+            content
+            date
+        }
+        author {
+            _id
+            name
+        }
+        datePublished
+    }
+`;
+
+const MESSAGE_FIELDS = gql`
+    fragment MessageFields on Message {
+        _id
+        name
+        email
+        subject
+        message
+    }
+`;
+
+// Queries using fragments
 export const QUERY_USER = gql`
     query allUsers {
         users {
-            _id
-            name
+            ...UserFields
         }
     }
+    ${USER_FIELDS}
 `;
+
 export const QUERY_SINGLE_USER = gql`
     query singleUser($userId: ID!) {
         user(userId: $userId) {
-            _id
-            name
+            ...UserFields
         }
     }
+    ${USER_FIELDS}
 `;
 
 export const QUERY_PROJECTS = gql`
     query allProjects {
         projects {
-            _id
-            title
-            images
-            content
+            ...ProjectFields
         }
     }
+    ${PROJECT_FIELDS}
 `;
+
 export const QUERY_SINGLE_PROJECT = gql`
-    query singleProject($projectId: ID!) {
-        project(projectId: $projectId) {
-            _id
-            title
-            images
-            content
+    query singleProject($id: ID!) {
+        project(_id: $id) {
+            ...ProjectFields
         }
     }
+    ${PROJECT_FIELDS}
 `;
 
 export const QUERY_ARTS = gql`
     query allArts {
         arts {
-            _id
-            name
-            image
-            description
+            ...ArtFields
         }
     }
+    ${ART_FIELDS}
 `;
+
 export const QUERY_SINGLE_ART = gql`
     query singleArt($artId: ID!) {
         art(artId: $artId) {
-            _id
-            name
-            image
-            description
+            ...ArtFields
         }
     }
+    ${ART_FIELDS}
 `;
 
 export const QUERY_POSTS = gql`
     query allPosts {
         posts {
-            _id
-            title
-            content
-            comments {
-                commenterName
-            }
-            author {
-                name
-            }
-            datePublished
+            ...PostFields
         }
     }
+    ${POST_FIELDS}
 `;
+
 export const QUERY_SINGLE_POST = gql`
-    query singlePost($postId: ID!) {
-        post(postId: $postId) {
-            _id
-            title
-            content
-            comments {
-                commenterName
-                content
-                date
-                
-            }
-            author {
-                _id
-                name
-            }
-            datePublished
+    query getSinglePost($id: ID!) {
+        post(_id: $id) {
+            ...PostFields
         }
     }
+    ${POST_FIELDS}
 `;
 
 export const QUERY_MESSAGES = gql`
-    query allMessage {
+    query allMessages {
         messages {
-            _id
-            name
-            email
-            subject
-            message
+            ...MessageFields
         }
     }
+    ${MESSAGE_FIELDS}
 `;
+
 export const QUERY_SINGLE_MESSAGE = gql`
     query singleMessage($messageId: ID!) {
         message(messageId: $messageId) {
-            _id
-            name
-            email
-            subject
-            message
+            ...MessageFields
         }
     }
+    ${MESSAGE_FIELDS}
 `;
