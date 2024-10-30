@@ -20,7 +20,6 @@ const app = express();
 
 // Apply middleware before server starts
 app.use(compression());
-app.use(cors());
 app.use(
     cors({
         origin: [
