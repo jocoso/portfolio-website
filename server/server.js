@@ -23,7 +23,7 @@ app.use(compression());
 app.use(
     cors({
         origin: [
-            "http://localhost:3001/graphql",
+            "http://localhost:3000",
             process.env.VITE_PRODUCTION_URL,
         ],
         credentials: true,
