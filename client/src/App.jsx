@@ -9,6 +9,9 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import "./App.css";
 
+console.log("GraphQL URI:", import.meta.env.VITE_PRODUCTION_URL);
+
+
 // Apollo Client setup.
 const createApolloClient = (uri) => {
     return new ApolloClient({
