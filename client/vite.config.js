@@ -1,5 +1,9 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import dotenv from "dotenv";
+
+// Load environment variables from .env file if it exists
+dotenv.config();
 
 export default defineConfig(({ command }) => {
     return {
@@ -11,9 +15,9 @@ export default defineConfig(({ command }) => {
             host: true,
             proxy: {
                 "/graphql": {
-                    // Use the production URL if available; otherwise, fallback to localhost
+                    // Use the production URL from dotenv or fallback to localhost
                     target:
-                        import.meta.env.VITE_PRODUCTION_URL ||
+                        process.env.VITE_PRODUCTION_URL ||
                         "http://localhost:3001/graphql",
                 },
             },
