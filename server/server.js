@@ -20,26 +20,24 @@ const app = express();
 
 // Apply middleware before server starts
 app.use(compression());
-app.use(
-    cors({
-        origin: [
-            "http://localhost:3000",
-            process.env.VITE_PRODUCTION_URL,
-        ],
-        credentials: true,
-    })
-);
-
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+const corsOptions = {
+    origin: ["http://localhost:3000", process.env.VITE_PRODUCTION_URL],
+    credentials: true,
+};
+
+app.use(cors(corsOptions));
+
 
 // Start Apollo Server
 const startApolloServer = async () => {
     try {
         await server.start();
 
-        // Apply Apollo GraphQL middleware
-        app.use("/graphql", expressMiddleware(server));
+        // Apply Apollo GraphQL middleware with CORS
+        app.use("/graphql", expressMiddleware(server, { cors: corsOptions }));
 
         // Start the server once DB connection is open
         db.once("open", () => {

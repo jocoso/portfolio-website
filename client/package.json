@@ -8,7 +8,7 @@
         "npm": ">=9.0.0"
     },
     "scripts": {
-        "dev": "vite --config vite.config.dev.js",
+        "dev": "vite",
         "build": "vite build",
         "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
         "preview": "vite preview"
@@ -19,6 +19,7 @@
         "@vitejs/plugin-react": "^4.0.0",
         "autoprefixer": "^10.4.20",
         "dotenv": "^16.4.5",
+        "graphql": "^16.9.0",
         "postcss": "^8.4.47",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
