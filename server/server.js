@@ -24,8 +24,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 const corsOptions = {
-    origin: ["http://localhost:3000", process.env.VITE_PRODUCTION_URL],
+    origin: (origin, callback) => {
+        const allowedOrigins = ["http://localhost:3000", "https://portfolio-website-w0q7.onrender.com"];
+        if (allowedOrigins.includes(origin) || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
     credentials: true,
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
 };
 
 app.use(cors(corsOptions));
