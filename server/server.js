@@ -18,7 +18,7 @@ const server = new ApolloServer({
 
 const app = express();
 
-// Apply middleware before server starts
+// Apply middleware
 app.use(compression());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -30,8 +30,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-
-// Start Apollo Server
+// Start Apollo Server and apply middleware
 const startApolloServer = async () => {
     try {
         await server.start();
@@ -39,16 +38,19 @@ const startApolloServer = async () => {
         // Apply Apollo GraphQL middleware with CORS
         app.use("/graphql", expressMiddleware(server, { cors: corsOptions }));
 
-        // Start the server once DB connection is open
+        // Start the server on the specified port
+        app.listen(PORT, () => {
+            console.log(
+                `🚀 Server running on ${
+                    process.env.VITE_PRODUCTION_URL ||
+                    `http://localhost:${PORT}/graphql`
+                }`
+            );
+        });
+
+        // Connect to the database
         db.once("open", () => {
-            app.listen(PORT, () => {
-                console.log(
-                    `🚀 Server running on ${
-                        process.env.VITE_PRODUCTION_URL ||
-                        "http://localhost:3001/graphql"
-                    }`
-                );
-            });
+            console.log("Connected to the database successfully");
         });
     } catch (err) {
         console.error("Error starting server:", err);
