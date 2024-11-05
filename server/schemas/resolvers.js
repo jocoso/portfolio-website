@@ -192,7 +192,8 @@ const resolvers = {
             }
         },
 
-        addProject: async (parent, { title, images, content }) => {
+        addProject: async (parent, { input }) => {
+            const { title, images, content } = input;
             try {
                 return await Project.create({ title, images, content });
             } catch (err) {

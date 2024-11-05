@@ -7,6 +7,10 @@ import path from "path";
 const envFilePath = path.resolve(process.cwd(), ".env");
 const result = dotenv.config({ path: envFilePath });
 
+const port = parseInt(process.env.VITE_PORT, 10) || 3000;
+const target =
+    process.env.VITE_PRODUCTION_URL || "https://localhost:3001/graphql";
+
 // Check if environment variables were loaded correctly
 if (result.error) {
     console.error("Failed to load .env file", result.error);
@@ -15,14 +19,12 @@ if (result.error) {
 export default defineConfig({
     plugins: [react(), visualizer()],
     server: {
-        port: parseInt(process.env.VITE_PORT, 10) || 3000,
+        port,
         open: true,
         host: true,
         proxy: {
             "/graphql": {
-                target:
-                    process.env.VITE_PRODUCTION_URL ||
-                    "http://portfolio-website-be-9ohl.onrender.com/graphql",
+                target,
             },
         },
     },
