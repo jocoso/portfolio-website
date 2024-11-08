@@ -1,29 +1,35 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { visualizer } from "rollup-plugin-visualizer";
 import dotenv from "dotenv";
 import path from "path";
 
 const envFilePath = path.resolve(process.cwd(), ".env");
-const result = dotenv.config({ path: envFilePath });
+dotenv.config({ path: envFilePath });
 
-// Check if environment variables were loaded correctly
-if (result.error) {
-    console.error("Failed to load .env file", result.error);
-}
+const port = parseInt(process.env.VITE_PORT, 10) || 3000;
+const target =
+    process.env.VITE_PRODUCTION_URL || "https://localhost:3001/graphql";
+    
+export default defineConfig(async ({ mode }) => {
+    const plugins = [react()];
 
-export default defineConfig({
-    plugins: [react(), visualizer()],
-    server: {
-        port: parseInt(process.env.VITE_PORT, 10) || 3000,
-        open: true,
-        host: true,
-        proxy: {
-            "/graphql": {
-                target:
-                    process.env.VITE_PRODUCTION_URL ||
-                    "http://portfolio-website-be-9ohl.onrender.com/graphql",
+    // Only add visualizer in development.
+    if (process.env.NODE_ENV === "development") {
+        const { visualizer } = await import("rollup-plugin-visualizer");
+        plugins.push(visualizer());
+    }
+
+    return {
+        plugins,
+        server: {
+            port,
+            open: true,
+            host: true,
+            proxy: {
+                "/graphql": {
+                    target,
+                },
             },
         },
-    },
+    };
 });
