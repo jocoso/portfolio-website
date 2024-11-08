@@ -77,11 +77,9 @@ export const ADD_USER = gql`
 
 export const ADD_PROJECT = gql`
     mutation addProject(
-        $title: String!
-        $images: [String!]!
-        $content: String
+        $input: AddProjectInput!
     ) {
-        addProject(title: $title, images: $images, content: $content) {
+        addProject(input: $input) {
             ...ProjectFields
         }
     }

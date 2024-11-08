@@ -104,7 +104,7 @@ const Projects = () => {
         const { title, coverUrl, content } = newProject;
 
         if (!title || !coverUrl || !content) {
-            console.log("No info")
+            console.log("No info");
             throw new Error(
                 "Unable to submit project. One or multiple information requested is missing."
             );
@@ -113,9 +113,11 @@ const Projects = () => {
         // Execute mutation and pass the project ID.
         const { data } = await addProject({
             variables: {
-                title: title,
-                images: [coverUrl],
-                content: content,
+                input: {
+                    title: title,
+                    images: [coverUrl],
+                    content: content,
+                },
             },
         });
     };
