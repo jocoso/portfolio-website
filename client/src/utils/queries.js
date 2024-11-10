@@ -14,6 +14,8 @@ const PROJECT_FIELDS = gql`
         title
         images
         content
+        websiteLink
+        githubLink
     }
 `;
 
@@ -76,10 +78,14 @@ export const QUERY_SINGLE_USER = gql`
 export const QUERY_PROJECTS = gql`
     query allProjects {
         projects {
-            ...ProjectFields
+            _id
+            title
+            images
+            content
+            websiteLink
+            githubLink
         }
     }
-    ${PROJECT_FIELDS}
 `;
 
 export const QUERY_SINGLE_PROJECT = gql`
