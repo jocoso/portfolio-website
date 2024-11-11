@@ -13,6 +13,8 @@ const typeDefs = `
         title: String!
         images: [String]
         content: String!
+        websiteLink: String
+        githubLink: String!
         createdAt: String!
         updatedAt: String!
     }
@@ -61,6 +63,8 @@ const typeDefs = `
         title: String
         images: [String]
         content: String
+        websiteLink: String
+        githubLink: String!
     }
 
     input BlogCommentInput {
@@ -73,6 +77,8 @@ const typeDefs = `
         title: String!
         images: [String!]!
         content: String!
+        websiteLink: String
+        githubLink: String!
     }
 
     input AddArtInput {
@@ -121,7 +127,7 @@ const typeDefs = `
         addUser(name: String!, password: String!): User
         removeUser(userId: ID!): User
 
-        addProject(input: AddProjectInput! ): Project
+        addProject(input: AddProjectInput!): Project
         updateProject(_id: ID!, input: UpdateProjectInput!): Project!
         removeProject(_id: ID!): Boolean!
 

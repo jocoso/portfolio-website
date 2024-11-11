@@ -14,6 +14,10 @@ export const PROJECT_FIELDS = gql`
         title
         images
         content
+        websiteLink
+        githubLink
+        createdAt
+        updatedAt
     }
 `;
 

@@ -10,28 +10,6 @@ const handleError = (err = null, entity = null) => {
     throw new Error(`Failed to fetch ${entity}`);
 };
 
-const ALERT = (err, message) => {
-    const shout = "ALERT!\n";
-    // Returns an error message iff an error exists
-    // Returns an extra message iff an extra message exits
-    // Put all together in the format `\tERROR: ${err}\n\tMSG: ${message}`
-    //
-    // variable 1 = if err <exists>
-    //                  return "ERR <and Whatever error here>";
-    //              otherwise
-    //                  return <nothing>
-    // variable 2 = if message <exists>
-    //                  return "MSG <and whatever error here"
-    //              otherwise
-    //                  return <nothing>
-    //
-    // print shout + variable 1 + variable 2
-    const error = err ? `\n\tERR: \n ${err}` : "";
-    const msg = message ? `\n\tMSG: ${message}` : "";
-
-    console.error(shout + error + msg);
-};
-
 const resolvers = {
     // Custom Date Scalar Type
     Date: new GraphQLScalarType({
@@ -193,9 +171,9 @@ const resolvers = {
         },
 
         addProject: async (parent, { input }) => {
-            const { title, images, content } = input;
+            const { title, images, content, websiteLink, githubLink } = input;
             try {
-                return await Project.create({ title, images, content });
+                return await Project.create({ title, images, content, websiteLink, githubLink });
             } catch (err) {
                 handleError(err, "add project");
             }

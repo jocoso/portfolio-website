@@ -7,7 +7,7 @@ import CozyImage from "../CozyImage";
 import { isLoggedIn } from "../../utils/util";
 
 const CozyProject = ({ data, onDelete }) => {
-    const { _id, title, content, images } = data;
+    const { _id, title, content, images, websiteLink, githubLink } = data;
     // Utility function to get logo URI with fallback.
     const getLogoUri = () =>
         images.length ? images[0] : "https://via.placeholder.com/150";
@@ -38,17 +38,16 @@ const CozyProject = ({ data, onDelete }) => {
     );
     const DeleteButtonComponent = () => (
         <button
-                    onClick={onDelete}
-                    className="inline-block px-4 py-2 mt-4 text-white bg-red-600 rounded-md shadow hover:bg-red-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition duration-300 cursor-pointer"
-                    aria-label="Delete project"
-                >
-                    Delete
-                </button>
+            onClick={onDelete}
+            className="inline-block px-4 py-2 mt-4 text-white bg-red-600 rounded-md shadow hover:bg-red-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition duration-300 cursor-pointer"
+            aria-label="Delete project"
+        >
+            Delete
+        </button>
     );
 
     return (
         <div className="flex flex-col items-center">
-
             {/* Redirects to singleProjects/_id. */}
             <Link
                 to={`/projects/${_id}`}
@@ -60,8 +59,33 @@ const CozyProject = ({ data, onDelete }) => {
                     <ProjectImageComponent uri={getLogoUri()} alt={title} />
                     <ContentComponent content={content} />
                 </article>
-
             </Link>
+
+            {/* External Links */}
+            <div className="mt-3 space-x-4">
+                {websiteLink && (
+                    <a
+                        href={websiteLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 underline hover:text-blue-800"
+                        aria-label={`Visit website for ${title}`}
+                    >
+                        Website
+                    </a>
+                )}
+                {githubLink && (
+                    <a
+                        href={githubLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 underline hover:text-blue-800"
+                        aria-label={`View GitHub repository for ${title}`}
+                    >
+                        GitHub
+                    </a>
+                )}
+            </div>
 
             {/* Delete Button for Logged-in Users */}
             {isLoggedIn() && <DeleteButtonComponent />}

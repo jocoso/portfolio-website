@@ -20,6 +20,17 @@ const projectSchema = new Schema(
             trim: true,
             maxlength: 5000, // Limit content length to 5000 characters
         },
+        websiteLink: {
+            type: String,
+            trim: true,
+            maxlength: 1000,
+        },
+        githubLink: {
+            type: String,
+            required: [true, "Github Link is required."],
+            trim: true,
+            maxlength: 1000,
+        },
     },
     {
         timestamps: true, // Automatically adds createdAt and updatedAt fields
