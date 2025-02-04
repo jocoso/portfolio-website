@@ -53,7 +53,7 @@ function App() {
             <div className="min-h-screen min-w-screen flex flex-col bg-background">
 
                 {/* Header */}
-                <Header items={navItems} />
+                <Header />
                 
                 {/* Content */}
                 <main className="flex-grow w-11/12 max-w-7xl mx-auto h-full py-10">

@@ -4,35 +4,40 @@ import { useLocation } from "react-router-dom";
 // Importing components...
 import NavItem from "./NavItem";
 
-const Navbar = ({ items = [] }) => {
-    const location = useLocation();
-    const [activeItem, setActiveItem] = useState(null);
+const Navbar = ({ navButtons = [] }) => {
+	const location = useLocation();
+	const [activeButton, setActiveButton] = useState(null);
+	const generalStyling = "bg-white text-black";
 
-    // Set the active item based on the current route
-    useEffect(() => {
-        const currentItem = items.find(
-            (item) => item.route === location.pathname
-        );
-        if (currentItem) setActiveItem(currentItem.id);
-    }, [location.pathname, items]);
+	// Set the active nav button based on the current route
+	// TODO: Add sentinel variable to check...
+	// if the active button has changed before looping.
+	useEffect(() => {
+        	setActiveButton(navButtons.find(
+        	(button) => button.route === location.pathname
+        ));
 
-    // Display all Navigation items.
-    const NavigationItemsRenderer = () => (
+    }, [location.pathname, navButtons]);
+
+	
+
+    // Display navigation buttons.
+    const NavigationButtonsRenderer = () => (
         <ul
             id="navbar"
-            className="list-none flex justify-center items-center bg-primary m-auto font-thin font-ramaraja text-5xl h-32 relative"
-            style={{ top: "2rem" }}
+            className= {generalStyling}
         >
-            {items.length ? (
-                items.map((item) => (
+	    <p>list</p>
+            {navButtons.length ? (
+                navButtons.map((button) => (
                     <NavItem
-                        key={item.id}
-                        route={item.route}
-                        name={item.name}
-                        isActive={activeItem === item.id}
-                        onClick={() => setActiveItem(item.id)}
+                        key={button.id}
+                        route={button.route}
+                        name={button.name}
+                        isActive={activeButton === button.id}
+                        onClick={() => setActiveButton(button.id)}
                         aria-current={
-                            activeItem === item.id ? "page" : undefined
+                            activeButton === button.id ? "page" : undefined
                         }
                     />
                 ))
@@ -44,7 +49,7 @@ const Navbar = ({ items = [] }) => {
 
     return (
         <nav aria-label="Main navigation">
-            <NavigationItemsRenderer />
+            <NavigationButtonsRenderer />
         </nav>
     );
 };
