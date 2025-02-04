@@ -27,7 +27,6 @@ const Navbar = ({ navButtons = [] }) => {
             id="navbar"
             className= {generalStyling}
         >
-	    <p>list</p>
             {navButtons.length ? (
                 navButtons.map((button) => (
                     <NavItem
