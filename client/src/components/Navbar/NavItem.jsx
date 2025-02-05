@@ -1,17 +1,16 @@
 //
 import { Link } from "react-router-dom";
 
-const NavItem = ({ route, name, isActive, onClick }) => (
-    <li
+const liStyle = " border text-xl text-justify align-middle leading-6 h-[3rem] p-2";
+const linkStyle = "text-center";
+const NavButton = ({ route, name, isActive, onClick }) => (
+    <li id="navbutton-container"
         onClick={onClick}
-        className={`flex justify-center items-center h-full px-6 py-2 transition-all duration-300 ease-in-out cursor-pointer ${
-            isActive ? "bg-accent" : ""
-        }`}
+        className={`${liStyle} ${isActive && "bg-red" }`}
         role="menuitem"
     >
-        <Link
+        <Link id="navbutton-link"
             to={route}
-            className="text-center block"
             aria-current={isActive ? "page" : undefined}
         >
             {name}
@@ -19,4 +18,4 @@ const NavItem = ({ route, name, isActive, onClick }) => (
     </li>
 );
 
-export default NavItem;
+export default NavButton;
