@@ -36,6 +36,17 @@ function App() {
     const uri = import.meta.env.VITE_PRODUCTION_URL || "http://localhost:3001/graphql";
     // Memoize ApolloClient to avoid re-initialization.
     const client = useMemo(() => createApolloClient(uri), [uri]);
+    // Memoize navItems to prevent unnecessary recalculations.
+    const navItems = useMemo(
+        () => [
+            { id: 0, name: "About Me"  , route: '/'           },
+            { id: 1, name: "Projects"  , route: "/projects"   },
+            { id: 2, name: "Art"       , route: "/art"        },
+            { id: 3, name: "Blog"      , route: "/blog"       },
+            { id: 4, name: "Contact Me", route: "/contact-me" },
+        ],
+        []
+    );
 
     return(
         <ApolloProvider client={client}>

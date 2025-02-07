@@ -1,21 +1,25 @@
 //
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const liStyle = " border text-xl text-justify align-middle leading-6 h-[3rem] p-2";
-const linkStyle = "text-center";
-const NavButton = ({ route, name, isActive, onClick }) => (
-    <li id="navbutton-container"
+const NavItem = ({ id, route, name, isActive, onClick, onDragStart }) => {
+	return(
+    <li draggable
+	id={id}
+	onDragStart={onDragStart}
         onClick={onClick}
-        className={`${liStyle} ${isActive && "bg-red" }`}
+        className={`text-xl bg-black text-white w-full mx-10 my-1 ${
+            isActive ? "bg-orange text-white" : ""
+        }`}
         role="menuitem"
     >
-        <Link id="navbutton-link"
+        <Link
             to={route}
+            className="text-center block"
             aria-current={isActive ? "page" : undefined}
         >
             {name}
         </Link>
-    </li>
-);
+    </li>);
+};
 
-export default NavButton;
+export default NavItem;
