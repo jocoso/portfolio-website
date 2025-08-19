@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 
-import Navbar from "../Navbar"
+import Topbar from "../Topbar"
 
 const Header = () => {
 	const navButtonsArray = [
@@ -14,7 +14,7 @@ const Header = () => {
 		{ name: "Contact Me", route: "/contact-me" }
 	]
 
-	return <Navbar navButtons={navButtonsArray} />
+	return <Topbar navButtons={navButtonsArray} />
 
 };
 
