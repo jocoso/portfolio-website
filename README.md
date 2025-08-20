@@ -1,7 +1,8 @@
 
 # Portfolio Website
 
-[Screencast from 2025-08-20 12-27-57.webm](https://github.com/user-attachments/assets/01d1c0d1-92f5-4c70-ace2-2e341b76fcdf)
+[Screencast from 2025-08-20 13-04-47.webm](https://github.com/user-attachments/assets/32b1a57a-84be-4819-86c1-7df9ce33dc48)
+
 
 Welcome to my portfolio website! This repository contains the code for my personal website where I showcase my projects, skills, and experience. Check out the live version [here](https://github.com/jocoso/portfolio-website).
 
@@ -107,5 +108,6 @@ You can reach me at:
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
+
 
 
