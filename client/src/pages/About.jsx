@@ -12,7 +12,7 @@ const About = () => {
                 Want to know more about me and my work? Click here.
             </ScrollLink>
 
-            <ScrollLink src={Art1} orientation="left" href="/" title="Art">
+            <ScrollLink src={Art1} orientation="left" href="/" title="Art & Comics">
                 Click here to see my art.
             </ScrollLink>
             
